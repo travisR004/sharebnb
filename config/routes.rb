@@ -3,6 +3,7 @@ Sharebnb::Application.routes.draw do
   get "static_pages/root"
 
   namespace :api, defaults: {format: :json} do
+    resources :rentals
   end
 
   resources :users, only: [:new, :create]
