@@ -17,11 +17,6 @@ class User < ActiveRecord::Base
     validates :password, length: {minimum: 6, allow_nil: true}
     before_validation :ensure_session_token
 
-    include Commentable
-    has_many :made_comments, foreign_key: :author_id, class_name: "Comment"
-
-
-    has_many :goals
 
     def password=(pt)
       @password = pt
