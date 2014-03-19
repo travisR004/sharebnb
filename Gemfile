@@ -10,7 +10,6 @@ gem 'backbone-on-rails'
 gem 'pry-rails'
 gem 'serialize_json-rails'
 gem 'jquery-ui-rails'
-gem 'twitter-bootstrap-rails'
 
 gem 'bcrypt-ruby', require: 'bcrypt'
 
