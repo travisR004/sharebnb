@@ -5,14 +5,18 @@ h1 {
 }
 
 h2 {
-	text-align: center;
 	color: #fff;
 	text-shadow: 0 -1px 1px rgba(0,0,0,0.6);
 	font-size: 36px;
 }
 
+li {
+	list-style-type: none;
+}
+
 body {
-	background-color: white;
+	color: white;
+	background-image: radial-gradient(farthest-side circle at center center, #30daf1 20%, #0f8bcd 100%);
 }
 
 .intro {
@@ -22,7 +26,6 @@ body {
 }
 
 #travel-search {
-	margin-left: 10%;
 	display: inline;
 }
 
@@ -47,7 +50,7 @@ body {
 }
 
 #rental-form {
-	width: 25%;
+	width: 35%;
 	margin: 0 auto;
 	padding-top: 10px;
 }
@@ -58,4 +61,44 @@ body {
 
 .rental-radio{
 	-webkit-appearance: none;
+}
+
+.btn-primary {
+	background: #0f8bcd;
+}
+
+.btn-group {
+	display: block;
+}
+
+.r-selector {
+	width: 31%;
+}
+
+.rental-type{
+	width: 107%;
+}
+
+.selected {
+	background: rgb(51, 126, 164);
+}
+
+#show-rental-carousel {
+	margin: 0 auto;
+}
+
+#rental-details {
+	margin: 0 auto;
+}
+
+#thumbnail-slideshow {
+	background-color: white;
+	margin: 0 auto;
+	height: 50px;
+	font-size: 32px;
+	padding: 5px;
+}
+
+#next-slide{
+	float: right;
 }

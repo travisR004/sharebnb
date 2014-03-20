@@ -2,24 +2,57 @@
 
 <div class="form-group">
 	<form id="rental-form">
+		<div class="form-group">
+			<label class="control-label rental-type">Rental Type
+				<div class="btn-group">
+					<input id="apartment" class="rental-radio" type="radio" name="rental[rental_type]" value="apartment">
+					<label for="apartment" class="btn btn-primary r-selector rental">
+					   <i class="fa fa-building-o fa-2x"></i>
+					   <span3>APT</span3>
+					</label>
+
+					<input id="home" class="rental-radio" type="radio" name="rental[rental_type]" value="home">
+					<label for="home" class="btn btn-primary r-selector rental">
+						<i class="fa fa-home fa-2x"></i>
+						<span3>Home</span>
+					</label>
+
+					<input id="bnb" class="rental-radio" type="radio" name="rental[rental_type]" value="bnb">
+					<label for="bnb" class="btn btn-primary r-selector rental">
+						<i class="fa fa-coffee fa-2x"></i>
+						<span3>BnB</span>
+					</label>
+				</div>
+			</label>
+		</div>
 
 		<div class="form-group">
-			<div class="btn-group">
-				<input id="apartment" class="rental-radio" type="radio" name="rental[rental_type]" value="apartment">
-				<label for="apartment" class="btn btn-primary">
-				      <span3 class="input-group-addon glyphicon glyphicon-calendar" style="top: 0px"></span3>
-				      <span3>Apartment</span3>
-				</label>
+			<label class="control-label rental-type">Room Type
+				<div class="btn-group">
+					<input id="whole-home" class="rental-radio" type="radio" name="rental[room_type]" value="whole-home">
+					<label for="whole-home" class="btn btn-primary r-selector room">
+					   <i class="fa fa-home fa-2x"></i>
+					   <span3>Whole Home</span3>
+					</label>
 
-				<input id="home" class="rental-radio" type="radio" name="rental[rental_type]" value="home">
-				<label for="home" class="btn btn-primary">
-					<i class="icon_lys icon_property_type_id_1"></i>
-					<span3>Home</span>
-				</label>
-			</div>
+					<input id="private-room" class="rental-radio" type="radio" name="rental[room_type]" value="private-room">
+					<label for="private-room" class="btn btn-primary r-selector room">
+						<i class="fa fa-key fa-2x"></i>
+						<span3>Private Room</span>
+					</label>
+
+					<input id="shared-room" class="rental-radio" type="radio" name="rental[room_type]" value="shared-room">
+					<label for="shared-room" class="btn btn-primary r-selector room">
+						<i class="fa fa-suitcase fa-2x"></i>
+						<span3>Shared Room</span>
+					</label>
+				</div>
+			</label>
+		</div>
+
 
 		<div class="form-group">
-			<label class="control-label">Unit
+			<label class="control-label">Apt or Unit
 				<div class="input-group">
 					<span class="input-group-addon glyphicon glyphicon-home" style="top: 0px"></span>
 					<input type="text" class="form-control rental-form" name="rental[unit]">

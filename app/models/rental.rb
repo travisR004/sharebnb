@@ -16,8 +16,8 @@
 #
 
 class Rental < ActiveRecord::Base
-  validates :zipcode, :address, :city, :state, :description,
-            :rental_type, :room_type, presence: true
+  validates :zipcode, :address, :description,
+            :rental_type, :room_type, :allowed_guests, :owner, presence: true
 
   belongs_to :owner, class_name: "User"
   has_many :rental_requests

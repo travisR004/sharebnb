@@ -12,8 +12,8 @@ window.Sharebnb.Routers.AppRouter = Backbone.Router.extend({
 	},
 
 	showRental: function(id){
-		var rental = Sharebnb.Data.boards.getOrFetch(id)
-		var showRentalView = new Sharbnb.Views.ShowRental({model: rental})
+		var rental = Sharebnb.Data.rentals.getOrFetch(id)
+		var showRentalView = new Sharebnb.Views.ShowRental({model: rental})
 
 		this._swapView(showRentalView)
 	},

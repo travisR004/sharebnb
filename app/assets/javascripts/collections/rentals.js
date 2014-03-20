@@ -1,17 +1,17 @@
 window.Sharebnb.Collections.Rentals = Backbone.Collection.extend({
-	url: "/api/posts",
+	url: "/api/rentals",
 
 	model: Sharebnb.Models.Rental,
 
-	getOrFetch: function(){
+	getOrFetch: function(id){
 		var model;
 		var rentals = this;
 
-		if(model = this.rentals.get(id)){
+		if(model = rentals.get(id)){
 			model.fetch();
 			return model
 		} else {
-			model = new Sharebnb.Models.Model({id: id});
+			model = new Sharebnb.Models.Rental({id: id});
 			model.fetch({
 				success: function(){
 					rentals.add(model)
