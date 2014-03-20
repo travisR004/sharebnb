@@ -11,21 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140319180509) do
+ActiveRecord::Schema.define(version: 20140320053437) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "rental_requests", force: true do |t|
+    t.integer  "rental_id"
+    t.integer  "user_id"
+    t.date     "start_date"
+    t.date     "end_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "status",     default: "PENDING"
+  end
+
   create_table "rentals", force: true do |t|
-    t.integer  "owner_id",    null: false
-    t.integer  "zipcode",     null: false
-    t.string   "address",     null: false
-    t.string   "city",        null: false
-    t.string   "state",       null: false
-    t.string   "description", null: false
+    t.integer  "owner_id",       null: false
+    t.integer  "zipcode",        null: false
+    t.string   "address",        null: false
+    t.string   "description",    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "unit"
+    t.integer  "allowed_guests"
+    t.string   "rental_type"
+    t.string   "room_type"
   end
 
   create_table "users", force: true do |t|

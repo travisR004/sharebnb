@@ -1,0 +1,66 @@
+<h1> Welcome to the jungle </h1>
+
+<div class="form-group">
+	<form id="rental-form">
+
+		<div class="form-group">
+			<div class="btn-group">
+				<input id="apartment" class="rental-radio" type="radio" name="rental[rental_type]" value="apartment">
+				<label for="apartment" class="btn btn-primary">
+				      <span3 class="input-group-addon glyphicon glyphicon-calendar" style="top: 0px"></span3>
+				      <span3>Apartment</span3>
+				</label>
+
+				<input id="home" class="rental-radio" type="radio" name="rental[rental_type]" value="home">
+				<label for="home" class="btn btn-primary">
+					<i class="icon_lys icon_property_type_id_1"></i>
+					<span3>Home</span>
+				</label>
+			</div>
+
+		<div class="form-group">
+			<label class="control-label">Unit
+				<div class="input-group">
+					<span class="input-group-addon glyphicon glyphicon-home" style="top: 0px"></span>
+					<input type="text" class="form-control rental-form" name="rental[unit]">
+				</div>
+			</label>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label">Street Address
+				<div class="input-group">
+					<span class="input-group-addon glyphicon glyphicon-road" style="top: 0px"></span>
+					<input type="text" class="form-control rental-form" name="rental[address]">
+				</div>
+			</label>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label">Zipcode
+				<div class="input-group">
+					<span class="input-group-addon glyphicon glyphicon-screenshot" style="top: 0px"></span>
+					<input type="text" class="form-control rental-form" name="rental[zipcode]">
+				</div>
+			</label>
+		</div>
+
+		<div class="form-group">
+			<label class="control-label">Allowed Guests
+				<div class="input-group">
+					<span class="input-group-addon glyphicon glyphicon-user" style="top: 0px"></span>
+					<input type="text" class="form-control rental-form" name="rental[allowed_guests]">
+				</div>
+			</label>
+		</div>
+
+		<div class="form-group">
+			<label id="description" class="control-label">Description
+				<textarea class="form-control rental-form" name=rental[description]></textarea>
+			</label>
+		</div>
+
+
+		<button class="btn btn-primary">Submit</button>
+	</form>
+</div>

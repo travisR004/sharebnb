@@ -1,3 +1,3 @@
-window.Sharebnb.Models.Rentals = Backbone.Model.extend({
+window.Sharebnb.Models.Rental = Backbone.Model.extend({
 	urlRoot: "/api/rentals"
 })

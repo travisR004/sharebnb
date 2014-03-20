@@ -17,6 +17,10 @@ class User < ActiveRecord::Base
     validates :password, length: {minimum: 6, allow_nil: true}
     before_validation :ensure_session_token
 
+    has_many :rentals, foreign_key: :owner_id
+    has_many :made_rental_requests, class_name: "RentalRequest"
+    has_many :recieved_rental_requests, through: :rentals, source: :rental_requests
+
 
     def password=(pt)
       @password = pt
