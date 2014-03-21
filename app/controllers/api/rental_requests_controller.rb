@@ -16,6 +16,6 @@ class Api::RentalRequestsController < ApplicationController
 
   private
   def rental_request_params
-    params.require(:rental_request).permit(:start_date, :end_date, :rental_id, :guests)
+    params.require(:rental_request).permit(:start_date, :end_date, :rental_id, :guests, :message)
   end
 end

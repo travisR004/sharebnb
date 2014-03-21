@@ -25,7 +25,7 @@
 		<li>
 			<p><%= request.escape("start_date") %></p>
 			<p><%= request.escape("end_date") %></p>
-			<button class="btn btn-primary"> Respond </button>
+			<button class="btn btn-primary request-response" data-id="<%= request.escape("id") %>"> Respond </button>
 		</li>
 	<% }) %>
 </ul>

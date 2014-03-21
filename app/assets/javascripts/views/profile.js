@@ -6,6 +6,10 @@ window.Sharebnb.Views.Profile = Backbone.View.extend({
 
 	template: JST['profile'],
 
+	events: {
+		"click .request-response": "respondToRequest"
+	},
+
 	render: function(){
 		var renderedContent = this.template({
 			user: this.model,
@@ -15,5 +19,11 @@ window.Sharebnb.Views.Profile = Backbone.View.extend({
 		})
 		this.$el.html(renderedContent)
 		return this
+	},
+
+	respondToRequest: function(event){
+		event.preventDefault();
+		var responseId = $(event.target).data("id")
+		Backbone.history.navigate("request_response/" + responseId, {trigger: true})
 	}
 })

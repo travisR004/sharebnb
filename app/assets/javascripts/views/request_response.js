@@ -1,7 +1,7 @@
 window.Sharebnb.Views.RequestResponse = Backbone.View.extend({
 
 	initialize: function(options){
-		this.listenTo(this.model, "add sync", this.render)
+		this.listenTo(this.model, "sync", this.render)
 		this.requestId = options.requestId
 	},
 
@@ -10,7 +10,13 @@ window.Sharebnb.Views.RequestResponse = Backbone.View.extend({
 	render: function(){
 		var request = this.model.receivedRequests().get(this.requestId)
 		if(request){
-			var renderedContent = this.template({request: request});
+			if(!this.requestor){
+				this.requestor = new Sharebnb.Collections.Users().getOrFetch(request.get("user_id"))
+				this.rental = Sharebnb.Data.rentals.getOrFetch(request.get("rental_id"))
+				this.listenTo(this.requestor, "sync", this.render)
+				this.listenTo(this.rental, "sync", this.render)
+			}
+			var renderedContent = this.template({request: request, requestor: this.requestor, rental: this.rental});
 			this.$el.html(renderedContent);
 		}
 		return this;

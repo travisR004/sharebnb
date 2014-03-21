@@ -11,6 +11,7 @@
 #  updated_at :datetime
 #  status     :string(255)      default("PENDING")
 #  guests     :integer
+#  message    :text
 #
 
 class RentalRequest < ActiveRecord::Base
