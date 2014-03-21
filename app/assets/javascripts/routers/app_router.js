@@ -5,11 +5,11 @@ window.Sharebnb.Routers.AppRouter = Backbone.Router.extend({
 		"rentals/new": "newRental",
 		"request_response/:id": "requestResponse",
 		"rentals/:id": "showRental",
-		"search": "search"
+		"search/:lat/:long": "search"
 	},
 
-	search: function(){
-		var searchPageView = new Sharebnb.Views.SearchResult();
+	search: function(lat, long){
+		var searchPageView = new Sharebnb.Views.SearchResult({lat: lat, long: long});
 		this._swapView(searchPageView)
 	},
 

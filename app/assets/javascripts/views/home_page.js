@@ -29,9 +29,10 @@ window.Sharebnb.Views.HomePage = Backbone.View.extend({
 
 	executeSearch: function(event){
 		event.preventDefault();
+		Backbone.history.navigate("search/" + this.lat + "/" + this.long, {trigger: true})
 	},
 
-	getPlaceDetails: function(event){
+	getPlaceDetails: function(){
 		var place = this.autocomplete.getPlace();
 		this.lat = place.geometry.location.lat();
 		this.long = place.geometry.location.lng();
