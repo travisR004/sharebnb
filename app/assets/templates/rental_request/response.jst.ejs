@@ -1,11 +1,15 @@
 <div class="row" id="request-details">
-	<div class="col-xs-6">
+	<div class="col-md-6">
 		<h5> Property: <%= rental.escape("address") %>
-		<h5> Start Date: <%= request.escape>("start_date") %> </h5>
+		<h5> Start Date: <%= request.escape("start_date") %> </h5>
 		<h5> End Date: <%= request.escape("end_date") %></h5>
 		<h5> Guests: <%= request.escape("guests") %></h5>
-	<div class="col-xs-6">
+		<h5> StatusL <%= request.escape("status") %>
+	</div>
+	<div class="col-md-6">
 		<h5> Email: <%= requestor.escape("email") %></h5>
 		<p>  <%= request.escape("message") %> </p>
+		<button class="btn btn-primary" id="request-accept">Accept Request</button>
+		<button class="btn btn-danger" id="request-deny">Deny Request</button>
 	</div>
 </div>

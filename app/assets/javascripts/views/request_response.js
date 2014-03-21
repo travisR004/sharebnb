@@ -20,5 +20,21 @@ window.Sharebnb.Views.RequestResponse = Backbone.View.extend({
 			this.$el.html(renderedContent);
 		}
 		return this;
+	},
+
+	events: {
+		"click #request-accept": "approveRequest",
+		"click #request-deny": "denyRequest"
+	},
+
+	approveRequest: function(event){
+		event.preventDefault();
+		$.ajax({
+			url: 'api/rental_requests/' + this.requestId + "/approve",
+			type: "POST",
+			success: function(resp){
+				Backbone.history.navigate("profile", {trigger: true})
+			}
+		})
 	}
 })

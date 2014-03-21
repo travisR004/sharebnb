@@ -11,6 +11,18 @@ class Api::RentalRequestsController < ApplicationController
     end
   end
 
+  def approve
+    @rental_request = RentalRequest.find(params[:id])
+    @rental_request.approve!
+    render json: @rental_request
+  end
+
+  def deny
+    @rental_request = RentalRequest.find(params[:id])
+    @rental_request.deny!
+    render json: @rental_request
+  end
+
   def show
   end
 
