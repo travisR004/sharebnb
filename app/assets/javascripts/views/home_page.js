@@ -16,6 +16,10 @@ window.Sharebnb.Views.HomePage = Backbone.View.extend({
       selectOtherMonths: true,
 			autoclose: true
 		});
+		debugger
+		if(this.$el.find("#city")){
+			var autocomplete = new google.maps.places.Autocomplete(this.$el.find("#city")[0]);
+		}
 		return this
 	},
 

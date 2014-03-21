@@ -48,7 +48,7 @@ body {
 .ui-datepicker {
 	background-color: white;
 	padding: 10px;
-	width: 16%;
+	width: 250px;
 	text-align: center;
 }
 
@@ -173,14 +173,28 @@ h4 {
 	margin-top: 10px;
 }
 
+.ui-state-default, .ui-widget-content .ui-state-default {
+	border: 1px solid #c5dbec;
+	background: #dfeffc;
+	font-weight: bold;
+	color: #2e6e9e;
+	outline: none;
+}
 
+.ui-datepicker td {
+border: 0;
+padding: 1px;
+}
 
+.ui-datepicker td span, .ui-datepicker td a {
+display: block;
+padding: .2em;
+text-decoration: none;
+}
 
-
-
-
-
-
+th {
+text-align: center;
+}
 
 
 

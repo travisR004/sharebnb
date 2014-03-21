@@ -34,9 +34,11 @@
 
 						<div class="form-group">
 							<form id="travel-search" class="form-inline">
-								<input type="text" id="city" class="form-control" name="location[city]">
-								<input type="text" id="start-date"class="form-control date" name="location[start_date]" value="dd/mm/yyyy">
-								<input type="text" id="end-date" class="form-control date" name="location[end_date]" value="dd/mm/yyyy">
+								<div id="location-field">
+									<input type="text" id="city" class="form-control" name="location[city]" placeholder="Choose your destination...">
+								</div>
+								<input type="text" id="start-date"class="form-control date" name="location[start_date]" placeholder="Check In">
+								<input type="text" id="end-date" class="form-control date" name="location[end_date]" placeholder="Check Out">
 								<select class="form-control" name="location[travelers]">
 									<% for(var i = 1; i < 6; i ++){ %>
 										<option value="<%= i %>"><%= i %> Guests</option>
@@ -53,4 +55,6 @@
 
 
 	</div>
+
+	<div id="map-canvas"/>
 </div>
