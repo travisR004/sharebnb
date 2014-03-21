@@ -13,9 +13,10 @@ window.Sharebnb.Routers.AppRouter = Backbone.Router.extend({
 	},
 
 	requestResponse: function(id){
-		var receivedRequests = new Sharebnb.Collections.Users().getOrFetch(id).receivedRequests()
+		var user = new Sharebnb.Collections.Users().getOrFetch(currentUserId)
+		var requestResponseView = new Sharebnb.Views.RequestResponse({model: user, requestId: id})
 
-		debugger
+		this._swapView(requestResponseView)
 	},
 
 	showProfile: function(){
