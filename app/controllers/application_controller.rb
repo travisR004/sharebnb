@@ -18,8 +18,8 @@ class ApplicationController < ActionController::Base
   end
 
   def logout!
+    current_user.reset_session_token!
     session[:session_token] = nil
-    @user.reset_session_token
   end
 
   helper_method :logged_in?, :current_user

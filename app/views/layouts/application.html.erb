@@ -10,6 +10,8 @@
   </head>
   <body data-spy="scroll" data-target=".navbar-example">
 
+
+
     <div class="navbar navbar-default" role="navigation">
       <div class="navbar-inner">
         <div class="navbar-header">
@@ -24,13 +26,11 @@
 
           <div class="collapse navbar-collapse" id="sharebnb-collapse">
             <ul class="nav navbar-nav">
-							<% if logged_in? %>
-              	<li><a href="#" class="account" >Account</a></li>
-              	<li><a href="#" class="sign-out">Sign Out</a></li>
-							<% else %>
-								<li data-toggle="modal" data-target="#login-modal"><a href="#" class="sign-in">Sign In</a></li>
-								<li data-toggle="modal" data-target="#signup-modal"><a href="#" class="sign-up">Sign Up</a></li>
-							<% end %>
+              	<li><a href="#" id="account" class="account" >Account</a></li>
+								<li><a href="#" id="list-place" class="list-place">List Your Place!</a></li>
+              	<li><a href="#" id="sign-out" class="<%= logged_in? ? "" : "hidden" %> sign-out" >Sign Out</a></li>
+								<li data-toggle="modal" data-target="#login-modal"><a href="#" id="sign-in-modal-link" class="<%= logged_in? ? "hidden" : "" %> sign-in">Sign In</a></li>
+								<li data-toggle="modal" data-target="#signup-modal"><a href="#" id="sign-up-modal-link" class="<%= logged_in? ? "hidden" : "" %> sign-up">Sign Up</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -64,7 +64,7 @@
 	      <div class="modal-dialog">
 	        <div class="modal-content">
 	          <div class="modal-header">
-	            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	            <button id="close-modal" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 	            <h4 class="modal-title" id="myModalLabel">Log In</h4>
 	          </div>
 	          <div class="modal-body">
@@ -76,14 +76,54 @@
 		</div>
 
 	<script>
+		var currentUserId = <%= logged_in? ? current_user.id : 0 %>;
 		$("#sign-in").click( function(event){
 			event.preventDefault();
 			var data = $(event.currentTarget).parent().parent().serializeJSON()
 			$.ajax({
 				url: 'sessions',
 				type: "POST",
-				data: data
+				data: data,
+				success:function(resp){
+					currentUserId = resp.id
+					$("#sign-out").toggleClass("hidden")
+					$("#sign-in-modal-link").toggleClass("hidden")
+					$("#sign-up-modal-link").toggleClass("hidden")
+					$("#login-modal").modal("hide")
+					Backbone.history.history.back()
+				}
 			})
+		})
+	</script>
+
+	<script>
+		$("#sign-out").click( function(event){
+			event.preventDefault();
+			$.ajax({
+				url: 'sessions',
+				type: "DELETE",
+				success: function(resp){
+					currentUserId = undefined
+					$("#sign-out").toggleClass("hidden")
+					$("#sign-in-modal-link").toggleClass("hidden")
+					$("#sign-up-modal-link").toggleClass("hidden")
+					Backbone.history.navigate("", {trigger: true})
+				}
+			})
+		})
+	</script>
+
+	<script>
+		$("#account").click( function(event){
+			event.preventDefault();
+			Backbone.history.navigate("account", {trigger: true})
+		})
+	</script>
+
+	<script>
+		$("#list-place").click( function(event){
+			event.preventDefault();
+			Backbone.history.navigate("rentals/new", {trigger: true})
 		})
 	</script>
 
@@ -92,12 +132,20 @@
 			event.preventDefault();
 			var data = $(event.currentTarget).parent().parent().serializeJSON()
 			$.ajax({
-				url: 'users',
+				url: 'api/users',
 				type: "POST",
-				data: data
+				data: data,
+				success: function(resp){
+					currentUserId = resp.id
+					$("#sign-out").toggleClass("hidden")
+					$("#sign-in-modal-link").toggleClass("hidden")
+					$("#sign-up-modal-link").toggleClass("hidden")
+					$("#login-modal").modal("hide")
+					Backbone.history.history.back()
+				}
 			})
 		})
-	</script
+	</script>
 
   </body>
 </html>

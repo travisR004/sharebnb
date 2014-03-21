@@ -13,6 +13,7 @@
 #  allowed_guests :integer
 #  rental_type    :string(255)
 #  room_type      :string(255)
+#  price          :integer
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

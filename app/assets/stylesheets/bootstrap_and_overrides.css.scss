@@ -2,12 +2,22 @@
 
 h1 {
 	text-align: center;
+	color: #fff;
+	text-shadow: 0 -1px 1px rgba(0,0,0,0.6);
+	font-size: 44px;
 }
 
 h2 {
 	color: #fff;
 	text-shadow: 0 -1px 1px rgba(0,0,0,0.6);
 	font-size: 36px;
+}
+
+h3 {
+	color: #fff;
+	text-shadow: 0 -1px 1px rgba(0,0,0,0.6);
+	font-size: 36px;
+	text-align: center;
 }
 
 li {
@@ -39,6 +49,11 @@ body {
 .ui-datepicker-calendar {
 	margin: 0 auto;
 	width: 100%;
+	color: black;
+}
+
+.ui-datepicker-title {
+	color: black;
 }
 
 #city {
@@ -73,6 +88,10 @@ body {
 
 .r-selector {
 	width: 31%;
+	white-space: normal;
+	min-width: 75px;
+	min-height: 65px;
+	padding: 15px;
 }
 
 .rental-type{
@@ -99,6 +118,80 @@ body {
 	padding: 5px;
 }
 
+.form-group {
+	margin-bottom: 5px;
+}
+
 #next-slide{
 	float: right;
 }
+
+#show-rental-start-date, #show-rental-end-date {
+	width: 100%;
+}
+
+#book-rental {
+	width: 100%;
+	margin-top: 15px;
+}
+
+.ui-widget {
+	display: none;
+}
+
+#booking-form {
+	border: solid 2px;
+	border-radius: 5px;
+}
+
+.sign-in-form {
+	color: black;
+}
+
+h4 {
+	color: black;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

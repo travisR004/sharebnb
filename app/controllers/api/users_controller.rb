@@ -1,14 +1,19 @@
-class UsersController < ApplicationController
+class Api::UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
     if @user.save
       login!
-      redirect_to root_url
+      render json: @user
     else
       flash.now[:errors] = @user.errors.full_messages
       render :new
     end
+  end
+
+  def show
+    @user = User.find(params[:id])
+    render json: @user.to_json(include: [:made_rental_requests, :received_rental_requests, :rentals])
   end
 
   private

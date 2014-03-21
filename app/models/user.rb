@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
 
     has_many :rentals, foreign_key: :owner_id
     has_many :made_rental_requests, class_name: "RentalRequest"
-    has_many :recieved_rental_requests, through: :rentals, source: :rental_requests
+    has_many :received_rental_requests, through: :rentals, source: :rental_requests
 
 
     def password=(pt)

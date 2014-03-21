@@ -24,6 +24,7 @@ class Api::RentalsController < ApplicationController
                                    :address,
                                    :description,
                                    :zipcode,
+                                   :price,
                                    :allowed_guests)
   end
 end

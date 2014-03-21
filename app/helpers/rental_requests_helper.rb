@@ -1,0 +1,2 @@
+module RentalRequestsHelper
+end

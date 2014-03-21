@@ -30,7 +30,6 @@ window.Sharebnb.Views.RentalForm = Backbone.View.extend({
 
 		Sharebnb.Data.rentals.create(rentalData, {
 			success: function(response){
-				debugger
 				Backbone.history.navigate("rentals/" + response.id, {trigger: true})
 			}
 		})
