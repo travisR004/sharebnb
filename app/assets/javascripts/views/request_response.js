@@ -8,15 +8,16 @@ window.Sharebnb.Views.RequestResponse = Backbone.View.extend({
 	template: JST["rental_request/response"],
 
 	render: function(){
-		var request = this.model.receivedRequests().get(this.requestId)
-		if(request){
+		this.request = this.model.receivedRequests().get(this.requestId)
+		if(this.request){
 			if(!this.requestor){
-				this.requestor = new Sharebnb.Collections.Users().getOrFetch(request.get("user_id"))
-				this.rental = Sharebnb.Data.rentals.getOrFetch(request.get("rental_id"))
+				this.requestor = new Sharebnb.Collections.Users().getOrFetch(this.request.get("user_id"))
+				this.rental = Sharebnb.Data.rentals.getOrFetch(this.request.get("rental_id"))
 				this.listenTo(this.requestor, "sync", this.render)
 				this.listenTo(this.rental, "sync", this.render)
+				this.listenTo(this.request, "sync", this.render)
 			}
-			var renderedContent = this.template({request: request, requestor: this.requestor, rental: this.rental});
+			var renderedContent = this.template({request: this.request, requestor: this.requestor, rental: this.rental});
 			this.$el.html(renderedContent);
 		}
 		return this;
@@ -29,11 +30,24 @@ window.Sharebnb.Views.RequestResponse = Backbone.View.extend({
 
 	approveRequest: function(event){
 		event.preventDefault();
+		var that = this;
 		$.ajax({
 			url: 'api/rental_requests/' + this.requestId + "/approve",
 			type: "POST",
 			success: function(resp){
-				Backbone.history.navigate("profile", {trigger: true})
+				that.model.fetch()
+			}
+		})
+	},
+
+	denyRequest: function(event){
+		event.preventDefault();
+		var that = this;
+		$.ajax({
+			url: 'api/rental_requests/' + this.requestId + "/deny",
+			type: "POST",
+			success: function(resp){
+				that.model.fetch();
 			}
 		})
 	}

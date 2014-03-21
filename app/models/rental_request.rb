@@ -38,6 +38,11 @@ class RentalRequest < ActiveRecord::Base
     end
   end
 
+  def deny!
+    self.status = "DENIED"
+    self.save!
+  end
+
   def approved?
     self.status == "APPROVED"
   end
