@@ -11,6 +11,9 @@ window.Sharebnb.Views.RentalForm = Backbone.View.extend({
 	render: function(){
 		var renderedContent = this.template({rental: this.model })
 		this.$el.html(renderedContent)
+		if(this.$el.find("#address")){
+			var autocomplete = new google.maps.places.Autocomplete(this.$el.find("#address")[0]);
+		}
 		return this
 	},
 

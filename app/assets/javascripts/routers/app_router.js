@@ -4,7 +4,13 @@ window.Sharebnb.Routers.AppRouter = Backbone.Router.extend({
 		"account": "showProfile",
 		"rentals/new": "newRental",
 		"request_response/:id": "requestResponse",
-		"rentals/:id": "showRental"
+		"rentals/:id": "showRental",
+		"search": "search"
+	},
+
+	search: function(){
+		var searchPageView = new Sharebnb.Views.SearchResult();
+		this._swapView(searchPageView)
 	},
 
 	homePage: function(){
