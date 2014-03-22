@@ -17,6 +17,15 @@ window.Sharebnb.Views.SearchResult = Backbone.View.extend({
 		return this
 	},
 
+	events: {
+		"click .rental-search-item": "goToRental"
+	},
+
+	goToRental: function(event){
+		var rentalId = $(event.currentTarget).data("id")
+		Backbone.history.navigate("rentals/" + rentalId, {trigger: true})
+	},
+
 	makeMap: function(){
 		var that = this;
 		var mapOptions = {

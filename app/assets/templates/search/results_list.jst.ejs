@@ -1,7 +1,9 @@
 <% if(rentals){ %>
-	<ul>
+	<div class="rentals">
 		<% rentals.forEach(function(rental){ %>
-			<li> <%= rental.address %> </li>
+			<div class="rental-search-item" data-id="<%= rental.id %>">
+				 <p> <%= rental.address %> </p>
+			 </div>
 		<% }) %>
-	</ul>
+	</div>
 <% } %>
