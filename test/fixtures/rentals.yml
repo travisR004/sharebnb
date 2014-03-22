@@ -4,7 +4,6 @@
 #
 #  id             :integer          not null, primary key
 #  owner_id       :integer          not null
-#  zipcode        :integer          not null
 #  address        :string(255)      not null
 #  description    :string(255)      not null
 #  created_at     :datetime
@@ -14,6 +13,8 @@
 #  rental_type    :string(255)
 #  room_type      :string(255)
 #  price          :integer
+#  lat            :float
+#  long           :float
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

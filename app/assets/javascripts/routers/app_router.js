@@ -59,5 +59,7 @@ window.Sharebnb.Routers.AppRouter = Backbone.Router.extend({
 		}
 		this.currentView = view;
 		$(".content").html(view.render().$el)
+
+		this.currentView.trigger('inDOM');
 	}
 })

@@ -1,0 +1,7 @@
+<% if(rentals){ %>
+	<ul>
+		<% rentals.forEach(function(rental){ %>
+			<li> <%= rental.address %> </li>
+		<% }) %>
+	</ul>
+<% } %>

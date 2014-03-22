@@ -1,8 +1,16 @@
 class Api::RentalsController < ApplicationController
 
+  def rental_range
+    zoom = params[:zoom].to_i
+    width = params[:width].to_i
+    lat = params[:lat].to_f
+    long = params[:long].to_f
+    @rentals = Rental.get_rentals_by_range(width, zoom, lat, long);
+    render json: @rentals
+  end
+
   def create
     @rental = current_user.rentals.new(rental_params)
-
     if @rental.save
       render json: @rental
     else
@@ -23,7 +31,8 @@ class Api::RentalsController < ApplicationController
                                    :unit,
                                    :address,
                                    :description,
-                                   :zipcode,
+                                   :lat,
+                                   :long,
                                    :price,
                                    :allowed_guests)
   end
