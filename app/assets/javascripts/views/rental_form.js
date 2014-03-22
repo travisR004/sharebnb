@@ -40,7 +40,6 @@ window.Sharebnb.Views.RentalForm = Backbone.View.extend({
 	createRental: function(event){
 		event.preventDefault();
 		var rentalData = $(event.target).serializeJSON();
-		debugger
 		rentalData["rental"].lat = "" + this.lat;
 		rentalData["rental"].long = "" + this.long;
 		Sharebnb.Data.rentals.create(rentalData, {
