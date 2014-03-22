@@ -20,8 +20,10 @@
 						<div class="form-group">
 							<form id="travel-search" class="form-inline">
 								<input type="text" id="city" class="form-control" name="location[city]" placeholder="Choose your destination...">
-								<input type="text" id="start-date"class="form-control date" name="location[start_date]" placeholder="Check In">
-								<input type="text" id="end-date" class="form-control date" name="location[end_date]" placeholder="Check Out">
+								<div class="form-group">
+									<input type="text" id="start-date"class="form-control date" name="location[start_date]" placeholder="Check In">
+									<input type="text" id="end-date" class="form-control date" name="location[end_date]" placeholder="Check Out">
+								</div>
 								<select class="form-control" name="location[travelers]">
 									<% for(var i = 1; i < 6; i ++){ %>
 										<option value="<%= i %>"><%= i %> Guests</option>

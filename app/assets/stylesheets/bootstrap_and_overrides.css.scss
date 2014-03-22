@@ -63,14 +63,15 @@ body {
 	color: black;
 }
 
-#city {
-	width: 30%;
-}
-
 #start-date, #end-date {
-	width: 15%;
+	width: 100px;
+	float: left;
+	margin-right: 5px;
 }
 
+#city {
+	width: 250px;
+}
 #rental-form {
 	margin: 0 auto;
 	padding-top: 10px;
@@ -78,8 +79,6 @@ body {
 	font-size: 1.5em;
 	}
 }
-
-
 
 #description {
 	width: 100%;
