@@ -1,7 +1,75 @@
-<h1> <%= user.escape("email") %> </h1>
+<h1> Welcome back, <%= user.escape("email") %> </h1>
 
-<h3>Owned Rentals</h3>
-<ul>
+<div class="row">
+	<div class="col-md-4 dashboard" id="owned-rentals">
+		<h3> Manage Listings</h3>
+	</div>
+
+	<div class="col-md-4 dashboard">
+		<h3> Manage your Trips </h3>
+	</div>
+
+	<div class="col-md-4 dashboard">
+		<h3> Manage Requests </h3>
+	</div>
+</div>
+
+
+
+
+<div class="row dashboard-container">
+
+	<!-- <div class="manage-listings col-md-12"> -->
+		<% if(rentals){ %>
+			<div class="rentals">
+				<% rentals.forEach(function(rental){ %>
+					<div class="manage-rental-item" data-id="<%= rental.escape("id") %>">
+						<% var splitAddress = rental.escape("address").split(",") %>
+						<% splitAddress.splice(splitAddress.length - 3) %>
+						<div class="search-item-header"> <%= splitAddress.join(", ") %> </div>
+
+						<div class="slideshow-holder">
+						 	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+						 	 	<div class="carousel-inner">
+						 	  	<div class="item active">
+						 	    	<img src="https://a0.muscache.com/airbnb/static/landing_pages/home_v2/hero/488485-cb8055504a43a9fd3687392c58abe04b.jpg">
+						 	  	</div>
+
+						 			<div class="item">
+						 				<img src="https://a0.muscache.com/airbnb/static/landing_pages/home_v2/hero/264248-25b69a424e9d6033cd7b417cf8ad4deb.jpg">
+						 			</div>
+						 		</div>
+								<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+							    <span class="glyphicon glyphicon-chevron-left"></span>
+							  </a>
+							  <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+							    <span class="glyphicon glyphicon-chevron-right"></span>
+							  </a>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-6">
+								<div class="search-item-footer"><%= rental.escape("rental_type") + " / " + rental.escape("room_type") %></div>
+							</div>
+							<div class="col-md-6">
+								<div class="search-item-price"><%= "$" + rental.escape("price") + " per night"  %></div>
+							</div>
+						</div>
+					</div>
+				<% }) %>
+			</div>
+		<% } %>
+	</div>
+
+	<div class="manage-trips col-md-12 hidden">
+	</div>
+
+	<div class-"manage-requests col-md-12 hidden">
+	</div>
+</div>
+
+<!-- <ul>
 	<% rentals.forEach(function(rental){ %>
 		<li><%= rental.escape("id") %></li>
 	<% }) %>
@@ -29,4 +97,4 @@
 		</li>
 	<% }) %>
 </ul>
-
+ -->

@@ -18,7 +18,7 @@ window.Sharebnb.Views.SearchResult = Backbone.View.extend({
 	},
 
 	events: {
-		"click .rental-search-item": "goToRental"
+		"click #go-to-book": "goToRental"
 	},
 
 	goToRental: function(event){

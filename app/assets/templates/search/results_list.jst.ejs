@@ -4,10 +4,33 @@
 			<div class="rental-search-item" data-id="<%= rental.id %>">
 				<% var splitAddress = rental.address.split(",") %>
 				<% splitAddress.splice(splitAddress.length - 3) %>
-				 <div class="search-item-header"> <%= splitAddress.join(", ") %> </div>
-				 <img src="http://lorempixel.com/300/200/"></img>
-				 <div class="search-item-footer"><%= rental.rental_type + " / " + rental.room_type + ": $" + rental.price + " per night" %></div>
-			 </div>
+				<div class="search-item-header"> <%= splitAddress.join(", ") %> </div>
+			 	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+			 	 	<div class="carousel-inner">
+			 	  	<div class="item active">
+			 	    	<img src="https://a0.muscache.com/airbnb/static/landing_pages/home_v2/hero/488485-cb8055504a43a9fd3687392c58abe04b.jpg">
+			 	  	</div>
+
+			 			<div class="item">
+			 				<img src="https://a0.muscache.com/airbnb/static/landing_pages/home_v2/hero/264248-25b69a424e9d6033cd7b417cf8ad4deb.jpg">
+			 			</div>
+			 		</div>
+					<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+				    <span class="glyphicon glyphicon-chevron-left"></span>
+				  </a>
+				  <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+				    <span class="glyphicon glyphicon-chevron-right"></span>
+				  </a>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="search-item-footer"><%= rental.rental_type + " / " + rental.room_type %></div>
+					</div>
+					<div class="col-md-6">
+						<div class="search-item-price"><%= "$" + rental.price + " per night"  %></div>
+					</div>
+				</div>
+			</div>
 		<% }) %>
 	</div>
 <% } %>
