@@ -14,7 +14,8 @@ window.Sharebnb.Views.Profile = Backbone.View.extend({
 		"blur #edit-rental": "updateRental",
 		"submit form": "updateRental",
 		"click .rental": "changeRentalActive",
-		"click .room": "changeRoomActive"
+		"click .room": "changeRoomActive",
+		"click #remove-rental": "deleteRental"
 	},
 
 	openEditor: function(event){
@@ -32,6 +33,15 @@ window.Sharebnb.Views.Profile = Backbone.View.extend({
 		}
 		this.$el.find("#" + type).focus()
 		return this
+	},
+
+	deleteRental: function(event){
+		debugger
+		event.preventDefault();
+		event.stopPropagation();
+		var rentalId = $(event.currentTarget).parent().parent().data("rental-id")
+		var rental = this.model.rentals().get(rentalId)
+		rental.destroy()
 	},
 
 	getPlaceDetails: function(){

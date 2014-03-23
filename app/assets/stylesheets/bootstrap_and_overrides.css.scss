@@ -214,6 +214,7 @@ text-align: center;
 .manage-rental-item{
 	text-align: center;
 	border: 2px solid;
+	margin: 0px;
 }
 
 .rental-search-item {
@@ -281,6 +282,10 @@ text-align: center;
 	width: 250px;
 }
 
+#remove-rental {
+	float: right;
+	margin: 10px;
+}
 
 
 
