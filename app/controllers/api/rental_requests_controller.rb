@@ -23,9 +23,6 @@ class Api::RentalRequestsController < ApplicationController
     render json: @rental_request
   end
 
-  def show
-  end
-
   private
   def rental_request_params
     params.require(:rental_request).permit(:start_date, :end_date, :rental_id, :guests, :message)

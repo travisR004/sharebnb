@@ -1,7 +1,7 @@
 <h1> Welcome back, <%= user.escape("email") %> </h1>
 
 <div class="row">
-	<div class="col-md-4 dashboard" id="owned-rentals">
+	<div class="col-md-4 dashboard manage-owned-rentals" id="owned-rentals">
 		<h3> Manage Listings</h3>
 	</div>
 
@@ -9,16 +9,16 @@
 		<h3> Manage your Trips </h3>
 	</div>
 
-	<div class="col-md-4 dashboard">
+	<div class="col-md-4 dashboard requests" id="received-requests">
 		<h3> Manage Requests </h3>
 	</div>
 </div>
 
-<div class="row dashboard-container">
-	<div class="rentals dashboard-active">
+<div class="row dashboard-container manage-rentals">
+	<div class="rentals dashboard-active manage-owned-rentals">
 	</div>
 
-	<div class="manage-requests hidden">
+	<div class="manage-requests hidden requests">
 	</div>
 
 </div>

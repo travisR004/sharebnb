@@ -2,6 +2,7 @@ window.Sharebnb.Views.Profile = Backbone.CompositeView.extend({
 
 	initialize: function(){
 		this.listenTo(this.model.rentals(), "add", this.addRental)
+		this.listenTo(this.model.receivedRequests(), "add", this.addReceivedRequest)
 
 		this.refreshCollections()
 	},
@@ -9,7 +10,16 @@ window.Sharebnb.Views.Profile = Backbone.CompositeView.extend({
 	template: JST['profile/show'],
 
 	events: {
-		"click .request-response": "respondToRequest"
+		"click #received-requests": "toggleDashboard",
+		"click #owned-rentals": "toggleDashboard"
+	},
+
+	addReceivedRequest: function(receivedRequest){
+		if(receivedRequest.escape("status") != "DENIED"){
+			var requestShowView = new Sharebnb.Views.RequestResponse({model: receivedRequest});
+			this.addSubview(".manage-requests", requestShowView);
+			requestShowView.render();
+		}
 	},
 
 	addRental: function(rental){
@@ -30,7 +40,7 @@ window.Sharebnb.Views.Profile = Backbone.CompositeView.extend({
 
 	refreshCollections: function(){
 		this.model.rentals().each(this.addRental.bind(this))
-		// this.model.receivedRequests().each(this.addReceivedRequest.bind(this))
+		this.model.receivedRequests().each(this.addReceivedRequest.bind(this))
 	},
 
 	render: function(){
@@ -41,9 +51,31 @@ window.Sharebnb.Views.Profile = Backbone.CompositeView.extend({
 		return this
 	},
 
-	respondToRequest: function(event){
-		event.preventDefault();
-		var responseId = $(event.target).data("id")
-		Backbone.history.navigate("request_response/" + responseId, {trigger: true})
+	toggleDashboard: function(event){
+		var active = this.$el.find(".dashboard-active")
+		active.toggleClass("dashboard-active");
+		active.toggleClass("hidden");
+		//must have matching classes be last on dashboard header
+		var eventTargetClasses = $(event.currentTarget).attr("class").split(" ")
+		var targetClass = eventTargetClasses[eventTargetClasses.length - 1]
+		$("." + targetClass + ".hidden").toggleClass("hidden")
 	}
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
