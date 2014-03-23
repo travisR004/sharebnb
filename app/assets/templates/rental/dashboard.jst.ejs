@@ -1,0 +1,56 @@
+<div class="row manage-rental-item">
+	<div class="col-md-6 slideshow-holder">
+	 	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+	 	 	<div class="carousel-inner">
+	 	  	<div class="item active">
+	 	    	<img src="https://a0.muscache.com/airbnb/static/landing_pages/home_v2/hero/488485-cb8055504a43a9fd3687392c58abe04b.jpg">
+	 	  	</div>
+
+	 			<div class="item">
+	 				<img src="https://a0.muscache.com/airbnb/static/landing_pages/home_v2/hero/264248-25b69a424e9d6033cd7b417cf8ad4deb.jpg">
+	 			</div>
+	 		</div>
+			<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+		    <span class="glyphicon glyphicon-chevron-left"></span>
+		  </a>
+		  <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+		    <span class="glyphicon glyphicon-chevron-right"></span>
+		  </a>
+		</div>
+	</div>
+
+	<div class="col-md-6 rental-details" data-rental-id="<%= rental.escape("id") %>">
+		<div class="edit-detail" data-attr="<%= rental.escape("tagline") %>" data-type="tagline">
+			<p>Tag Line: <%= rental.escape("tagline") %></p>
+		</div>
+		<div class="edit-detail" data-attr="<%= rental.escape("address") %>" data-type="address">
+			<p>Address: <%= rental.escape("address") %></p>
+		</div>
+		<div class="edit-detail" data-attr="<%= rental.escape("rental_type") %>" data-type="rental_type">
+			<p>Rental Type: <%= rental.escape("rental_type") %></p>
+		</div>
+
+		<div class="edit-detail" data-attr="<%= rental.escape("room_type") %>" data-type="room_type">
+			<p>Room Type: <%= rental.escape("room_type") %></p>
+		</div>
+
+		<div class="edit-detail" data-attr="<%= rental.escape("unit") %>" data-type="unit">
+			<p>Unit: <%= rental.escape("unit") %></p>
+		</div>
+
+		<div class="edit-detail" data-attr="<%= rental.escape("allowed_guests") %>" data-type="allowed_guests">
+			<p>Allowed Guests: <%= rental.escape("allowed_guests") %></p>
+		</div>
+
+		<div class="edit-detail" data-attr="<%= rental.escape("price") %>" data-type="price">
+			<p>Price: <%= rental.escape("price") %></p>
+		</div>
+
+		<div class="edit-detail" data-attr="<%= rental.escape("description") %>" data-type="description">
+			<button id="remove-rental" class="btn btn-danger">Remove Listing</button>
+			<p>Edit Description</p>
+		</div>
+
+
+	</div>
+</div>
