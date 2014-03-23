@@ -33,6 +33,12 @@ class Api::RentalsController < ApplicationController
     end
   end
 
+  def destroy
+    @rental = Rental.find(params[:id])
+    @rental.destroy
+    render json: @rental
+  end
+
   private
   def rental_params
     params.require(:rental).permit(:rental_type,
