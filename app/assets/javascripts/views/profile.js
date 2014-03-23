@@ -11,7 +11,10 @@ window.Sharebnb.Views.Profile = Backbone.View.extend({
 	events: {
 		"click .request-response": "respondToRequest",
 		"dblclick .edit-detail": "openEditor",
-		"blur form": "updateRental"
+		"blur #edit-rental": "updateRental",
+		"submit form": "updateRental",
+		"click .rental": "changeRentalActive",
+		"click .room": "changeRoomActive"
 	},
 
 	openEditor: function(event){
@@ -31,6 +34,12 @@ window.Sharebnb.Views.Profile = Backbone.View.extend({
 		return this
 	},
 
+	getPlaceDetails: function(){
+		var place = this.autocomplete.getPlace();
+		this.lat = place.geometry.location.lat();
+		this.long = place.geometry.location.lng();
+	},
+
 	updateRental: function(event){
 		event.preventDefault();
 		var that = this;
@@ -39,6 +48,16 @@ window.Sharebnb.Views.Profile = Backbone.View.extend({
 		listing.save(data, {
 			patch: true
 		})
+	},
+
+	changeRentalActive: function(event) {
+		this.$el.find(".rental.selected").toggleClass("selected")
+		$(event.currentTarget).toggleClass("selected")
+	},
+
+	changeRoomActive: function(event) {
+		this.$el.find(".room.selected").toggleClass("selected")
+		$(event.currentTarget).toggleClass("selected")
 	},
 
 	render: function(){
