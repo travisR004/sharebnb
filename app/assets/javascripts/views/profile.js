@@ -38,6 +38,15 @@ window.Sharebnb.Views.Profile = Backbone.View.extend({
 		var place = this.autocomplete.getPlace();
 		this.lat = place.geometry.location.lat();
 		this.long = place.geometry.location.lng();
+		this.updateAddress();
+	},
+
+	updateAddress: function(){
+		var address = this.$el.find("#address").val();
+		var listing = this.model.rentals().get(this.currentRentalId)
+		listing.save({address: address, lat: this.lat, long: this.long}, {
+			patch: true
+		})
 	},
 
 	updateRental: function(event){
