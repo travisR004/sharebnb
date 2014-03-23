@@ -162,12 +162,6 @@ h4 {
 	color: black;
 }
 
-#request-details{
-	font-weight: bold;
-	border: solid 3px;
-	border-radius: 5px;
-}
-
 #rental-message{
 	margin: 10px;
 	width: 100%;
@@ -213,7 +207,7 @@ text-align: center;
 
 .manage-rental-item{
 	text-align: center;
-	border: 2px solid;
+	border-bottom: 2px solid;
 	margin: 0px;
 }
 
@@ -289,15 +283,9 @@ text-align: center;
 
 #request-details{
 	margin: 0px;
+	border-bottom: solid 2px;
+	font-weight: bold;
 }
-
-
-
-
-
-
-
-
 
 
 

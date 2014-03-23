@@ -3,6 +3,7 @@ window.Sharebnb.Views.Profile = Backbone.CompositeView.extend({
 	initialize: function(){
 		this.listenTo(this.model.rentals(), "add", this.addRental)
 		this.listenTo(this.model.receivedRequests(), "add", this.addReceivedRequest)
+		this.listenTo(this.model.madeRequests(), "add", this.addMadeRequest)
 
 		this.refreshCollections()
 	},
@@ -11,7 +12,14 @@ window.Sharebnb.Views.Profile = Backbone.CompositeView.extend({
 
 	events: {
 		"click #received-requests": "toggleDashboard",
-		"click #owned-rentals": "toggleDashboard"
+		"click #owned-rentals": "toggleDashboard",
+		"click #made-requests": "toggleDashboard"
+	},
+
+	addMadeRequest: function(madeRequest){
+		var requestShowView = new Sharebnb.Views.MadeRequest({model: madeRequest});
+		this.addSubview(".manage-trips", requestShowView);
+		requestShowView.render();
 	},
 
 	addReceivedRequest: function(receivedRequest){
@@ -23,9 +31,7 @@ window.Sharebnb.Views.Profile = Backbone.CompositeView.extend({
 	},
 
 	addRental: function(rental){
-		var rentalDashboardView = new Sharebnb.Views.RentalDashboard({
-			model: rental
-		})
+		var rentalDashboardView = new Sharebnb.Views.RentalDashboard({model: rental})
 		this.addSubview(".rentals", rentalDashboardView)
 		rentalDashboardView.render();
 	},
@@ -41,6 +47,7 @@ window.Sharebnb.Views.Profile = Backbone.CompositeView.extend({
 	refreshCollections: function(){
 		this.model.rentals().each(this.addRental.bind(this))
 		this.model.receivedRequests().each(this.addReceivedRequest.bind(this))
+		this.model.madeRequests().each(this.addMadeRequest.bind(this))
 	},
 
 	render: function(){
@@ -58,7 +65,7 @@ window.Sharebnb.Views.Profile = Backbone.CompositeView.extend({
 		//must have matching classes be last on dashboard header
 		var eventTargetClasses = $(event.currentTarget).attr("class").split(" ")
 		var targetClass = eventTargetClasses[eventTargetClasses.length - 1]
-		$("." + targetClass + ".hidden").toggleClass("hidden")
+		$("." + targetClass + ".hidden").toggleClass("hidden").toggleClass("dashboard-active")
 	}
 })
 
