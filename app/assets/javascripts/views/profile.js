@@ -26,7 +26,7 @@ window.Sharebnb.Views.Profile = Backbone.View.extend({
 		var renderedContent = this.editBox({attr: attr , type: type})
 		$(event.target).html(renderedContent)
 		if(type === "address"){
-			this.autocomplete = new google.maps.places.Autocomplete(this.$el.find("#" + type)[0]);
+			this.autocomplete = new google.maps.places.Autocomplete(this.$el.find("#street-address")[0]);
 			google.maps.event.addListener(this.autocomplete, 'place_changed', function() {
 			  that.getPlaceDetails();
 			});
