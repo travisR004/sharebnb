@@ -36,7 +36,6 @@ window.Sharebnb.Views.Profile = Backbone.View.extend({
 	},
 
 	deleteRental: function(event){
-		debugger
 		event.preventDefault();
 		event.stopPropagation();
 		var rentalId = $(event.currentTarget).parent().parent().data("rental-id")
