@@ -15,6 +15,7 @@
 #  price          :integer
 #  lat            :float
 #  long           :float
+#  tagline        :string(255)
 #
 
 class Rental < ActiveRecord::Base

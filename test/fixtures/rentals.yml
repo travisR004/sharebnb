@@ -15,6 +15,7 @@
 #  price          :integer
 #  lat            :float
 #  long           :float
+#  tagline        :string(255)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

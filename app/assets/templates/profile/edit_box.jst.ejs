@@ -1,0 +1,11 @@
+<% if(type != "description"){ %>
+	<form id="edit-rental">
+	    <input id="<%= type %>" type="text" name="rental[<%= type %>]" value="<%= attr %>">
+	</form>
+<% } else { %>
+	<form id="edit-rental">
+		 <textarea id="<%= type %>" type="text" name="rental[<%= type %>]">
+			 <%= attr %>
+		 </textarea>
+	 </form>
+ <% } %>

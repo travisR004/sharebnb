@@ -24,6 +24,15 @@ class Api::RentalsController < ApplicationController
     render json: @rental
   end
 
+  def update
+    @rental = Rental.find(params[:id])
+    if @rental.update_attributes(rental_params)
+      render json: @rental
+    else
+      render json: @rental.errors.full_messages, status: :unprocessable_entity
+    end
+  end
+
   private
   def rental_params
     params.require(:rental).permit(:rental_type,
