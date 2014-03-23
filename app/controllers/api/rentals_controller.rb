@@ -33,6 +33,7 @@ class Api::RentalsController < ApplicationController
                                    :description,
                                    :lat,
                                    :long,
+                                   :tagline,
                                    :price,
                                    :allowed_guests)
   end

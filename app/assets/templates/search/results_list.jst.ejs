@@ -2,7 +2,11 @@
 	<div class="rentals">
 		<% rentals.forEach(function(rental){ %>
 			<div class="rental-search-item" data-id="<%= rental.id %>">
-				 <p> <%= rental.address %> </p>
+				<% var splitAddress = rental.address.split(",") %>
+				<% splitAddress.splice(splitAddress.length - 3) %>
+				 <div class="search-item-header"> <%= splitAddress.join(", ") %> </div>
+				 <img src="http://lorempixel.com/300/200/"></img>
+				 <div class="search-item-footer"><%= rental.rental_type + " / " + rental.room_type + ": $" + rental.price + " per night" %></div>
 			 </div>
 		<% }) %>
 	</div>

@@ -1,5 +1,5 @@
-<h3> Listing: <%= rental.escape("id") %> </h3>
-<div class="row">
+<h3> <%= rental.escape("tagline") %> </h3>
+<div class="row" id="rental-show-row">
 	<div class="col-md-8">
 		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 		  <!-- Indicators -->
@@ -30,7 +30,6 @@
 	</div>
 
 	<div class="col-md-4" id="booking-form">
-		<h3> Book your Stay! </h3>
 		<h4> <%= rental.escape("price") %> Per Night! </h4>
 
 		<div class="form-group">
