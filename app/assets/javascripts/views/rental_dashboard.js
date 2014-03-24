@@ -40,13 +40,11 @@ window.Sharebnb.Views.RentalDashboard = Backbone.View.extend({
 		var type = $(event.currentTarget).data("type");
 		this.currentRentalId = $(event.currentTarget).parent().data("rental-id")
 		var renderedContent = this.editBox({attr: attr , type: type})
-		$(event.target).html(renderedContent)
-		if(type === "address"){
+		$(event.target).append(renderedContent)
 			this.autocomplete = new google.maps.places.Autocomplete(this.$el.find("#street-address")[0]);
 			google.maps.event.addListener(this.autocomplete, 'place_changed', function() {
 			  that.getPlaceDetails();
 			});
-		}
 		this.$el.find("#" + type).focus()
 		return this
 	},

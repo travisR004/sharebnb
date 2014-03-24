@@ -3,9 +3,10 @@
 h1 {
 	text-align: center;
 //	color: #fff;
-color: black;
-	text-shadow: 0 -1px 1px rgba(0,0,0,0.6);
+color: #0f8bcd;
+//	text-shadow: 0 -1px 1px rgba(0,0,0,0.6);
 	font-size: 44px;
+	font-weight: bold;
 }
 
 h2 {
@@ -17,7 +18,7 @@ h2 {
 h3 {
 //	color: #fff;
 color: black;
-	text-shadow: 0 -1px 1px rgba(0,0,0,0.6);
+//	text-shadow: 0 -1px 1px rgba(0,0,0,0.6);
 	font-size: 36px;
 	text-align: center;
 }
@@ -38,7 +39,8 @@ color: white;
 }
 
 .navbar-default{
-	background-image: radial-gradient(farthest-side circle at center center, rgba(48, 218, 241, 0.8) 20%, rgba(15, 139, 205, 1) 100%);
+	background-color: #0f8bcd;
+//	background-image: radial-gradient(farthest-side circle at center center, rgba(48, 218, 241, 0.8) 20%, rgba(15, 139, 205, 1) 100%);
 	border-radius: 0px;
 	color: white;
 }
@@ -53,7 +55,7 @@ color: black;
 
 .intro {
 	position: absolute;
-	top: 50px;
+	top: 150px;
 	width: 100%;
 }
 
@@ -327,6 +329,9 @@ text-align: center;
 	cursor: pointer;
 }
 
+.home-page-slider {
+	margin-top: 100px;
+}
 
 
 .home-page-container > .carousel >.carousel-inner > .item {
