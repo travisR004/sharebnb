@@ -23,9 +23,17 @@ color: black;
 	text-align: center;
 }
 
+h3 > a {
+	color: #0f8bcd;
+}
+
+a:hover, a:focus {
+    color: #0f8bcd;
+    text-decoration: underline;
+}
+
 h5{
 	color: black;
-	text-shadow: 0 -1px 1px rgba(0,0,0,0.6);
 	font-size: 30px;
 }
 
@@ -275,7 +283,7 @@ text-align: center;
 }
 
 .dashboard-container {
-	min-height: 600px;
+	min-height: 250px;
 	border: solid 2px;
 	border-top: 0px;
 	padding-top: 25px;
@@ -343,4 +351,8 @@ text-align: center;
 }
 .home-page-container > .carousel >.carousel-inner > .item {
 	opacity: 0.8;
+}
+
+#message-form {
+	display: none;
 }

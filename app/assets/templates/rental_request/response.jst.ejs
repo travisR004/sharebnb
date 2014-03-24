@@ -28,8 +28,15 @@
       </div>
       <div class="modal-body">
 				<% messages.forEach(function(message){ %>
-	        <%= message.escape("content") %>
+					<div class="message-holder">
+						<% var style = currentUserId === message.get("sender_id") ? "normal" : "bold" %>
+		        <p style="font-weight: <%= style %>"> <%= message.escape("content") %> </p>
+					</div>
 				<% }) %>
+				<form id="response-message-form">
+					<textarea id="response-compose-message" placeholder="..." name="message[content]"></textarea>
+					<button id="response-submit-message" class="btn btn-primary">Send</button>
+				</form>
       </div>
     </div>
   </div>

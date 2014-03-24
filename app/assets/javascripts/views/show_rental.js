@@ -10,15 +10,23 @@ window.Sharebnb.Views.ShowRental = Backbone.View.extend({
 		"submit #show-rental-form": "submitRentalRequest"
 	},
 
+	datesIncorrect: function(request){
+		var start = new Date(request.attributes.rental_request.start_date)
+		var end = new Date(request.attributes.rental_request.end_date)
+		if(end - start < 0){
+			return true
+		} else {
+			return false
+		}
+	},
+
 	submitRentalRequest: function(event){
 		event.preventDefault();
 		var that = this;
 		var rentalRequestData = $(event.target).serializeJSON();
 		rentalRequestData.rental_request.rental_id = this.model.id;
 		var request = new Sharebnb.Models.RentalRequest(rentalRequestData);
-		var start = new Date(request.attributes.rental_request.start_date)
-		var end = new Date(request.attributes.rental_request.end_date)
-		if(end - start < 0){
+		if(this.datesIncorrect(request)){
 			$("#booking-form").append($("<p style='color: red;'> Your dates seem to be backwards!</p>"))
 		} else {
 			request.save({}, {
@@ -26,9 +34,6 @@ window.Sharebnb.Views.ShowRental = Backbone.View.extend({
 					that.render();
 					$("#booking-form").append($("<p style='color: green;'> Your booking request has been sent!</p>"))
 					that.submitMessage(rentalRequestData, request)
-				},
-				error: function(resp){
-					console.log(resp)
 				}
 			});
 		}
