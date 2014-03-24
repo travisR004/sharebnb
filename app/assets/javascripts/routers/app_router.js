@@ -44,12 +44,13 @@ window.Sharebnb.Routers.AppRouter = Backbone.Router.extend({
 	},
 
 	newRental: function(){
-		var rental = new Sharebnb.Models.Rental();
-		var newRentalView = new Sharebnb.Views.RentalForm({model: rental})
-
-		this._swapView(newRentalView)
 		if(!currentUserId){
 			$('#sign-in-modal-link').click();
+		} else {
+			var rental = new Sharebnb.Models.Rental();
+			var newRentalView = new Sharebnb.Views.RentalForm({model: rental})
+
+			this._swapView(newRentalView)
 		}
 	},
 

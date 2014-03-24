@@ -10,7 +10,11 @@ window.Sharebnb.Views.RequestResponse = Backbone.View.extend({
 	template: JST["rental_request/response"],
 
 	render: function(){
-		var renderedContent = this.template({request: this.model, requestor: this.requestor, rental: this.rental});
+		var renderedContent = this.template({request: this.model,
+																				 requestor: this.requestor,
+																				 rental: this.rental,
+																				 messages:this.model.messages()
+																			 });
 		this.$el.html(renderedContent);
 		return this;
 	},

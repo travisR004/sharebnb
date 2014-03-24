@@ -12,7 +12,7 @@
 #
 
 class Message < ActiveRecord::Base
-  validates :sender_id, :receiver_id, :content, presence: true
+  validates :sender, :receiver_id, :content, presence: true
 
   belongs_to :sender, class_name: "User"
   belongs_to :receiver, class_name: "User"
