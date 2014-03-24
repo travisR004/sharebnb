@@ -159,7 +159,9 @@ color: black;
 }
 
 .selected {
-	background: rgb(51, 126, 164);
+	border: 1px solid $magenta;
+	-webkit-box-shadow: 0 0 5px $magenta;
+	box-shadow: 0 0 5px $magenta;
 }
 
 #show-rental-carousel {
