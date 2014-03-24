@@ -7,7 +7,7 @@ class Api::RentalRequestsController < ApplicationController
     if @rental_request.save
       render json: @rental_request
     else
-      render json: @rental_request, status: :unprocessable_entity
+      render json: @rental_request.errors, status: :unprocessable_entity
     end
   end
 

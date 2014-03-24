@@ -62,9 +62,8 @@ window.Sharebnb.Views.Profile = Backbone.CompositeView.extend({
 		var active = this.$el.find(".dashboard-active")
 		active.toggleClass("dashboard-active");
 		active.toggleClass("hidden");
-		//must have matching classes be last on dashboard header
-		var eventTargetClasses = $(event.currentTarget).attr("class").split(" ")
-		var targetClass = eventTargetClasses[eventTargetClasses.length - 1]
+		//must have matching classes as first listed for header
+		var targetClass = $(event.currentTarget).attr("class").split(" ")[0]
 		$("." + targetClass + ".hidden").toggleClass("hidden").toggleClass("dashboard-active")
 	}
 })

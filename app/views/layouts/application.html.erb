@@ -15,70 +15,70 @@
 	     <%= csrf_meta_tags %>
   </head>
   <body data-spy="scroll" data-target=".navbar-example">
+		<div class="whole-body">
+	    <div class="navbar navbar-default" role="navigation">
+	      <div class="navbar-inner">
+	        <div class="navbar-header">
+	          <button type="button" class="navbar-toggle" data-target="#sharebnb-collapse" data-toggle="collapse">
+							<span class="sr-only"> Toggle Navigation</span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	          </button>
+	          <a class="navbar-brand" href="#">Sharebnb</a>
+					</div>
 
-    <div class="navbar navbar-default" role="navigation">
-      <div class="navbar-inner">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-target="#sharebnb-collapse" data-toggle="collapse">
-						<span class="sr-only"> Toggle Navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Sharebnb</a>
-				</div>
-
-          <div class="collapse navbar-collapse" id="sharebnb-collapse">
-            <ul class="nav navbar-nav">
-              	<li><a href="#" id="account" class="account" >Account</a></li>
-								<li><a href="#" id="list-place" class="list-place">List Your Place!</a></li>
-              	<li><a href="#" id="sign-out" class="<%= logged_in? ? "" : "hidden" %> sign-out" >Sign Out</a></li>
-								<li data-toggle="modal" data-target="#login-modal"><a href="#" id="sign-in-modal-link" class="<%= logged_in? ? "hidden" : "" %> sign-in">Sign In</a></li>
-								<li data-toggle="modal" data-target="#signup-modal"><a href="#" id="sign-up-modal-link" class="<%= logged_in? ? "hidden" : "" %> sign-up">Sign Up</a></li>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
-    </div>
-
-    <div class="container-fluid">
-      <div class="row-fluid">
-        <div class="span1"></div>
-        <div class="span10">
-          <%= yield %>
-        </div>
-        <div class="span1"></div>
-      </div>
-
-			<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	      <div class="modal-dialog">
-	        <div class="modal-content">
-	          <div class="modal-header">
-	            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-	            <h4 class="modal-title" id="myModalLabel">Log In</h4>
-	          </div>
-	          <div class="modal-body">
-	            <%= render 'sessions/login_form' %>
-	          </div>
+	          <div class="collapse navbar-collapse" id="sharebnb-collapse">
+	            <ul class="nav navbar-nav">
+	              	<li><a href="#" id="account" class="account" >Account</a></li>
+									<li><a href="#" id="list-place" class="list-place">List Your Place!</a></li>
+	              	<li><a href="#" id="sign-out" class="<%= logged_in? ? "" : "hidden" %> sign-out" >Sign Out</a></li>
+									<li data-toggle="modal" data-target="#login-modal"><a href="#" id="sign-in-modal-link" class="<%= logged_in? ? "hidden" : "" %> sign-in">Sign In</a></li>
+									<li data-toggle="modal" data-target="#signup-modal"><a href="#" id="sign-up-modal-link" class="<%= logged_in? ? "hidden" : "" %> sign-up">Sign Up</a></li>
+	            </ul>
+	          </div><!--/.nav-collapse -->
 	        </div>
 	      </div>
 	    </div>
 
-			<div class="modal fade" id="signup-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	      <div class="modal-dialog">
-	        <div class="modal-content">
-	          <div class="modal-header">
-	            <button id="close-modal" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-	            <h4 class="modal-title" id="myModalLabel">Log In</h4>
-	          </div>
-	          <div class="modal-body">
-	            <%= render 'users/form' %>
-	          </div>
+	    <div class="container-fluid">
+	      <div class="row-fluid">
+	        <div class="span1"></div>
+	        <div class="span10">
+	          <%= yield %>
 	        </div>
+	        <div class="span1"></div>
 	      </div>
-	    </div>
+
+				<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		      <div class="modal-dialog">
+		        <div class="modal-content">
+		          <div class="modal-header">
+		            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		            <h4 class="modal-title" id="myModalLabel">Log In</h4>
+		          </div>
+		          <div class="modal-body">
+		            <%= render 'sessions/login_form' %>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+
+				<div class="modal fade" id="signup-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		      <div class="modal-dialog">
+		        <div class="modal-content">
+		          <div class="modal-header">
+		            <button id="close-modal" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+		            <h4 class="modal-title" id="myModalLabel">Log In</h4>
+		          </div>
+		          <div class="modal-body">
+		            <%= render 'users/form' %>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+			</div>
 		</div>
-
 	<script>
 		var currentUserId = <%= logged_in? ? current_user.id : 0 %>;
 		$("#sign-in").click( function(event){

@@ -27,7 +27,10 @@ window.Sharebnb.Views.RequestResponse = Backbone.View.extend({
 		var that = this;
 		$.ajax({
 			url: 'api/rental_requests/' + this.model.id + "/approve",
-			type: "POST"
+			type: "POST",
+			success: function(resp){
+				that.model.fetch()
+			}
 		})
 	},
 
@@ -36,7 +39,10 @@ window.Sharebnb.Views.RequestResponse = Backbone.View.extend({
 		var that = this;
 		$.ajax({
 			url: 'api/rental_requests/' + this.model.id + "/deny",
-			type: "POST"
+			type: "POST",
+			success: function(resp){
+				that.model.fetch();
+			}
 		})
 	}
 })
