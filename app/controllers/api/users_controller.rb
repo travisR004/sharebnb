@@ -17,7 +17,12 @@ class Api::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    render json: @user.to_json(include: [:made_rental_requests, :received_rental_requests, :rentals])
+    render json: @user.to_json(include: [:made_rental_requests,
+                                         :received_rental_requests,
+                                         :rentals,
+                                         :received_messages,
+                                         :sent_messages
+                                         ])
   end
 
   private

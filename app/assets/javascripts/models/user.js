@@ -8,13 +8,23 @@ window.Sharebnb.Models.User = Backbone.Model.extend({
 	    }
 
 			if(jsonResp.made_rental_requests){
-				this.madeRequests().set(jsonResp.made_rental_requests)
+				this.madeRequests().set(jsonResp.made_rental_requests);
 				delete jsonResp.made_rental_requests;
 			}
 
 			if(jsonResp.received_rental_requests){
-				this.receivedRequests().set(jsonResp.received_rental_requests)
-				delete jsonResp.received_rental_requests
+				this.receivedRequests().set(jsonResp.received_rental_requests);
+				delete jsonResp.received_rental_requests;
+			}
+
+			if(jsonResp.received_messages){
+				this.receivedMessages().set(jsonResp.received_messages);
+				delete jsonResp.received_messages;
+			}
+
+			if(jsonResp.sent_messages){
+				this.sentMessages().set(jsonResp.sent_messages);
+				delete jsonResp.sent_messages;
 			}
 	      return jsonResp
 	  },
@@ -38,5 +48,19 @@ window.Sharebnb.Models.User = Backbone.Model.extend({
 			this._receivedRequests = new Sharebnb.Collections.RentalRequests()
 		}
 		return this._receivedRequests
+	},
+
+	receivedMessages: function(){
+		if(!this._receivedMessages){
+			this._receivedMessages = new Sharebnb.Collections.Messages()
+		}
+		return this._receivedMessages
+	},
+
+	sentMessages: function(){
+		if(!this._sentMessages){
+			this._sentMessages = new Sharebnb.Collections.Messages()
+		}
+		return this._sentMessages
 	}
 })
