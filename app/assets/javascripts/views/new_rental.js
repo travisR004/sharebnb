@@ -1,6 +1,6 @@
-window.Sharebnb.Views.RentalForm = Backbone.View.extend({
+window.Sharebnb.Views.NewRental = Backbone.View.extend({
 
-	template: JST["rental/form"],
+	template: JST["rental/new"],
 
 	events: {
 		"submit #rental-form": "createRental",

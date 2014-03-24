@@ -1,5 +1,8 @@
 @import "bootstrap";
 
+$magenta: rgb(255,10,92);
+$light-blue: #2badf3;
+
 h1 {
 	text-align: center;
 //	color: #fff;
@@ -24,11 +27,11 @@ color: black;
 }
 
 h3 > a {
-	color: #0f8bcd;
+	color: $light-blue;
 }
 
 a:hover, a:focus {
-    color: #0f8bcd;
+    color: $light-blue;
     text-decoration: underline;
 }
 
@@ -41,6 +44,24 @@ li {
 	list-style-type: none;
 }
 
+#list-place{
+	height: 50%;
+}
+
+.holder {
+	padding-top: 10px;
+}
+
+#btn-list {
+	background-color: #fde44c;
+	color: black;
+}
+.btn-list{
+	color: black !important;
+	background-color: #fde44c;
+	height: 50%;
+	font-weight: bold;
+}
 
 .navbar-default .navbar-nav > li > a, .navbar-default .navbar-brand {
 color: white;
@@ -51,7 +72,7 @@ background-color: white;
 }
 
 .navbar-default{
-	background-color: #0f8bcd;
+	background-color: $light-blue;
 //	background-image: radial-gradient(farthest-side circle at center center, rgba(48, 218, 241, 0.8) 20%, rgba(15, 139, 205, 1) 100%);
 	border-radius: 0px;
 	color: white;
@@ -118,7 +139,7 @@ color: black;
 }
 
 .btn-primary {
-	background: #0f8bcd;
+	background: $light-blue;
 }
 
 .btn-group {
@@ -224,7 +245,7 @@ text-align: center;
 }
 
 #map-canvas {
-	height: 500px;
+	height: 600px;
 	width: 100%;
 	border: solid 2px;
 	border-radius: 5px;
@@ -287,6 +308,7 @@ text-align: center;
 	border: solid 2px;
 	border-top: 0px;
 	padding: 25px;
+	background: #f0f0f0;
 }
 
 .slideshow-holder {
@@ -325,29 +347,39 @@ text-align: center;
 	border-top: solid 2px;
 	border-top-left-radius: 15px;
 	border-top-right-radius: 15px;
+	background-color: #f0f0f0;
 }
 
 .header-container {
 	padding: 5px;
 	border-top-left-radius: 15px;
 	border-top-right-radius: 15px;
-	background-color: #E4E4E4;
+	background-color: #f8f8f8;
 	margin: 10px;
 	cursor: pointer;
 }
 
-.home-page-slider {
-	margin-top: 100px;
-}
-
 .input-group-addon{
 	color: white;
-	background-color: #0f8bcd;
+	background-color: $light-blue;
 }
 .home-page-container > .carousel >.carousel-inner > .item {
-	opacity: 0.8;
+	opacity: 0.9;
 }
 
 #message-form {
 	display: none;
+}
+
+.show-description, .close-description{
+	margin-bottom: 5px;
+}
+
+.photo-image{
+	float:right;
+	cursor: pointer;
+}
+
+.form-control:focus {
+	border-color: $magenta;
 }

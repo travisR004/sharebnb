@@ -38,12 +38,23 @@ window.Sharebnb.Views.SearchResult = Backbone.View.extend({
 			google.maps.event.bind(this.map, "idle", this, function(){
 				this.lat = this.map.center.k;
 				this.long = this.map.center.A;
+				if(this.markers){
+					this.clearOverlays()
+				}
 				this.fetchRentals();
 			})
 		}
 	},
 
+	clearOverlays: function(){
+		this.markers.forEach(function(marker){
+			marker.setMap(null)
+		})
+		this.markers = [];
+	},
+
 	fetchRentals: function(){
+		this.markers = [];
 		var that = this;
 		var width = this.mapCanvas.width()
 		var zoom = this.map.zoom
@@ -63,6 +74,7 @@ window.Sharebnb.Views.SearchResult = Backbone.View.extend({
 						map: that.map,
 						icon: image
 					})
+					that.markers.push(marker)
 				})
 			}
 		})

@@ -9,14 +9,22 @@ window.Sharebnb.Views.RentalDashboard = Backbone.View.extend({
 	editBox: JST["rental/edit_box"],
 
 	events: {
-		"dblclick .edit-detail": "openEditor",
 		"blur #edit-rental": "updateRental",
 		"submit form": "updateRental",
 		"click .rental": "changeRentalActive",
 		"click .room": "changeRoomActive",
 		"click #remove-rental": "deleteRental",
 		"click #update-rental": "showEditForm",
-		"click #show-rental": "showRental"
+		"click #show-rental": "showRental",
+		"click #submit-update": "updateRental",
+		"click .show-description": "showDescription",
+		"click .close-description": "showDescription"
+	},
+
+	showDescription: function(event){
+		event.preventDefault();
+		$("#description" + this.model.id).toggleClass("hidden")
+		$("#show-description" + this.model.id).toggleClass("hidden")
 	},
 
 	showRental: function(event){
@@ -24,10 +32,32 @@ window.Sharebnb.Views.RentalDashboard = Backbone.View.extend({
 		Backbone.history.navigate("rentals/" + this.model.id, {trigger: true})
 	},
 
+	deleteRental: function(event){
+		event.preventDefault();
+		this.model.destroy();
+	},
+
+	updateRental: function(){
+		event.preventDefault();
+		var rentalData = $(event.target).parent().serializeJSON();
+		if(this.lat){
+			rentalData["rental"].lat = this.lat;
+			rentalData["rental"].long = this.long;
+		}
+		this.model.save(rentalData)
+	},
+
 	showEditForm: function(event){
 		event.preventDefault();
+		var that = this;
 		$("#rental" + this.model.id).toggleClass("hidden")
-		$("#edit-rental" + this.model.id).toggleClass("hidden")
+		$("#edit-rental" + this.model.id).toggleClass("hidden");
+		if(this.$el.find("#address")[0]){
+			this.autocomplete = new google.maps.places.Autocomplete(this.$el.find("#address")[0]);
+			google.maps.event.addListener(this.autocomplete, 'place_changed', function() {
+			  that.getPlaceDetails();
+			});
+		}
 	},
 
 	changeRentalActive: function(event) {
@@ -44,45 +74,11 @@ window.Sharebnb.Views.RentalDashboard = Backbone.View.extend({
 		var place = this.autocomplete.getPlace();
 		this.lat = place.geometry.location.lat();
 		this.long = place.geometry.location.lng();
-		this.updateAddress();
-	},
-
-	openEditor: function(event){
-		var that = this;
-		var attr = $(event.currentTarget).data("attr");
-		var type = $(event.currentTarget).data("type");
-		this.currentRentalId = $(event.currentTarget).parent().data("rental-id")
-		var renderedContent = this.editBox({attr: attr , type: type})
-		$(event.target).html(renderedContent)
-		if(this.$el.find("#street-address")[0]){
-			this.autocomplete = new google.maps.places.Autocomplete(this.$el.find("#street-address")[0]);
-			google.maps.event.addListener(this.autocomplete, 'place_changed', function() {
-			  that.getPlaceDetails();
-			});
-		}
-		$("#" + type).focus();
-		return this
 	},
 
 	render: function(){
 		var renderedContent = this.template({rental: this.model})
 		this.$el.html(renderedContent)
 		return this
-	},
-
-	updateAddress: function(){
-		var that = this;
-		var address = this.$el.find("#address").val();
-		this.model.save({address: address, lat: this.lat, long: this.long}, {
-			patch: true
-		})
-	},
-
-	updateRental: function(event){
-		event.preventDefault();
-		var data = $(event.target).serializeJSON().rental
-		this.model.save(data, {
-			patch: true
-		})
-	},
+	}
 })

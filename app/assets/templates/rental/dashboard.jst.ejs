@@ -5,17 +5,7 @@
 	 	  	<div class="item active">
 	 	    	<img src="https://a0.muscache.com/airbnb/static/landing_pages/home_v2/hero/488485-cb8055504a43a9fd3687392c58abe04b.jpg">
 	 	  	</div>
-
-	 			<div class="item">
-	 				<img src="https://a0.muscache.com/airbnb/static/landing_pages/home_v2/hero/264248-25b69a424e9d6033cd7b417cf8ad4deb.jpg">
-	 			</div>
 	 		</div>
-			<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-		    <span class="glyphicon glyphicon-chevron-left"></span>
-		  </a>
-		  <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-		    <span class="glyphicon glyphicon-chevron-right"></span>
-		  </a>
 		</div>
 	</div>
 
@@ -46,9 +36,27 @@
 			<p>Price: <%= rental.escape("price") %></p>
 		</div>
 
-		<div class="edit-detail" data-attr="<%= rental.escape("description") %>" data-type="description">
-			<p>Edit Description</p>
+		<div class="photo-image">
+			<img
+				class="lazy"
+				data-original="https://a0.muscache.com/airbnb/static/page3/v3/room_default_no_photos-d0cb6d0b139f74166b1c6ea8b4225ef8.png"
+				width="100"
+				height="65"
+				src="https://a0.muscache.com/airbnb/static/page3/v3/room_default_no_photos-d0cb6d0b139f74166b1c6ea8b4225ef8.png"
+				style="display: inline;"
+			>
 		</div>
+
+		<div class="edit-detail" data-attr="<%= rental.escape("description") %>" data-type="description">
+			<button id="show-description<%= rental.escape("id") %>" class="btn btn-primary show-description">Show Description</button>
+			<div id="description<%= rental.escape("id") %>" class="hidden">
+				<p><%= rental.escape("description") %></p>
+				<button id="close-description<%= rental.escape("id") %>" class="btn btn-primary close-description">Close</button>
+			</div>
+		</div>
+
+
+
 		<button id="update-rental" class="btn btn-primary">Edit Listing </button>
 		<button id="show-rental" class="btn btn-primary">Show Listing </button>
 		<button id="remove-rental" class="btn btn-primary">Remove Listing</button>
@@ -57,6 +65,6 @@
 	</div>
 
 	<div class="col-md-6 edit-rental hidden" id="edit-rental<%= rental.get("id") %>">
-		<%= JST["rental/rental_form"]({rental: rental}) %>
+		<%= JST["rental/rental_form"]({rental: rental, new_rental: false}) %>
 	</div>
 </div>
