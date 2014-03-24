@@ -14,7 +14,20 @@ window.Sharebnb.Views.RentalDashboard = Backbone.View.extend({
 		"submit form": "updateRental",
 		"click .rental": "changeRentalActive",
 		"click .room": "changeRoomActive",
-		"click #remove-rental": "deleteRental"
+		"click #remove-rental": "deleteRental",
+		"click #update-rental": "showEditForm",
+		"click #show-rental": "showRental"
+	},
+
+	showRental: function(event){
+		event.preventDefault();
+		Backbone.history.navigate("rentals/" + this.model.id, {trigger: true})
+	},
+
+	showEditForm: function(event){
+		event.preventDefault();
+		$("#rental" + this.model.id).toggleClass("hidden")
+		$("#edit-rental" + this.model.id).toggleClass("hidden")
 	},
 
 	changeRentalActive: function(event) {

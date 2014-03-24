@@ -19,7 +19,7 @@
 		</div>
 	</div>
 
-	<div class="col-md-6 rental-details" data-rental-id="<%= rental.escape("id") %>">
+	<div class="col-md-6 rental-details" data-rental-id="<%= rental.escape("id") %>" id="rental<%= rental.get("id") %>">
 		<div class="edit-detail" data-attr="<%= rental.escape("tagline") %>" data-type="tagline">
 			<p>Tag Line: <%= rental.escape("tagline") %></p>
 		</div>
@@ -47,10 +47,16 @@
 		</div>
 
 		<div class="edit-detail" data-attr="<%= rental.escape("description") %>" data-type="description">
-			<button id="remove-rental" class="btn btn-danger">Remove Listing</button>
 			<p>Edit Description</p>
 		</div>
+		<button id="update-rental" class="btn btn-primary">Edit Listing </button>
+		<button id="show-rental" class="btn btn-primary">Show Listing </button>
+		<button id="remove-rental" class="btn btn-primary">Remove Listing</button>
 
 
+	</div>
+
+	<div class="col-md-6 edit-rental hidden" id="edit-rental<%= rental.get("id") %>">
+		<%= JST["rental/rental_form"]({rental: rental}) %>
 	</div>
 </div>
