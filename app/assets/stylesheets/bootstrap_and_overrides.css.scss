@@ -3,7 +3,7 @@
 h1 {
 	text-align: center;
 //	color: #fff;
-color: #0f8bcd;
+color: black;
 //	text-shadow: 0 -1px 1px rgba(0,0,0,0.6);
 	font-size: 44px;
 	font-weight: bold;
@@ -36,6 +36,10 @@ li {
 
 .navbar-default .navbar-nav > li > a, .navbar-default .navbar-brand {
 color: white;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+background-color: white;
 }
 
 .navbar-default{
@@ -333,7 +337,10 @@ text-align: center;
 	margin-top: 100px;
 }
 
-
+.input-group-addon{
+	color: white;
+	background-color: #0f8bcd;
+}
 .home-page-container > .carousel >.carousel-inner > .item {
 	opacity: 0.8;
 }

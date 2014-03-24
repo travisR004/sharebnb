@@ -56,10 +56,12 @@ window.Sharebnb.Views.SearchResult = Backbone.View.extend({
 				var rentalContent = that.rentalsTemplate({rentals: that.rentals});
 				that.$el.find("#rental-results").html(rentalContent);
 				that.rentals.forEach(function(rental){
+					var image = "assets/bighouse.png";
 					var latLong = new google.maps.LatLng(rental.lat, rental.long);
 					var marker = new google.maps.Marker({
 						position: latLong,
-						map: that.map
+						map: that.map,
+						icon: image
 					})
 				})
 			}
