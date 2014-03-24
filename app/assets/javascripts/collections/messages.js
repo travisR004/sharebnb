@@ -13,8 +13,10 @@ window.Sharebnb.Collections.Messages = Backbone.Collection.extend({
 		} else {
 			model = new Sharebnb.Models.Message({id: id})
 			model.fetch({
-				success: function(){messages.add(model)}
-			})
+				success: function(){
+					messages.add(model)
+				}
+			});
 			return model
 		}
 	}

@@ -1,11 +1,11 @@
 window.Sharebnb.Views.Profile = Backbone.CompositeView.extend({
 
 	initialize: function(){
-		this.listenTo(this.model.rentals(), "add", this.addRental)
-		this.listenTo(this.model.receivedRequests(), "add", this.addReceivedRequest)
-		this.listenTo(this.model.madeRequests(), "add", this.addMadeRequest)
+		this.listenTo(this.model.rentals(), "add", this.addRental);
+		this.listenTo(this.model.receivedRequests(), "add", this.addReceivedRequest);
+		this.listenTo(this.model.madeRequests(), "add", this.addMadeRequest);
 
-		this.refreshCollections()
+		// this.refreshCollections()
 	},
 
 	template: JST['profile/show'],
@@ -18,6 +18,7 @@ window.Sharebnb.Views.Profile = Backbone.CompositeView.extend({
 
 	addMadeRequest: function(madeRequest){
 		var requestShowView = new Sharebnb.Views.MadeRequest({model: madeRequest});
+		madeRequest.fetch();
 		this.addSubview(".manage-trips", requestShowView);
 		requestShowView.render();
 	},
@@ -25,6 +26,7 @@ window.Sharebnb.Views.Profile = Backbone.CompositeView.extend({
 	addReceivedRequest: function(receivedRequest){
 		if(receivedRequest.escape("status") != "DENIED"){
 			var requestShowView = new Sharebnb.Views.RequestResponse({model: receivedRequest});
+			receivedRequest.fetch();
 			this.addSubview(".manage-requests", requestShowView);
 			requestShowView.render();
 		}

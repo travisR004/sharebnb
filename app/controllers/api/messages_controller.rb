@@ -19,9 +19,10 @@ class Api::MessagesController < ApplicationController
 
   private
   def message_params
-    params.require(:message).permit(:receiver_id, :content, :sender_view, :receiver_view)
+    params.require(:message).permit(:receiver_id, :content, :rental_request_id)
   end
 
   def update_params
     params.require(:message).permit(:sender_view, :receiver_view)
+  end
 end

@@ -19,7 +19,7 @@ class Api::RentalRequestsController < ApplicationController
 
   def show
     @rental_request = RentalRequest.find(params[:id])
-    render json: @rental_reqeust
+    render json: @rental_request.to_json(include: :messages)
   end
 
   def deny
@@ -30,6 +30,6 @@ class Api::RentalRequestsController < ApplicationController
 
   private
   def rental_request_params
-    params.require(:rental_request).permit(:start_date, :end_date, :rental_id, :guests, :message)
+    params.require(:rental_request).permit(:start_date, :end_date, :rental_id, :guests)
   end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140324064751) do
+ActiveRecord::Schema.define(version: 20140324084325) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,10 +20,9 @@ ActiveRecord::Schema.define(version: 20140324064751) do
     t.integer  "sender_id"
     t.integer  "receiver_id"
     t.text     "content"
-    t.boolean  "sender_view",   default: true
-    t.boolean  "receiver_view", default: true
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "rental_request_id"
   end
 
   create_table "rental_requests", force: true do |t|
@@ -35,7 +34,6 @@ ActiveRecord::Schema.define(version: 20140324064751) do
     t.datetime "updated_at"
     t.string   "status",     default: "PENDING"
     t.integer  "guests"
-    t.text     "message"
   end
 
   create_table "rentals", force: true do |t|

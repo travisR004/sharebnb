@@ -11,7 +11,6 @@
 #  updated_at :datetime
 #  status     :string(255)      default("PENDING")
 #  guests     :integer
-#  message    :text
 #
 
 class RentalRequest < ActiveRecord::Base
@@ -24,6 +23,7 @@ class RentalRequest < ActiveRecord::Base
 
   belongs_to :rental
   belongs_to :user
+  has_many :messages
 
   def approve!
     raise "not pending" unless self.status == "PENDING"

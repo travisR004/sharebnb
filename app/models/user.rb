@@ -21,8 +21,7 @@ class User < ActiveRecord::Base
     has_many :made_rental_requests, class_name: "RentalRequest"
     has_many :received_rental_requests, through: :rentals, source: :rental_requests
     has_many :received_messages, foreign_key: :receiver_id, class_name: "Message"
-    has_many :sent_messages, foreign_key: :sender_id, class_name: "Mesage"
-
+    has_many :sent_messages, foreign_key: :sender_id, class_name: "Message"
 
     def password=(pt)
       @password = pt

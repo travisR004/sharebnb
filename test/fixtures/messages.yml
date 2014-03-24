@@ -2,14 +2,13 @@
 #
 # Table name: messages
 #
-#  id            :integer          not null, primary key
-#  sender_id     :integer
-#  receiver_id   :integer
-#  content       :text
-#  sender_view   :boolean          default(TRUE)
-#  receiver_view :boolean          default(TRUE)
-#  created_at    :datetime
-#  updated_at    :datetime
+#  id                :integer          not null, primary key
+#  sender_id         :integer
+#  receiver_id       :integer
+#  content           :text
+#  created_at        :datetime
+#  updated_at        :datetime
+#  rental_request_id :integer
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

@@ -6,5 +6,28 @@
 		<h5> Guests: <%= request.escape("guests") %></h5>
 		<h5> Status: <%= request.escape("status") %>
 	</div>
-	<button class="btn btn-primary"> Send Message </button>
+	<button class="btn btn-primary"
+		id="made-request-messages"
+		data-toggle="modal"
+		data-target="#made-request-message-modal<%= request.escape("id") %>">
+		Messages
+	</button>
+</div>
+
+
+<div class="modal fade" id="made-request-message-modal<%= request.escape("id") %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">
+      </div>
+      <div class="modal-body">
+				<% messages.forEach(function(message){ %>
+	        <h3><%= message.escape("content") %><h3>
+						<% console.log("WTF") %>
+				<% }) %>
+      </div>
+    </div>
+  </div>
 </div>
