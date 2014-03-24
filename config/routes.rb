@@ -6,7 +6,7 @@ Sharebnb::Application.routes.draw do
     resources :rentals, only: [:create, :show, :update, :destroy, :index]
     get "rentals_in_range", to: 'rentals#rental_range'
     resources :users, only: [:create, :show, :update, :destroy]
-    resources :rental_requests, only: [:create] do
+    resources :rental_requests, only: [:create, :show, :update, :destroy] do
       post "approve", on: :member
       post "deny", on: :member
     end
