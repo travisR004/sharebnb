@@ -1,3 +1,42 @@
+<div class="clearfix intro-filter filters-section" data-behavior="tooltip" data-position="left" aria-label="Price">
+  <h6 class="filter-label col-md-3">Price</h6>
+  <div class="price-range-slider">
+		<p class="min-price">
+		        Min Price:
+		        <strong>
+		          $<span class="price">10</span>
+		        </strong>
+		      </p>
+		<p class="max-price">
+		        Max Price:
+		        <strong>
+		          $<span class="price">1000</span>
+		        </strong>
+		      </p>
+  </div>
+</div>
+
+<div class="clearfix room-type-group intro-filter filters-section" data-behavior="tooltip" data-position="left" aria-label="Room Type">
+
+    <h6 class="filter-label col-md-3">Room Type</h6>
+
+    <div class="btn btn-large btn-flat icon-toggle selected" data-name="Entire home/apt">
+      <i class="icon icon-entire-place"></i>
+      <div class="h5">Entire Place</div>
+    </div>
+
+    <div class="btn btn-large btn-flat icon-toggle" data-name="Private room">
+      <i class="icon icon-private-room"></i>
+      <div class="h5">Private Room</div>
+    </div>
+
+    <div class="btn btn-large btn-flat icon-toggle" data-name="Shared room">
+      <i class="icon icon-shared-room"></i>
+      <div class="h5">Shared Room</div>
+    </div>
+
+    <i class="icon icon-question icon-gray" id="room-type-tooltip"></i>
+</div>
 <% if(rentals){ %>
 	<div class="rentals">
 		<% rentals.forEach(function(rental){ %>

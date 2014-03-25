@@ -53,6 +53,10 @@ window.Sharebnb.Views.SearchResult = Backbone.View.extend({
 		this.markers = [];
 	},
 
+	changeSlider: function(event, ui){
+		debugger
+	},
+
 	fetchRentals: function(){
 		this.markers = [];
 		var that = this;
@@ -66,6 +70,11 @@ window.Sharebnb.Views.SearchResult = Backbone.View.extend({
 				that.rentals = response;
 				var rentalContent = that.rentalsTemplate({rentals: that.rentals});
 				that.$el.find("#rental-results").html(rentalContent);
+				that.$el.find(".price-range-slider").slider({
+					values: [ 0, 100 ],
+					range: true,
+					change: that.changeSlider()
+				});
 				that.rentals.forEach(function(rental){
 					var image = "assets/bighouse.png";
 					var latLong = new google.maps.LatLng(rental.lat, rental.long);

@@ -3,15 +3,13 @@
   <head>
 	  <title>Sharebnb</title>
 	     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	     <%= stylesheet_link_tag    "application", media: "all" %>
 	     <%= javascript_include_tag "application" %>
+			 <%= stylesheet_link_tag    "application", media: "all" %>
 			 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-
+			 <link href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css' rel='stylesheet' type='text/css'>
 			 <script type="text/javascript"
 			   src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAPS_KEY"] %>&sensor=false&libraries=places">
 			 </script>
-
-
 	     <%= csrf_meta_tags %>
   </head>
   <body data-spy="scroll" data-target=".navbar-example">
@@ -31,8 +29,8 @@
           <ul class="nav navbar-nav">
          	<li><a href="#" id="account" class="account" >Account</a></li>
          	<li><a href="#" id="sign-out" class="<%= logged_in? ? "" : "hidden" %> sign-out" >Sign Out</a></li>
- 					<li data-toggle="modal" data-target="#login-modal"><a href="#" id="sign-in-modal-link" class="<%= logged_in? ? "hidden" : "" %> sign-in">Sign In</a></li>
- 					<li data-toggle="modal" data-target="#signup-modal"><a href="#" id="sign-up-modal-link" class="<%= logged_in? ? "hidden" : "" %> sign-up">Sign Up</a></li>
+ 					<li data-toggle="modal" data-target="#login-modal"><a id="sign-in-modal-link" class="<%= logged_in? ? "hidden" : "" %> sign-in">Sign In</a></li>
+ 					<li data-toggle="modal" data-target="#signup-modal"><a id="sign-up-modal-link" class="<%= logged_in? ? "hidden" : "" %> sign-up">Sign Up</a></li>
           </ul>
  				<ul class="nav navbar-nav pull-right">
  					<div class="holder">
@@ -94,7 +92,6 @@
 					$("#sign-in-modal-link").toggleClass("hidden")
 					$("#sign-up-modal-link").toggleClass("hidden")
 					$("#login-modal").modal("hide")
-					Backbone.history.history.back()
 				}
 			})
 		})
@@ -145,7 +142,6 @@
 					$("#sign-in-modal-link").toggleClass("hidden")
 					$("#sign-up-modal-link").toggleClass("hidden")
 					$("#signup-modal").modal("hide")
-					Backbone.history.history.back()
 				}
 			})
 		})
