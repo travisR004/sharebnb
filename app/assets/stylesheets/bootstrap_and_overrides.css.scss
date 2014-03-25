@@ -40,7 +40,7 @@ h5{
 	font-size: 30px;
 }
 
-h6, .h6 {
+h6, h8 .h6 {
 font-size: 12px;
 text-transform: uppercase;
 color: #959595;
@@ -51,6 +51,10 @@ h7 {
 	text-transform: uppercase;
 	color: white;
 	text-align: left;
+}
+
+.bigger-font {
+	font-size: 18px;
 }
 
 li {
@@ -353,6 +357,14 @@ text-align: center;
 	margin: 0px;
 	border-bottom: solid 2px;
 	font-weight: bold;
+	position: relative;
+}
+
+#request-buttons{
+	float: right;
+	position: absolute;
+	bottom: 5px;
+	right: 0;
 }
 
 .open-tab {
@@ -386,7 +398,7 @@ text-align: center;
 	opacity: 0.9;
 }
 
-#message-form {
+.message-form {
 	display: none;
 }
 
@@ -540,4 +552,17 @@ cursor: pointer;
 
 #cart {
 	margin-right: 10px;
+}
+
+#ui-datepicker-div {
+	display: none;
+}
+
+#compose-message {
+	width: 100%;
+}
+
+#made-request-messages, #cancel-request {
+	float: right;
+	margin-right: 5px;
 }
