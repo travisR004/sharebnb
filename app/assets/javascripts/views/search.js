@@ -65,7 +65,40 @@ window.Sharebnb.Views.SearchResult = Backbone.View.extend({
 			this.minSliderPos = ui.value
 			$("#min-price").text(this.minPrice);
 		}
+	},
 
+	makeSlider: function(){
+		this.$el.find(".price-range-slider").slider({
+			values: [ this.minSliderPos, this.maxSliderPos ],
+			range: true,
+			step: 0.5,
+			slide: this.changeSlider.bind(this),
+			stop: this.fetchRentals.bind(this)
+		});
+	},
+
+	setMarkers: function(){
+		var that = this;
+		that.rentals.forEach(function(rental){
+			var image = "assets/bighouse.png";
+			var latLong = new google.maps.LatLng(rental.lat, rental.long);
+			var marker = new google.maps.Marker({
+				position: latLong,
+				map: that.map,
+				icon: image
+			})
+			that.markers.push(marker)
+		})
+	},
+
+	renderRentals: function(response){
+		this.rentals = response;
+		var rentalContent = this.rentalsTemplate({
+			rentals: this.rentals,
+			minSliderPos: this.minSliderPos,
+			maxSliderPos: this.maxSliderPos
+		});
+		this.$el.find("#rental-results").html(rentalContent);
 	},
 
 	fetchRentals: function(){
@@ -77,8 +110,7 @@ window.Sharebnb.Views.SearchResult = Backbone.View.extend({
 		$.ajax({
 			url: "/api/rentals_in_range",
 			type: "GET",
-			data: {
-						 zoom: zoom,
+			data: {zoom: zoom,
 						 width: width,
 						 lat: that.lat,
 						 long: that.long,
@@ -86,31 +118,9 @@ window.Sharebnb.Views.SearchResult = Backbone.View.extend({
 						 max_price: that.maxPrice
 					  },
 			success: function(response){
-				that.rentals = response;
-				var rentalContent = that.rentalsTemplate({
-					rentals: that.rentals,
-					minSliderPos: that.minSliderPos,
-					maxSliderPos: that.maxSliderPos
-				});
-
-				that.$el.find("#rental-results").html(rentalContent);
-				that.$el.find(".price-range-slider").slider({
-					values: [ that.minSliderPos, that.maxSliderPos ],
-					range: true,
-					step: 0.5,
-					slide: that.changeSlider.bind(that),
-					stop: that.fetchRentals.bind(that)
-				});
-				that.rentals.forEach(function(rental){
-					var image = "assets/bighouse.png";
-					var latLong = new google.maps.LatLng(rental.lat, rental.long);
-					var marker = new google.maps.Marker({
-						position: latLong,
-						map: that.map,
-						icon: image
-					})
-					that.markers.push(marker)
-				})
+				that.renderRentals(response)
+				that.makeSlider();
+				that.setMarkers();
 			}
 		})
 	}

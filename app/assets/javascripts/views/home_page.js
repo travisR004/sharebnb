@@ -11,12 +11,15 @@ window.Sharebnb.Views.HomePage = Backbone.View.extend({
 
 	render: function(){
 		var that = this;
+		var today = new Date()
 		var renderedContent = this.template()
 		this.$el.html(renderedContent)
 		this.$el.find(".date").datepicker({
 			showOtherMonths: true,
       selectOtherMonths: true,
-			autoclose: true
+			autoclose: true,
+			constrainInput: false,
+			minDate: today
 		});
 		if(this.$el.find("#city")){
 			this.autocomplete = new google.maps.places.Autocomplete(this.$el.find("#city")[0]);

@@ -52,7 +52,9 @@ window.Sharebnb.Views.ShowRental = Backbone.View.extend({
 		this.$el.find(".date").datepicker({
 			showOtherMonths: true,
       selectOtherMonths: true,
-			autoclose: true
+			autoclose: true,
+			constrainInput: false,
+			minDate: new Date()
 		});
 		return this
 	}
