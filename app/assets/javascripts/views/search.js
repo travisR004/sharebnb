@@ -5,6 +5,9 @@ window.Sharebnb.Views.SearchResult = Backbone.View.extend({
 		this.long = options.long;
 		this.listenTo(this, 'inDOM', this.makeMap);
 		this.minPrice = 10;
+		this.maxPrice = 1000;
+		this.minSliderPos = 0;
+		this.maxSliderPos = 100;
 	},
 
 	template: JST["search/search_results"],
@@ -55,8 +58,16 @@ window.Sharebnb.Views.SearchResult = Backbone.View.extend({
 	},
 
 	changeSlider: function(event, ui){
-		this.minPrice = ui.value + 10;
-		this.render();
+		if(ui.values[0] === this.minSliderPos){
+			this.maxPrice = ui.values[1] * 10
+			this.maxSliderPos = ui.values[1]
+			$("#max-price").text(this.maxPrice)
+		} else {
+			this.minPrice = ui.values[0] * 10;
+			this.minSliderPos = ui.value
+			$("#min-price").text(this.minPrice);
+		}
+
 	},
 
 	fetchRentals: function(){
@@ -67,15 +78,27 @@ window.Sharebnb.Views.SearchResult = Backbone.View.extend({
 		$.ajax({
 			url: "/api/rentals_in_range",
 			type: "GET",
-			data: {zoom: zoom, width: width, lat: that.lat, long: that.long},
+			data: { zoom: zoom,
+							width: width,
+							lat: that.lat,
+							long: that.long,
+							min_price: that.minPrice,
+							max_price: that.maxPrice
+					 },
 			success: function(response){
 				that.rentals = response;
-				var rentalContent = that.rentalsTemplate({rentals: that.rentals, minPrice: that.minPrice});
+				var rentalContent = that.rentalsTemplate({
+					rentals: that.rentals,
+					minSliderPos: that.minSliderPos,
+					maxSliderPos: that.maxSliderPos
+				});
 				that.$el.find("#rental-results").html(rentalContent);
 				that.$el.find(".price-range-slider").slider({
-					values: [ 0, 100 ],
+					values: [ that.minSliderPos, that.maxSliderPos ],
 					range: true,
-					slide: that.changeSlider.bind(that)
+					step: 0.5,
+					slide: that.changeSlider.bind(that),
+					stop: that.fetchRentals.bind(that)
 				});
 				that.rentals.forEach(function(rental){
 					var image = "assets/bighouse.png";

@@ -4,13 +4,25 @@
 		<p class="min-price">
 		        Min Price:
 		        <strong>
-		          $<span class="price"><%= minPrice %></span>
+		          $<span class="price" id="min-price">
+								<% if(minSliderPos){ %>
+									<%= minSliderPos * 10 %>
+								<% } else { %>
+									10
+								<% } %>
+							</span>
 		        </strong>
 		      </p>
 		<p class="max-price">
 		        Max Price:
 		        <strong>
-		          $<span class="price">1000</span>
+		          $<span class="price" id="max-price">
+								<% if(maxSliderPos){ %>
+									<%= maxSliderPos * 10 %>
+								<% } else { %>
+									10
+								<% } %>
+		          </span>
 		        </strong>
 		      </p>
   </div>
