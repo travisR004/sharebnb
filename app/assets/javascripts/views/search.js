@@ -4,6 +4,7 @@ window.Sharebnb.Views.SearchResult = Backbone.View.extend({
 		this.lat = options.lat;
 		this.long = options.long;
 		this.listenTo(this, 'inDOM', this.makeMap);
+		this.markers = [];
 		this.minPrice = 10;
 		this.maxPrice = 1000;
 		this.minSliderPos = 0;
@@ -42,9 +43,6 @@ window.Sharebnb.Views.SearchResult = Backbone.View.extend({
 			google.maps.event.bind(this.map, "idle", this, function(){
 				this.lat = this.map.center.k;
 				this.long = this.map.center.A;
-				if(this.markers){
-					this.clearOverlays()
-				}
 				this.fetchRentals();
 			})
 		}
@@ -71,6 +69,7 @@ window.Sharebnb.Views.SearchResult = Backbone.View.extend({
 	},
 
 	fetchRentals: function(){
+		this.clearOverlays();
 		this.markers = [];
 		var that = this;
 		var width = this.mapCanvas.width()
@@ -78,13 +77,14 @@ window.Sharebnb.Views.SearchResult = Backbone.View.extend({
 		$.ajax({
 			url: "/api/rentals_in_range",
 			type: "GET",
-			data: { zoom: zoom,
-							width: width,
-							lat: that.lat,
-							long: that.long,
-							min_price: that.minPrice,
-							max_price: that.maxPrice
-					 },
+			data: {
+						 zoom: zoom,
+						 width: width,
+						 lat: that.lat,
+						 long: that.long,
+						 min_price: that.minPrice,
+						 max_price: that.maxPrice
+					  },
 			success: function(response){
 				that.rentals = response;
 				var rentalContent = that.rentalsTemplate({
@@ -92,6 +92,7 @@ window.Sharebnb.Views.SearchResult = Backbone.View.extend({
 					minSliderPos: that.minSliderPos,
 					maxSliderPos: that.maxSliderPos
 				});
+
 				that.$el.find("#rental-results").html(rentalContent);
 				that.$el.find(".price-range-slider").slider({
 					values: [ that.minSliderPos, that.maxSliderPos ],

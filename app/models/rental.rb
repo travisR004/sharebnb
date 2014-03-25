@@ -36,7 +36,6 @@ class Rental < ActiveRecord::Base
       long > :long_low) AND
       (price > :min_price AND
       price < :max_price))
-
     SQL
     rentals = Rental.where(conditions, {
       lat_high: lat + radius,
