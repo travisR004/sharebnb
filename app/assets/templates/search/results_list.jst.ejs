@@ -1,3 +1,63 @@
+<div class="intro-filter clearfix filters-section" data-behavior="tooltip" data-position="left" aria-label="Trip">
+  <h6 class="filter-label col-md-3">Trip</h6>
+  <form class="form-horizontal trip-form">
+    <i class="icon icon-arrow-right icon-gray"></i>
+	  <input
+			name="checkin"
+			id="checkin"
+			type="text"
+			class="date input-medium"
+			placeholder="<%= checkIn ? "" : "Check in"%>"
+			value="<%= checkIn ? checkIn : ""  %>"
+		>
+    <input
+			name="checkout"
+			id="checkout"
+			type="text"
+			class="date input-medium"
+			placeholder="<%= checkOut ? "" : "Check Out"%>"
+			value="<%= checkOut ? checkOut : ""  %>"
+		>
+    <div class="select input-medium">
+			<select class="guest-select" >
+				<% for(var i = 1; i < 6; i ++){ %>
+					<option value="<%= i %>" <%= guests === i ? "selected" : "" %>><%= i %> Guests</option>
+				<% } %>
+				<option value="6">6+ Guests</option>
+			</select>
+    </div>
+  </form>
+</div>
+
+<div class="clearfix room-type-group intro-filter filters-section" data-behavior="tooltip" data-position="left" aria-label="Room Type">
+    <h6 class="filter-label col-md-4">Room Type</h6>
+		<% var entireHome = false; %>
+		<% var privateRoom = false;  %>
+		<% var sharedRoom = false; %>
+		<% roomParams.forEach(function(room) { %>
+			<% if(room === "Whole Home/Apt") { %>
+				<% entireHome = true; %>
+			<% } else if (room === "Private Room") { %>
+				<% privateRoom = true; %>
+			<% } else if (room === "Shared Room") { %>
+				<% sharedRoom = true; %>
+			<% } %>
+		<% }) %>
+
+    <div class="btn btn-large btn-flat icon-toggle <%= entireHome ? "selected" : "" %> room-type" data-name="Whole Home/Apt">
+      <i class="fa fa-home fa-2x"></i>
+      <div class="h5">Entire Place</div>
+    </div>
+    <div class="btn btn-large btn-flat icon-toggle <%= privateRoom ? "selected" : "" %> room-type" data-name="Private Room">
+      <i class="fa fa-key fa-2x"></i>
+      <div class="h5">Private Room</div>
+    </div>
+    <div class="btn btn-large btn-flat icon-toggle <%= sharedRoom ? "selected" : "" %> room-type" data-name="Shared Room">
+      <i class="fa fa-group fa-2x"></i>
+      <div class="h5">Shared Room</div>
+    </div>
+</div>
+
 <div class="clearfix intro-filter filters-section" data-behavior="tooltip" data-position="left" aria-label="Price">
   <h6 class="filter-label col-md-3">Price</h6>
   <div class="price-range-slider">
@@ -28,33 +88,13 @@
   </div>
 </div>
 
-<div class="clearfix room-type-group intro-filter filters-section" data-behavior="tooltip" data-position="left" aria-label="Room Type">
-    <h6 class="filter-label col-md-3">Room Type</h6>
-    <div class="btn btn-large btn-flat icon-toggle selected" data-name="Entire home/apt">
-      <i class="icon icon-entire-place"></i>
-      <div class="h5">Entire Place</div>
-    </div>
 
-    <div class="btn btn-large btn-flat icon-toggle" data-name="Private room">
-      <i class="icon icon-private-room"></i>
-      <div class="h5">Private Room</div>
-    </div>
-
-    <div class="btn btn-large btn-flat icon-toggle" data-name="Shared room">
-      <i class="icon icon-shared-room"></i>
-      <div class="h5">Shared Room</div>
-    </div>
-
-    <i class="icon icon-question icon-gray" id="room-type-tooltip"></i>
-</div>
 
 <% if(rentals){ %>
 	<div class="rentals">
 		<% rentals.forEach(function(rental){ %>
 			<div class="rental-search-item" data-id="<%= rental.id %>">
-				<% var splitAddress = rental.address.split(",") %>
-				<% splitAddress.splice(splitAddress.length - 3) %>
-				<div class="search-item-header"> <%= splitAddress.join(", ") %> </div>
+
 			 	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 			 	 	<div class="carousel-inner">
 			 	  	<div class="item active">
@@ -65,12 +105,15 @@
 			 				<img src="https://a0.muscache.com/airbnb/static/landing_pages/home_v2/hero/264248-25b69a424e9d6033cd7b417cf8ad4deb.jpg">
 			 			</div>
 			 		</div>
-					<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-				    <span class="glyphicon glyphicon-chevron-left"></span>
-				  </a>
-				  <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-				    <span class="glyphicon glyphicon-chevron-right"></span>
-				  </a>
+
+					<div class="search-result">
+						<div class="search-item-header">
+							<h7>
+								<button id="add-to-cart" class="btn btn-primary"><i class="fa fa-shopping-cart"></i></button>
+								<%= rental.tagline %>
+							</h7>
+						</div>
+					<div>
 				</div>
 				<div class="row">
 					<div class="col-md-6">

@@ -7,7 +7,8 @@ class Api::RentalsController < ApplicationController
     long = params[:long].to_f
     min_price = params[:min_price].to_i
     max_price = params[:max_price].to_i
-    @rentals = Rental.get_rentals_by_range(width, zoom, lat, long, min_price, max_price);
+    room_types = params[:room_types]
+    @rentals = Rental.get_rentals_by_range(width, zoom, lat, long, min_price, max_price, room_types);
     render json: @rentals
   end
 

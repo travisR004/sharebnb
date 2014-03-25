@@ -3,10 +3,10 @@
   <head>
 	  <title>Sharebnb</title>
 	     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+			 <link href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css' rel='stylesheet' type='text/css'>
 	     <%= javascript_include_tag "application" %>
 			 <%= stylesheet_link_tag    "application", media: "all" %>
 			 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-			 <link href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css' rel='stylesheet' type='text/css'>
 			 <script type="text/javascript"
 			   src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAPS_KEY"] %>&sensor=false&libraries=places">
 			 </script>
@@ -32,11 +32,14 @@
  					<li data-toggle="modal" data-target="#login-modal"><a id="sign-in-modal-link" class="<%= logged_in? ? "hidden" : "" %> sign-in">Sign In</a></li>
  					<li data-toggle="modal" data-target="#signup-modal"><a id="sign-up-modal-link" class="<%= logged_in? ? "hidden" : "" %> sign-up">Sign Up</a></li>
           </ul>
- 				<ul class="nav navbar-nav pull-right">
- 					<div class="holder">
- 						<li id="navbar-list-button"><a id="list-place" class="list-place btn btn-list" id="btn-list">LIST YOUR PLACE</a></li>
- 					</div>
- 				</ul>
+					<ul class="nav navbar-nav pull-right">
+	 					<div class="holder">
+	 						<li id="navbar-list-button"><a id="list-place" class="list-place btn btn-list" id="btn-list">LIST YOUR PLACE</a></li>
+	 					</div>
+	 				</ul>
+	 				<ul class="nav navbar-nav pull-right">
+						<li id="cart"><i class="fa fa-shopping-cart fa-4x"></i></li>
+					</ul>
         </div><!--/.nav-collapse -->
       </div>
     </div>

@@ -27,7 +27,7 @@ class Rental < ActiveRecord::Base
   belongs_to :owner, class_name: "User"
   has_many :rental_requests
 
-  def self.get_rentals_by_range(width, zoom, lat, long, min_price, max_price)
+  def self.get_rentals_by_range(width, zoom, lat, long, min_price, max_price, room_types)
     radius = self.calculate_radius(width, zoom)
     conditions = <<-SQL
       ((lat < :lat_high AND
@@ -35,7 +35,8 @@ class Rental < ActiveRecord::Base
       (long < :long_high AND
       long > :long_low) AND
       (price > :min_price AND
-      price < :max_price))
+      price < :max_price) AND
+      (room_type IN (:room_types)))
     SQL
     rentals = Rental.where(conditions, {
       lat_high: lat + radius,
@@ -43,7 +44,8 @@ class Rental < ActiveRecord::Base
       long_high: long + radius,
       long_low: long - radius,
       min_price: min_price,
-      max_price: max_price
+      max_price: max_price,
+      room_types: room_types
     })
   end
 

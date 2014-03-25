@@ -1,10 +1,12 @@
 window.Sharebnb.Views.HomePage = Backbone.View.extend({
 	initialize: function(){
+
 	},
 
 	template: JST["home"],
 
 	events: {
+		"keypress #city": "stopSubmit",
 		"submit #travel-search": "executeSearch",
 		"place_changed #city": "getPlaceDetails"
 	},
@@ -21,18 +23,28 @@ window.Sharebnb.Views.HomePage = Backbone.View.extend({
 			constrainInput: false,
 			minDate: today
 		});
-		if(this.$el.find("#city")){
-			this.autocomplete = new google.maps.places.Autocomplete(this.$el.find("#city")[0]);
+		var searchInput = this.$el.find("#city");
+		if(searchInput){
+			this.autocomplete = new google.maps.places.Autocomplete(searchInput[0]);
 			google.maps.event.addListener(this.autocomplete, 'place_changed', function() {
 			  that.getPlaceDetails();
 			});
+			searchInput.focus();
 		}
 		return this
 	},
 
+	stopSubmit: function(event){
+		if(event.which === 13){
+			event.preventDefault();
+			event.stopPropagation();
+		}
+	},
+
 	executeSearch: function(event){
 		event.preventDefault();
-		Backbone.history.navigate("search/" + this.lat + "/" + this.long, {trigger: true})
+		Sharebnb.Data.searchParams = $(event.target).serializeJSON()["location"]
+		Backbone.history.navigate("search/" + this.lat + "/" + this.long + "/", {trigger: true})
 	},
 
 	getPlaceDetails: function(){
