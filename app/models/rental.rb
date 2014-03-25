@@ -21,7 +21,7 @@
 class Rental < ActiveRecord::Base
   validates :address, :description, :price, :lat, :long,
             :rental_type, :room_type, :allowed_guests, :owner, presence: true
-  validates :rental_type, inclusion: { in: ["Apartment", "Home", "Bed and Breakfast"}
+  validates :rental_type, inclusion: { in: ["Apartment", "Home", "Bed and Breakfast"]}
   validates :room_type, inclusion: {in: ["Whole Home", "Private Room", "Shared Room"]}
 
   belongs_to :owner, class_name: "User"
