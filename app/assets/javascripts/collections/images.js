@@ -3,6 +3,10 @@ window.Sharebnb.Collections.Images = Backbone.Collection.extend({
 
 	model: Sharebnb.Models.Image,
 
+	comparator: function(image){
+		return image.get("rank")
+	},
+
 	getOrFetch: function(id){
 		var model;
 		var images = this;

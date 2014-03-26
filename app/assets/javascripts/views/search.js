@@ -34,7 +34,19 @@ window.Sharebnb.Views.SearchResult = Backbone.View.extend({
 
 	addToCart: function(event){
 		event.preventDefault();
-		event.stopPropagation();
+		var favoriteRental = {}
+		favoriteRental.rental_id = $(event.target).data("rental-id")
+		if(currentUserId){
+			var users = new Sharebnb.Collections.Users();
+			var user = users.getOrFetch(currentUserId);
+			user.fetch({
+				success: function(){
+					debugger
+					favoriteRental.rank = user.favoriteRentals().length + 1
+					user.favoriteRentals().create(favoriteRental)
+				}
+			})
+		}
 	},
 
 	changeRoomActive: function(event) {
@@ -68,7 +80,7 @@ window.Sharebnb.Views.SearchResult = Backbone.View.extend({
 	},
 
 	events: {
-		"click .rental-search-item": "goToRental",
+		"click .book-now": "goToRental",
 		"click .room-type": "changeRoomActive",
 		"change #checkin": "updateCheckin",
 		"change #checkout": "updateCheckout",
@@ -142,7 +154,6 @@ window.Sharebnb.Views.SearchResult = Backbone.View.extend({
 
 	renderRentals: function(response){
 		this.rentals = response.rentals;
-		debugger
 		var rentalContent = this.rentalsTemplate({
 			rentals: this.rentals,
 			minSliderPos: this.minSliderPos,
@@ -176,13 +187,14 @@ window.Sharebnb.Views.SearchResult = Backbone.View.extend({
 
 	updateCheckin: function(event){
 		event.preventDefault();
-		debugger
 		this.checkIn = $(event.target).serializeJSON().checkin
+		this.fetchRentals();
 	},
 
 	updateCheckout: function(event){
 		event.preventDefault();
 		this.checkOut = $(event.target).serializeJSON().checkout
+		this.fetchRentals();
 	},
 
 	updateGuests: function(event){

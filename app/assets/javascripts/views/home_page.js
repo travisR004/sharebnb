@@ -1,6 +1,6 @@
 window.Sharebnb.Views.HomePage = Backbone.View.extend({
 	initialize: function(){
-
+		this.listenTo(this, 'inDOM', this.focusSearch);
 	},
 
 	template: JST["home"],
@@ -9,6 +9,10 @@ window.Sharebnb.Views.HomePage = Backbone.View.extend({
 		"keypress #city": "stopSubmit",
 		"submit #travel-search": "executeSearch",
 		"place_changed #city": "getPlaceDetails"
+	},
+
+	focusSearch: function(){
+		$("#city").focus()
 	},
 
 	render: function(){
@@ -29,7 +33,6 @@ window.Sharebnb.Views.HomePage = Backbone.View.extend({
 			google.maps.event.addListener(this.autocomplete, 'place_changed', function() {
 			  that.getPlaceDetails();
 			});
-			searchInput.focus();
 		}
 		return this
 	},

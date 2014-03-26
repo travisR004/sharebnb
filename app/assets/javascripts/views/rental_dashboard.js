@@ -2,6 +2,7 @@ window.Sharebnb.Views.RentalDashboard = Backbone.View.extend({
 
 	initialize: function(){
 		this.listenTo(this.model, "all", this.render)
+		this.model.fetch();
 	},
 
 	template: JST["rental/dashboard"],
@@ -77,7 +78,7 @@ window.Sharebnb.Views.RentalDashboard = Backbone.View.extend({
 	},
 
 	render: function(){
-		var renderedContent = this.template({rental: this.model})
+		var renderedContent = this.template({rental: this.model, images: this.model.images()})
 		this.$el.html(renderedContent)
 		return this
 	}

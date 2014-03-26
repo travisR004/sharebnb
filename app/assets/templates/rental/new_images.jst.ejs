@@ -1,10 +1,31 @@
-<form id="new-image" name="image" data-remote="true" enctype="multipart/form-data">
-  <div class="field">
-    <label for="image-upload"> image:</label>
-    <input type="file" name="image[photo]" id="image-upload">
-  </div>
+<div class="col-md-12">
+	<h6> Drag and drop to sort your images </h6>
+	<form id="new-image" name="image" data-remote="true" enctype="multipart/form-data">
+	  <div class="field">
+	    <div class="btn btn-primary image-buttons" id="upload-image">
+				Add Another Image
+			</div>
+			<input type="file" name="image[photo]" id="image-upload">
+	  </div>
+	  <div class="btn btn-primary image-buttons" id="submit-images">
+			Upload Images
+		</div>
+	</form>
+	<h6>
+		<div id="image-titles">
+		</div>
+		</h6>
+</div>
 
-  <div class="actions">
-    <input type="submit" value="Create Image" />
-  </div>
-</form>
+<div class="image-sorter">
+<% images.forEach(function(image){ %>
+	<div
+		id="rank-image.escape("id")"
+		data-id="<%= image.escape("id") %>"
+		class="sort-image-holder"
+		data-rank="<%= image.escape("rank") %>"
+	>
+		<img src="<%= image.escape("photo_url_small") %>">
+	</div>
+<% }) %>
+</div>

@@ -87,41 +87,51 @@
     </p>
   </div>
 </div>
+<div col-md-6>
+	<h6> Add a listing to your shopping cart to easily compare before booking, or click book now if you've found your dream vacation spot!</h6>
+</div>
+	<div class="row rentals">
+		<% if(rentals){ %>
+			<% rentals.forEach(function(rental){ %>
+				<div class="col-md-6 search-container">
+					<div class="rental-search-item" data-id="<%= rental.id %>">
+				 		<div class="carousel slide search-result-carousel" data-ride="carousel">
+				 	 		<div class="carousel-inner">
+								<% var i = 0; %>
+								<% rental.images.forEach(function(image) { %>
+									<div class="item <%= i === 0 ? "active" : "" %>">
+										<img src="<%= image.photo_url %>">
+									</div>
+									<% i++ %>
+								<% }) %>
+				 			</div>
 
+							<div class="search-result">
+								<div class="search-item-header">
+									<h6 class="medium-font">
+										<%= rental.tagline %>
+									</h6>
 
-<% if(rentals){ %>
-	<div class="rentals">
-		<% rentals.forEach(function(rental){ %>
-			<div class="rental-search-item" data-id="<%= rental.id %>">
-			 	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-			 	 	<div class="carousel-inner">
-						<% var i = 0; %>
-						<% rental.images.forEach(function(image) { %>
-							<div class="item <%= i === 0 ? "active" : "" %>">
-								<img src="<%= image.photo_url %>">
-							</div>
-							<% i++ %>
-						<% }) %>
-			 		</div>
-
-					<div class="search-result">
-						<div class="search-item-header">
-							<h6 class="medium-font">
-								<button id="add-to-cart" class="btn btn-primary"><i class="fa fa-shopping-cart"></i></button>
-								<%= rental.tagline %>
-							</h6>
+								</div>
+							<div>
 						</div>
-					<div>
-				</div>
-				<div class="row">
-					<div class="col-md-6">
-						<div class="search-item-footer"><%= rental.rental_type + " / " + rental.room_type %></div>
-					</div>
-					<div class="col-md-6">
-						<div class="search-item-price"><%= "$" + rental.price + " per night"  %></div>
+						<div class="row">
+							<div class="col-md-12 search-item-footer">
+								<h6 class="align-left"><%= rental.rental_type + " / " + rental.room_type %></h6>
+								<button id="add-to-cart" class="btn btn-primary" data-rental-id="<%= rental.id %>"><i class="fa fa-shopping-cart"></i></button>
+								<button id="book-now" class="btn btn-primary book-now" data-id="<%= rental.id %>">Book Now </button>
+								<h6 class="align-left"><% if(checkOut && checkIn){ %>
+									Total:  $<%= Math.round(((new Date(checkOut)) - (new Date(checkIn))) * 1.1574 * Math.pow(10, -8)) * rental.price %>
+								<% } else {%>
+									$<%= rental.price %> / night
+									<% } %>
+								</h6>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
+		</div>
 		<% }) %>
-	</div>
-<% } %>
+	<% } %>
+</div>

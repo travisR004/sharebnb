@@ -1,0 +1,2 @@
+module FavoriteRentalsHelper
+end

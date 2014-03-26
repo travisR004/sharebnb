@@ -1,10 +1,22 @@
 <div class="row manage-rental-item">
 	<div class="col-md-6 slideshow-holder">
-	 	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+	 	<div id="rental-carousel<%= rental.escape("id") %>" class="carousel slide" data-ride="carousel">
 	 	 	<div class="carousel-inner">
-	 	  	<div class="item active">
-	 	    	<img src="https://a0.muscache.com/airbnb/static/landing_pages/home_v2/hero/488485-cb8055504a43a9fd3687392c58abe04b.jpg">
-	 	  	</div>
+			  <div class="carousel-inner" id="show-rental-carousel-inner">
+					<% var i = 0; %>
+					<% images.forEach(function(image) { %>
+						<div class="item <%= i === 0 ? "active" : "" %>">
+							<img src="<%= image.escape("photo_url") %>">
+						</div>
+						<% i++ %>
+					<% }) %>
+				  <a class="left carousel-control" href="#rental-carousel<%= rental.escape("id") %>" data-slide="prev">
+				    <span class="glyphicon glyphicon-chevron-left"></span>
+				  </a>
+				  <a class="right carousel-control" href="#rental-carousel<%= rental.escape("id") %>" data-slide="next">
+				    <span class="glyphicon glyphicon-chevron-right"></span>
+				  </a>
+			  </div>
 	 		</div>
 		</div>
 	</div>
@@ -37,6 +49,7 @@
 		</div>
 
 		<div class="photo-image">
+			<a href="#rentals/<%= rental.escape("id") %>/images/new">
 			<img
 				class="lazy"
 				data-original="https://a0.muscache.com/airbnb/static/page3/v3/room_default_no_photos-d0cb6d0b139f74166b1c6ea8b4225ef8.png"
@@ -45,6 +58,7 @@
 				src="https://a0.muscache.com/airbnb/static/page3/v3/room_default_no_photos-d0cb6d0b139f74166b1c6ea8b4225ef8.png"
 				style="display: inline;"
 			>
+			</a>
 		</div>
 
 		<div class="edit-detail" data-attr="<%= rental.escape("description") %>" data-type="description">

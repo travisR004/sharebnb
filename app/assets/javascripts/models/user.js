@@ -18,7 +18,31 @@ window.Sharebnb.Models.User = Backbone.Model.extend({
 			delete jsonResp.received_rental_requests;
 		}
 
+		if(jsonResp.favorites){
+			this.favorites().set(jsonResp.favorites)
+			delete jsonResp.favorites
+		}
+
+		if(jsonResp.favorite_rentals){
+			this.favoriteRentals().set(jsonResp.favorite_rentals)
+			delete jsonResp.favorite_rentals
+		}
+
 	  return jsonResp
+	},
+
+	favorites: function(){
+		if(!this._favorites){
+			this._favorites = new Sharebnb.Collections.Rentals();
+		}
+		return this._favorites;
+	},
+
+	favoriteRentals: function(){
+		if(!this._favoriteRentals){
+			this._favoriteRentals = new Sharebnb.Collections.FavoriteRentals()
+		}
+		return this._favoriteRentals
 	},
 
 	rentals: function(){

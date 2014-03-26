@@ -43,6 +43,10 @@ font-size: 12px;
 text-transform: uppercase;
 color: $light-gray;
 }
+.align-left{
+	text-align: left;
+	margin-bottom: 0px;
+}
 
 h7 {
 	font-size: 18px;
@@ -56,7 +60,6 @@ h7 {
 }
 .medium-font{
 	font-size: 16px;
-	color: black;
 }
 
 li {
@@ -227,7 +230,7 @@ color: black;
 }
 
 #booking-form {
-	border: solid 15px;
+	border: solid 1px $light-gray;
 	border-radius: 5px;
 	margin-top: 15px;
 }
@@ -292,28 +295,17 @@ text-align: center;
 .rental-search-item {
 	background: rgba(255, 255, 255, 0.9);
 	color: #6f6f6f;
-	border: solid 1px #6f6f6f;
+	border: solid 1px $light-gray;
 	border-radius: 5px;
-	width: 50%;
-	height: 225px;
 	float: left;
 	margin: 10px;
 	text-align: center;
 }
 
-.search-item-header {
-	font-size: 18px;
-	margin-bottom: 5px;
-	margin-top: 25px;
-	color: white;
-	text-align: left;
-}
-
-.search-item-footer, .search-item-price {
-	margin-top: 17px;
+.search-item-footer, .search-item-header, .search-item-price {
 	margin-left: 10px;
+	margin-right: 10px;
 	text-align: left;
-	vertical-align: center;
 }
 
 .navbar {
@@ -324,9 +316,19 @@ text-align: center;
 	float: right;
 }
 
-.search-result {
-	top: 100px;
-	position: absolute;
+#book-now{
+	float: right;
+	margin-right: 1px;
+}
+
+#add-to-cart{
+	float:right;
+	margin-right: 11px;
+	margin-bottom: 1px;
+}
+
+.rentals{
+	margin-top: 25px;
 }
 
 .dashboard {
@@ -560,7 +562,8 @@ cursor: pointer;
 }
 
 #cart {
-	margin-right: 10px;
+	margin-right: 15px;
+	cursor: pointer;
 }
 
 #ui-datepicker-div {
@@ -588,3 +591,23 @@ cursor: pointer;
 	border: solid 1px;
 	color: $light-gray;
 }
+
+.sort-image-holder {
+	float: left;
+	margin: 10px;
+	border: solid 1px;
+}
+
+#image-upload{
+	opacity: 0;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+
+.image-buttons{
+	float:left;
+	margin-right: 5px;
+	width: 200px;
+}
+
