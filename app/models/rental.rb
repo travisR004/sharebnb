@@ -26,6 +26,7 @@ class Rental < ActiveRecord::Base
 
   belongs_to :owner, class_name: "User"
   has_many :rental_requests
+  has_many :images
 
   def self.get_rentals_by_range(width, zoom, lat, long, min_price, max_price, room_types)
     radius = self.calculate_radius(width, zoom)

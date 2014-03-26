@@ -5,6 +5,7 @@ window.Sharebnb.Routers.AppRouter = Backbone.Router.extend({
 		"rentals/new": "newRental",
 		"request_response/:id": "requestResponse",
 		"rentals/:id": "showRental",
+		"rentals/:id/images/new": "newImages",
 		"search/:lat/:long/": "search"
 	},
 
@@ -16,6 +17,12 @@ window.Sharebnb.Routers.AppRouter = Backbone.Router.extend({
 	homePage: function(){
 		var homePageView = new Sharebnb.Views.HomePage();
 		this._swapView(homePageView);
+	},
+
+	newImages: function(id){
+		var rental = Sharebnb.Data.rentals.getOrFetch(id);
+		var newImageView = new Sharebnb.Views.NewRentalImage({model: rental});
+		this._swapView(newImageView)
 	},
 
 	requestResponse: function(id){

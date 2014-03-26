@@ -2,11 +2,11 @@
 
 $magenta: rgb(255,10,92);
 $light-blue: #2badf3;
-
+$light-gray: #959595;
 h1 {
 	text-align: center;
 //	color: #fff;
-color: black;
+color: $light-gray;
 //	text-shadow: 0 -1px 1px rgba(0,0,0,0.6);
 	font-size: 44px;
 	font-weight: bold;
@@ -19,11 +19,9 @@ h2 {
 }
 
 h3 {
-//	color: #fff;
-color: black;
-//	text-shadow: 0 -1px 1px rgba(0,0,0,0.6);
+  color: $light-gray;
 	font-size: 36px;
-	text-align: center;
+	text-align: left;
 }
 
 h3 > a {
@@ -43,7 +41,7 @@ h5{
 h6, h8 .h6 {
 font-size: 12px;
 text-transform: uppercase;
-color: #959595;
+color: $light-gray;
 }
 
 h7 {
@@ -55,6 +53,10 @@ h7 {
 
 .bigger-font {
 	font-size: 18px;
+}
+.medium-font{
+	font-size: 16px;
+	color: black;
 }
 
 li {
@@ -187,6 +189,12 @@ color: black;
 
 #rental-details {
 	margin: 0 auto;
+	margin-top: 25px;
+	padding: 10px;
+	max-width: 800px;
+	border: solid 2px;
+	color: $light-gray;
+	border-radius: 5px;
 }
 
 #thumbnail-slideshow {
@@ -219,8 +227,9 @@ color: black;
 }
 
 #booking-form {
-	border: solid 2px;
+	border: solid 15px;
 	border-radius: 5px;
+	margin-top: 15px;
 }
 
 .sign-in-form {
@@ -565,4 +574,17 @@ cursor: pointer;
 #made-request-messages, #cancel-request {
 	float: right;
 	margin-right: 5px;
+}
+
+#show-rental-carousel {
+	max-width: 800px;
+}
+
+#rental-show-row{
+	padding: 25px;
+}
+
+#show-rental-carousel-inner{
+	border: solid 1px;
+	color: $light-gray;
 }

@@ -1,0 +1,1 @@
+json.partial!("rentals/rental_range", rentals: @rentals)

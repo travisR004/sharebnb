@@ -9,7 +9,7 @@ class Api::RentalsController < ApplicationController
     max_price = params[:max_price].to_i
     room_types = params[:room_types]
     @rentals = Rental.get_rentals_by_range(width, zoom, lat, long, min_price, max_price, room_types);
-    render json: @rentals
+    render "rentals/results"
   end
 
   def create
@@ -17,14 +17,13 @@ class Api::RentalsController < ApplicationController
     if @rental.save
       render json: @rental
     else
-      flash.now[:errors] = @rental.errors.full_messages
-      render json: @rental, status: :unprocessable_entity
+      render json: @rental.errors.full_messages, status: :unprocessable_entity
     end
   end
 
   def show
     @rental = Rental.find(params[:id])
-    render json: @rental
+    render "rentals/show"
   end
 
   def update

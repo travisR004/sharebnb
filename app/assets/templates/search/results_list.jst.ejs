@@ -89,29 +89,27 @@
 </div>
 
 
-
 <% if(rentals){ %>
 	<div class="rentals">
 		<% rentals.forEach(function(rental){ %>
 			<div class="rental-search-item" data-id="<%= rental.id %>">
-
 			 	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 			 	 	<div class="carousel-inner">
-			 	  	<div class="item active">
-			 	    	<img src="https://a0.muscache.com/airbnb/static/landing_pages/home_v2/hero/488485-cb8055504a43a9fd3687392c58abe04b.jpg">
-			 	  	</div>
-
-			 			<div class="item">
-			 				<img src="https://a0.muscache.com/airbnb/static/landing_pages/home_v2/hero/264248-25b69a424e9d6033cd7b417cf8ad4deb.jpg">
-			 			</div>
+						<% var i = 0; %>
+						<% rental.images.forEach(function(image) { %>
+							<div class="item <%= i === 0 ? "active" : "" %>">
+								<img src="<%= image.photo_url %>">
+							</div>
+							<% i++ %>
+						<% }) %>
 			 		</div>
 
 					<div class="search-result">
 						<div class="search-item-header">
-							<h7>
+							<h6 class="medium-font">
 								<button id="add-to-cart" class="btn btn-primary"><i class="fa fa-shopping-cart"></i></button>
 								<%= rental.tagline %>
-							</h7>
+							</h6>
 						</div>
 					<div>
 				</div>

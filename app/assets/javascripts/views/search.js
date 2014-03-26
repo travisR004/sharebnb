@@ -141,7 +141,8 @@ window.Sharebnb.Views.SearchResult = Backbone.View.extend({
 	},
 
 	renderRentals: function(response){
-		this.rentals = response;
+		this.rentals = response.rentals;
+		debugger
 		var rentalContent = this.rentalsTemplate({
 			rentals: this.rentals,
 			minSliderPos: this.minSliderPos,

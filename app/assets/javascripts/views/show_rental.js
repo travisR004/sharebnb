@@ -2,6 +2,7 @@ window.Sharebnb.Views.ShowRental = Backbone.View.extend({
 
 	initialize: function(){
 		this.listenTo(this.model, "all", this.render);
+		this.listenTo(this.model.images(), "sync", this.render)
 	},
 
 	template: JST["rental/show"],
@@ -47,7 +48,7 @@ window.Sharebnb.Views.ShowRental = Backbone.View.extend({
 	},
 
 	render: function(){
-		var renderedContent = this.template({rental: this.model});
+		var renderedContent = this.template({rental: this.model, images: this.model.images()});
 		this.$el.html(renderedContent);
 		this.$el.find(".date").datepicker({
 			showOtherMonths: true,
