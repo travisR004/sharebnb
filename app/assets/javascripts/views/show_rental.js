@@ -33,11 +33,10 @@ window.Sharebnb.Views.ShowRental = Backbone.View.extend({
 			request.save({}, {
 				success: function(resp){
 					that.render();
-					$("#booking-form").append($("<p style='color: green;'> Your booking request has been sent!</p>"))
+					$(".errors").append($("<p style='color: green;'> Your booking request has been sent!</p>"))
 					that.submitMessage(rentalRequestData, request)
 				},
 				error: function(model, response){
-					debugger
 					response.responseJSON.forEach(function(response){
 						$(".errors").append(response)
 					})

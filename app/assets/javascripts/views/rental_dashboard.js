@@ -41,7 +41,6 @@ window.Sharebnb.Views.RentalDashboard = Backbone.View.extend({
 
 	handleFiles: function(event){
 		event.preventDefault();
-		debugger
 		var that = this;
 		var files = event.target.files;
 		for(var i = 0; i < files.length; i++){
@@ -81,7 +80,6 @@ window.Sharebnb.Views.RentalDashboard = Backbone.View.extend({
 		event.preventDefault();
 		var that = this;
 		var reader = new FileReader();
-		debugger
 		var imageData = $(event.target).parent().serializeJSON()
 		imageData.image.rental_id = this.model.id;
 		imageData.image.rank = this.model.images().length + 1
