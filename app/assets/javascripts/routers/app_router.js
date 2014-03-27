@@ -3,6 +3,7 @@ window.Sharebnb.Routers.AppRouter = Backbone.Router.extend({
 		"": "homePage",
 		"account": "showProfile",
 		"rentals/new": "newRental",
+		"favorite_rentals": "favoriteRentals",
 		"request_response/:id": "requestResponse",
 		"rentals/:id": "showRental",
 		"rentals/:id/images/new": "newImages",
@@ -12,6 +13,20 @@ window.Sharebnb.Routers.AppRouter = Backbone.Router.extend({
 	search: function(lat, long, data){
 		var searchPageView = new Sharebnb.Views.SearchResult({lat: lat, long: long, data: data});
 		this._swapView(searchPageView)
+	},
+
+	favoriteRentals: function(){
+		var router = this;
+		var users = new Sharebnb.Collections.Users();
+		var user = users.getOrFetch(currentUserId);
+		user.fetch({
+			success: function(){
+				var rentalFavorites = user.favoriteRentals();
+				rentalFavorites.forEach(function(rentalFavorite){rentalFavorite.fetch()})
+				var tripPlannerView = new Sharebnb.Views.TripPlanner({collection: rentalFavorites, user: user});
+				router._swapView(tripPlannerView);
+			}
+		})
 	},
 
 	homePage: function(){

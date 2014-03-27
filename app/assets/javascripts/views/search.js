@@ -165,6 +165,7 @@ window.Sharebnb.Views.SearchResult = Backbone.View.extend({
 		});
 		this.$el.find("#rental-results").html(rentalContent);
 		this.assignDatePicker();
+		this.startCarousel();
 	},
 
 	rentalsTemplate: JST["search/results_list"],
@@ -181,6 +182,13 @@ window.Sharebnb.Views.SearchResult = Backbone.View.extend({
 			})
 			that.markers.push(marker)
 		})
+	},
+
+	startCarousel: function(){
+    this.$el.find('[data-ride="carousel"]').each(function () {
+      var $carousel = $(this)
+      $carousel.carousel($carousel.data())
+    })
 	},
 
 	template: JST["search/search_results"],

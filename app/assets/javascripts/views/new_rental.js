@@ -18,6 +18,7 @@ window.Sharebnb.Views.NewRental = Backbone.View.extend({
 			  that.getPlaceDetails();
 			});
 		}
+		this.$el.find(".errors").empty();
 		return this
 	},
 
@@ -42,14 +43,23 @@ window.Sharebnb.Views.NewRental = Backbone.View.extend({
 		var rentalData = $(event.target).serializeJSON();
 		rentalData["rental"].lat = "" + this.lat;
 		rentalData["rental"].long = "" + this.long;
-		Sharebnb.Data.rentals.create(rentalData, {
-			success: function(response){
-				Backbone.history.navigate("rentals/" + response.id + "/images/new", {trigger: true})
-			},
-			error: function(model, response){
-				console.log(response)
-			}
-		})
+		if(!this.lat){
+			$(".errors").append("You must select a choose an address from the search results!")
+		} else {
+			Sharebnb.Data.rentals.create(rentalData, {
+				success: function(response){
+					Backbone.history.navigate("rentals/" + response.id + "/images/new", {trigger: true})
+				},
+				error: function(model, response){
+					response.responseJSON.forEach(function(response){
+						var check = response.split(" ")
+						if (check[check.length - 1] != "list"){
+							$(".errors").append("<p>- " + response + "</p>")
+						}
+					})
+				}
+			})
+		}
 	}
 
 })

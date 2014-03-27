@@ -28,7 +28,7 @@ class Api::RentalsController < ApplicationController
 
   def update
     @rental = Rental.find(params[:id])
-    if @rental.update_attributes(rental_params)
+    if @rental.update_attributes(rental_params) && @rental.user_id == current_user.id
       render json: @rental
     else
       render json: @rental.errors.full_messages, status: :unprocessable_entity
@@ -37,8 +37,12 @@ class Api::RentalsController < ApplicationController
 
   def destroy
     @rental = Rental.find(params[:id])
-    @rental.destroy
-    render json: @rental
+    if @rental.user_id == curent_user.id
+      @rental.destroy
+      render json: @rental
+    else
+      render json: {responseJSON: "You have no power here"}
+    end
   end
 
   private

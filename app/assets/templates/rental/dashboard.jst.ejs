@@ -1,7 +1,6 @@
 <div class="row manage-rental-item">
-	<div class="col-md-6 slideshow-holder">
+	<div class="col-md-6 slideshow-holder" id="slideshow-holder-<%= rental.escape("id") %>">
 	 	<div id="rental-carousel<%= rental.escape("id") %>" class="carousel slide" data-ride="carousel">
-	 	 	<div class="carousel-inner">
 			  <div class="carousel-inner" id="show-rental-carousel-inner">
 					<% var i = 0; %>
 					<% images.forEach(function(image) { %>
@@ -10,14 +9,13 @@
 						</div>
 						<% i++ %>
 					<% }) %>
-				  <a class="left carousel-control" href="#rental-carousel<%= rental.escape("id") %>" data-slide="prev">
-				    <span class="glyphicon glyphicon-chevron-left"></span>
-				  </a>
-				  <a class="right carousel-control" href="#rental-carousel<%= rental.escape("id") %>" data-slide="next">
-				    <span class="glyphicon glyphicon-chevron-right"></span>
-				  </a>
 			  </div>
-	 		</div>
+			  <a class="left carousel-control" href="#rental-carousel<%= rental.escape("id") %>" data-slide="prev">
+			    <span class="glyphicon glyphicon-chevron-left"></span>
+			  </a>
+			  <a class="right carousel-control" href="#rental-carousel<%= rental.escape("id") %>" data-slide="next">
+			    <span class="glyphicon glyphicon-chevron-right"></span>
+			  </a>
 		</div>
 	</div>
 

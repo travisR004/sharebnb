@@ -11,7 +11,7 @@ class Api::FavoriteRentalsController < ApplicationController
 
   def show
     @favorite_rental = Rental.find(params[:id])
-    render json: @favorite_rental
+    render "favorite_rentals"
   end
 
   def destroy

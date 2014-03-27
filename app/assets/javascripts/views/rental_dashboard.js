@@ -22,6 +22,13 @@ window.Sharebnb.Views.RentalDashboard = Backbone.View.extend({
 		"click .close-description": "showDescription"
 	},
 
+	startCarousel: function(){
+    this.$el.find('[data-ride="carousel"]').each(function () {
+      var $carousel = $(this)
+      $carousel.carousel($carousel.data())
+    })
+	},
+
 	showDescription: function(event){
 		event.preventDefault();
 		$("#description" + this.model.id).toggleClass("hidden")
@@ -80,6 +87,7 @@ window.Sharebnb.Views.RentalDashboard = Backbone.View.extend({
 	render: function(){
 		var renderedContent = this.template({rental: this.model, images: this.model.images()})
 		this.$el.html(renderedContent)
+		this.startCarousel()
 		return this
 	}
 })

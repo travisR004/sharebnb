@@ -141,6 +141,12 @@ color: black;
 	margin-right: 5px;
 }
 
+.errors{
+	color: red;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
 #city {
 	width: 250px;
 }
@@ -172,7 +178,7 @@ color: black;
 	width: 31%;
 	white-space: normal;
 	min-width: 75px;
-	min-height: 75px;
+	min-height: 50px;
 	padding: 15px;
 }
 
@@ -564,6 +570,7 @@ cursor: pointer;
 #cart {
 	margin-right: 15px;
 	cursor: pointer;
+	color: white;
 }
 
 #ui-datepicker-div {
