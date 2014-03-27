@@ -2,6 +2,7 @@ window.Sharebnb.Views.RentalDashboard = Backbone.View.extend({
 
 	initialize: function(){
 		this.listenTo(this.model, "all", this.render)
+		this.listenTo(this.model.images(), "add sync change", this.render)
 		this.model.fetch();
 	},
 
@@ -23,7 +24,14 @@ window.Sharebnb.Views.RentalDashboard = Backbone.View.extend({
 		"submit form": "addImage",
 		"click .submit-images": "addImage",
 		"click .upload-image": "openImager",
-		"change .image-upload": "handleFiles"
+		"change .image-upload": "handleFiles",
+		"click .photo-image": "showThumbnails"
+	},
+
+	showThumbnails: function(event){
+		event.preventDefault();
+		$("#thumbnails-" + this.model.id).toggleClass("hidden");
+		$("#rental-carousel" + this.model.id).toggleClass("hidden");
 	},
 
 	openImager: function(event){
@@ -149,9 +157,10 @@ window.Sharebnb.Views.RentalDashboard = Backbone.View.extend({
 	},
 
 	render: function(){
-		var renderedContent = this.template({rental: this.model, images: this.model.images()})
-		this.$el.html(renderedContent)
-		this.startCarousel()
+		var renderedContent = this.template({rental: this.model, images: this.model.images()});
+		this.$el.html(renderedContent);
+		this.startCarousel();
+		this.makeSortable();
 		return this
 	}
 })
