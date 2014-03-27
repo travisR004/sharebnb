@@ -1,5 +1,5 @@
 class Api::RentalRequestsController < ApplicationController
-
+  before_action :get_rental_request, only: [:approve, :show, :deny, :update, :destroy]
   def create
     @rental_request = current_user.made_rental_requests.new(rental_request_params)
     @rental_request.start_date = DateTime.strptime(rental_request_params[:start_date], "%m/%d/%Y")
@@ -12,9 +12,13 @@ class Api::RentalRequestsController < ApplicationController
   end
 
   def approve
-    @rental_request = RentalRequest.find(params[:id])
-    @rental_request.approve!
-    render json: @rental_request
+    owner_id = Rental.find(@rental_request.rental_id).owner.id
+    if owner_id == current_user.id
+      @rental_request.approve!
+      render json: @rental_request
+    else
+      render json: {responseJSON: "You have no power here"}
+    end
   end
 
   def show
@@ -23,13 +27,33 @@ class Api::RentalRequestsController < ApplicationController
   end
 
   def deny
-    @rental_request = RentalRequest.find(params[:id])
-    @rental_request.deny!
-    render json: @rental_request
+    owner_id = Rental.find(@rental_request.rental_id).owner.id
+    if owner_id == current_user.id
+      @rental_request.deny!
+      render json: @rental_request
+    else
+      render json: {responseJSON: "You have no power here"}
+    end
+  end
+
+  def update
+    @rental_request = RentalRequest.find
+  end
+  def destroy
+    if @rental_request.user_id == current_user.id
+      @rental_request.destroy
+      render json: @rental_request
+    else
+      render json: {responseJSON: "You have no power here"}
+    end
   end
 
   private
   def rental_request_params
     params.require(:rental_request).permit(:start_date, :end_date, :rental_id, :guests)
+  end
+
+  def get_rental_request
+    @rental_request = RentalRequest.find(params[:id])
   end
 end

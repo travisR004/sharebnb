@@ -9,19 +9,19 @@
 				<label class="control-label rental-type">Rental Type
 					<div class="btn-group">
 						<input id="apartment" class="rental-radio" type="radio" name="rental[rental_type]" value="Apartment">
-						<label for="apartment" class="btn btn-primary r-selector rental first-button">
+						<label for="apartment" class="btn btn-primary r-selector rental first-button <%= rental.escape("rental_type") === "Apartment" ? "selected" : "" %>">
 						   <i class="fa fa-building-o fa-2x"></i>
 						   <span3>APT</span3>
 						</label>
 
 						<input id="home" class="rental-radio" type="radio" name="rental[rental_type]" value="Home">
-						<label for="home" class="btn btn-primary r-selector rental">
+						<label for="home" class="btn btn-primary r-selector rental <%= rental.escape("rental_type") === "Home" ? "selected" : "" %>">
 							<i class="fa fa-home fa-2x"></i>
 							<span3>Home</span>
 						</label>
 
 						<input id="bnb" class="rental-radio" type="radio" name="rental[rental_type]" value="Bed and Breakfast">
-						<label for="bnb" class="btn btn-primary r-selector rental">
+						<label for="bnb" class="btn btn-primary r-selector rental <%= rental.escape("rental_type") === "Bed and Breakfast" ? "selected" : "" %>">
 							<i class="fa fa-coffee fa-2x"></i>
 							<span3>BnB</span>
 						</label>
@@ -33,19 +33,19 @@
 				<label class="control-label rental-type">Room Type
 					<div class="btn-group">
 						<input id="whole-home" class="rental-radio" type="radio" name="rental[room_type]" value="Whole Home/Apt">
-						<label for="whole-home" class="btn btn-primary r-selector room first-button">
+						<label for="whole-home" class="btn btn-primary r-selector room first-button <%= rental.escape("room_type") === "Whole Home/Apt" ? "selected" : "" %>">
 						   <i class="fa fa-home fa-2x"></i>
 						   <span3>Whole Home</span3>
 						</label>
 
 						<input id="private-room" class="rental-radio" type="radio" name="rental[room_type]" value="Private Room">
-						<label for="private-room" class="btn btn-primary r-selector room">
+						<label for="private-room" class="btn btn-primary r-selector room <%= rental.escape("room_type") === "Private" ? "selected" : "" %>">
 							<i class="fa fa-key fa-2x"></i>
 							<span3>Private Room</span>
 						</label>
 
 						<input id="shared-room" class="rental-radio" type="radio" name="rental[room_type]" value="Shared Room">
-						<label for="shared-room" class="btn btn-primary r-selector room">
+						<label for="shared-room" class="btn btn-primary r-selector room <%= rental.escape("rental_type") === "Shared Room" ? "selected" : "" %>" >
 							<i class="fa fa-suitcase fa-2x"></i>
 							<span3>Shared Room</span>
 						</label>

@@ -4,6 +4,8 @@ window.Sharebnb.Views.Profile = Backbone.CompositeView.extend({
 		this.listenTo(this.model.rentals(), "add", this.addRental);
 		this.listenTo(this.model.receivedRequests(), "add", this.addReceivedRequest);
 		this.listenTo(this.model.madeRequests(), "add", this.addMadeRequest);
+		this.listenTo(this.model.rentals(), "remove", this.removeRental);
+		this.listenTo(this.model.madeRequests(), "remove", this.removeMadeRequest)
 
 		// this.refreshCollections()
 	},
@@ -50,6 +52,23 @@ window.Sharebnb.Views.Profile = Backbone.CompositeView.extend({
 		this.model.rentals().each(this.addRental.bind(this))
 		this.model.receivedRequests().each(this.addReceivedRequest.bind(this))
 		this.model.madeRequests().each(this.addMadeRequest.bind(this))
+	},
+
+	removeMadeRequest: function(madeRequest){
+		var profileView = this;
+		var madeRequestView = _(this.subviews()['.manage-trips']).find(function(subview){
+			return subview.model == madeRequest
+		});
+		this.removeSubview(".manage-trips", madeRequestView)
+
+	},
+
+	removeRental: function(rental){
+		var profileView = this;
+		var rentalDashboardView = _(this.subviews()['.rentals']).find(function(subview){
+			return subview.model == rental
+		});
+		this.removeSubview(".rentals", rentalDashboardView)
 	},
 
 	render: function(){

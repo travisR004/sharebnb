@@ -43,6 +43,7 @@ window.Sharebnb.Views.RentalDashboard = Backbone.View.extend({
 	deleteRental: function(event){
 		event.preventDefault();
 		this.model.destroy();
+		this.render()
 	},
 
 	updateRental: function(){
