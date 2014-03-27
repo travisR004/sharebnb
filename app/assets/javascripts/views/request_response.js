@@ -32,6 +32,7 @@ window.Sharebnb.Views.RequestResponse = Backbone.View.extend({
 	},
 
 	toggleMessageComposer: function(event){
+		$("#errors-" + this.model.id).empty()
 		$("#open-response-message-" + this.model.id).toggle();
 		$("#message-form" + this.model.id).toggle("slow")
 	},
@@ -42,10 +43,18 @@ window.Sharebnb.Views.RequestResponse = Backbone.View.extend({
 		var messageData = $(event.target).serializeJSON();
 		messageData.message.rental_request_id = this.model.id;
 		messageData.message.receiver_id = this.model.escape("user_id");
-		$("made-request-message-modal" + that.model.id).modal("show");
-		$('.modal-backdrop').remove();
-		this.openModal = true;
-		this.model.messages().create(messageData);
+		this.model.messages().create(messageData, {
+			success: function(response) {
+				$("made-request-message-modal" + that.model.id).modal("show");
+				$('.modal-backdrop').remove();
+				that.openModal = true;
+			},
+			error: function(model, response){
+				response.responseJSON.forEach(function(response){
+					$("#errors-" + that.model.id).append(response)
+				});
+			}
+		});
 	},
 
 	approveRequest: function(event){

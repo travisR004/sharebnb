@@ -29,13 +29,14 @@
         <h4 class="modal-title" id="myModalLabel"></h4>
       </div>
       <div class="modal-body">
+				<div class="errors" id="errors-<%= request.escape("id") %>"></div>
 				<% messages.forEach(function(message){ %>
 					<div class="message-holder">
 						<% var style = currentUserId === message.get("sender_id") ? "normal" : "bold" %>
 		        <p style="font-weight: <%= style %>"><%= requestor.escape("email") %>:  <%= message.escape("content") %> </p>
 					</div>
 				<% }) %>
-				<button class="btn btn-primary open-response-message" id="open-response-message-<%= requst.escape("id") %>">
+				<button class="btn btn-primary open-response-message" id="open-response-message-<%= request.escape("id") %>">
 					<span class="glyphicon glyphicon-pencil" style="top: 0px">Compose</span>
 				</button>
 				<form class="message-form" id="message-form<%= request.escape("id") %>">

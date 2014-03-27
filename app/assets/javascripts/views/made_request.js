@@ -33,9 +33,18 @@ window.Sharebnb.Views.MadeRequest = Backbone.View.extend({
 		var receiver_id = Sharebnb.Data.rentals.get(this.model.get("rental_id")).get("owner_id");
 		messageData.message.receiver_id = receiver_id;
 		$("made-request-message-modal" + that.model.id).modal("show");
-		$('.modal-backdrop').remove();
-		this.openModal = true;
-		this.model.messages().create(messageData);
+
+		this.model.messages().create(messageData,{
+			success: function(response){
+				$('.modal-backdrop').remove();
+				this.openModal = true;
+			},
+			error: function(model, response){
+				response.responseJSON.forEach(function(response){
+					$("#errors-" + that.model.id).append(response)
+				});
+			}
+		});
 	},
 
 	render: function(){

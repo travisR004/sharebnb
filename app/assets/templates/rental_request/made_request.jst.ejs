@@ -35,6 +35,7 @@
         <h4 class="modal-title" id="myModalLabel"> Messages </h4>
       </div>
       <div class="modal-body">
+				<div class="errors" id="errors-<%= request.escape("id") %>"></div>
 				<% messages.forEach(function(message){ %>
 					<div class="message-holder">
 						<% var style = currentUserId === message.get("sender_id") ? "normal" : "bold" %>

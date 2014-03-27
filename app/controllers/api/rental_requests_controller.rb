@@ -4,7 +4,10 @@ class Api::RentalRequestsController < ApplicationController
     @rental_request = current_user.made_rental_requests.new(rental_request_params)
     @rental_request.start_date = DateTime.strptime(rental_request_params[:start_date], "%m/%d/%Y")
     @rental_request.end_date = DateTime.strptime(rental_request_params[:end_date], "%m/%d/%Y")
-    if @rental_request.save
+    owner_id = Rental.find(@rental_request.rental_id).owner_id
+    if(owner_id == current_user.id)
+      render json: {resonseJSON: ["Can't send request to yourself"]}
+    elsif @rental_request.save
       render json: @rental_request
     else
       render json: @rental_request.errors, status: :unprocessable_entity
@@ -17,7 +20,7 @@ class Api::RentalRequestsController < ApplicationController
       @rental_request.approve!
       render json: @rental_request
     else
-      render json: {responseJSON: "You have no power here"}
+      render json: {responseJSON: ["You have no power here"]}
     end
   end
 
@@ -32,7 +35,7 @@ class Api::RentalRequestsController < ApplicationController
       @rental_request.deny!
       render json: @rental_request
     else
-      render json: {responseJSON: "You have no power here"}
+      render json: {responseJSON: ["You have no power here"]}
     end
   end
 
@@ -44,7 +47,7 @@ class Api::RentalRequestsController < ApplicationController
       @rental_request.destroy
       render json: @rental_request
     else
-      render json: {responseJSON: "You have no power here"}
+      render json: {responseJSON: ["You have no power here"]}
     end
   end
 
