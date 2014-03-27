@@ -9,6 +9,7 @@
 #  created_at        :datetime
 #  updated_at        :datetime
 #  rental_request_id :integer
+#  read              :boolean          default(FALSE)
 #
 
 class Message < ActiveRecord::Base

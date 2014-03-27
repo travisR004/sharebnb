@@ -9,13 +9,22 @@
 		<h6 class="bigger-font"> Status: <%= request.escape("status") %></h6>
 	</div>
 	<div class="col-md-6" id="request-buttons">
+		<% var unreadMessages = false %>
+		<% var numUnreadMessages = 0 %>
+		<% messages.forEach(function(message){ %>
+			<% if(!message.get("read") && message.get("sender_id") != currentUserId){%>
+				<% unreadMessages = true %>
+				<% numUnreadMessages ++ %>
+			<% } %>
+		<% }) %>
+
 		<button class="btn btn-primary" id="cancel-request">Cancel Request</button>
-		<button class="btn btn-primary"
+		<button class="btn btn-primary <%= unreadMessages ? "selected" : "" %>"
 			id="made-request-messages"
 			data-toggle="modal"
 			data-target="#made-request-message-modal<%= request.escape("id") %>"
 		>
-			Messages
+			<%= unreadMessages ? "New Messages! (" + numUnreadMessages + ")" : "View Messages" %>
 		</button>
 	</div>
 </div>
@@ -39,7 +48,7 @@
 				<% messages.forEach(function(message){ %>
 					<div class="message-holder">
 						<% var style = currentUserId === message.get("sender_id") ? "normal" : "bold" %>
-		        <p><%= email %>: <%= message.escape("content") %><p>
+		        <p style="font-weight: <%= style %>"><%= (currentUserId === message.get("sender_id")) ? "Me" : email %>: <%= message.escape("content") %><p>
 					</div>
 				<% }) %>
 				<button class="btn btn-primary open-compose-message" id="open-compose-message-<%= request.escape("id") %>">

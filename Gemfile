@@ -12,6 +12,7 @@ gem 'serialize_json-rails'
 gem 'jquery-ui-rails'
 gem 'figaro'
 gem 'paperclip'
+gem 'thin'
 gem 'bcrypt-ruby', require: 'bcrypt'
 
 # Use SCSS for stylesheets

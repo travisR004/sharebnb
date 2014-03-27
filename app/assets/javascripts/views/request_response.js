@@ -11,11 +11,7 @@ window.Sharebnb.Views.RequestResponse = Backbone.View.extend({
 	template: JST["rental_request/response"],
 
 	render: function(){
-		var renderedContent = this.template({request: this.model,
-																				 requestor: this.requestor,
-																				 rental: this.rental,
-																				 messages:this.model.messages()
-																			 });
+		var renderedContent = this.template({request: this.model, requestor: this.requestor, rental: this.rental, messages:this.model.messages() });
 		this.$el.html(renderedContent);
 		if(this.openModal){
 			this.$el.find("#messages").click()
@@ -28,7 +24,22 @@ window.Sharebnb.Views.RequestResponse = Backbone.View.extend({
 		"click #request-deny": "denyRequest",
 		"click .open-response-message": "toggleMessageComposer",
 		"submit .message-form": "createMessage",
-		"click .close": "toggleMessageComposer"
+		"click .close": "toggleMessageComposer",
+		"click #messages": "markMessagesAsRead"
+	},
+
+	markMessagesAsRead: function(){
+		var that = this
+		this.model.messages().forEach(function(message){
+			if(!message.get("read") && message.get("sender_id") != currentUserId){
+				message.save({read: true},{
+					success: function(response){
+						$('.modal-backdrop').remove();
+						that.openModal = true;
+					}
+				})
+			}
+		})
 	},
 
 	toggleMessageComposer: function(event){

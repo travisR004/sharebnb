@@ -9,12 +9,20 @@
 	<div class="col-md-6">
 		<h6 class="bigger-font"> Guests: <%= request.escape("guests") %></h6>
 		<h6 class="bigger-font"> Status: <%= request.escape("status") %></h6>
+		<% var unreadMessages = false %>
+		<% var numUnreadMessages = 0 %>
+		<% messages.forEach(function(message){ %>
+			<% if(!message.get("read") && message.get("sender_id") != currentUserId){%>
+				<% unreadMessages = true %>
+				<% numUnreadMessages ++ %>
+			<% } %>
+		<% }) %>
 		<button id="messages"
-			class="btn
-			btn-primary"
+			class="btn btn-primary <%= unreadMessages ? "selected" : "" %>"
 			data-toggle="modal"
-			data-target="#message-modal<%= request.escape("id") %>">
-			Messages
+			data-target="#message-modal<%= request.escape("id") %>"
+		>
+			<%= unreadMessages ? "New Messages! (" + numUnreadMessages + ")" : "View Messages" %>
 		</button>
 		<button class="btn btn-primary" id="request-accept">Accept Request</button>
 		<button class="btn btn-danger" id="request-deny">Deny Request</button>
@@ -33,7 +41,9 @@
 				<% messages.forEach(function(message){ %>
 					<div class="message-holder">
 						<% var style = currentUserId === message.get("sender_id") ? "normal" : "bold" %>
-		        <p style="font-weight: <%= style %>"><%= requestor.escape("email") %>:  <%= message.escape("content") %> </p>
+		        <p style="font-weight: <%= style %>">
+							<%= (currentUserId === message.get("sender_id")) ? "Me" : requestor.escape("email") %>: <%= message.escape("content") %>
+						</p>
 					</div>
 				<% }) %>
 				<button class="btn btn-primary open-response-message" id="open-response-message-<%= request.escape("id") %>">

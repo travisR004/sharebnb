@@ -46,8 +46,13 @@ window.Sharebnb.Views.HomePage = Backbone.View.extend({
 
 	executeSearch: function(event){
 		event.preventDefault();
-		Sharebnb.Data.searchParams = $(event.target).serializeJSON()["location"]
-		Backbone.history.navigate("search/" + this.lat + "/" + this.long + "/", {trigger: true})
+		if(!this.lat){
+			$(".errors").append("Please select a location!")
+			$("#city").focus()
+		} else {
+			Sharebnb.Data.searchParams = $(event.target).serializeJSON()["location"]
+			Backbone.history.navigate("search/" + this.lat + "/" + this.long + "/", {trigger: true})
+		}
 	},
 
 	getPlaceDetails: function(){

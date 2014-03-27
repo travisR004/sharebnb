@@ -57,7 +57,7 @@ window.Sharebnb.Views.RentalDashboard = Backbone.View.extend({
 
 	makeSortable: function(){
 		var rentalView = this;
-		$(".image-sorter").sortable({
+		$("#image-sorter-" + this.model.id).sortable({
 			update: function(event, ui, list){
 				var prevRank = ui.item.prev().data("rank");
 				var nextRank = ui.item.next().data("rank");

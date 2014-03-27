@@ -11,10 +11,27 @@ window.Sharebnb.Views.MadeRequest = Backbone.View.extend({
 	events: {
 		"click .open-compose-message": "toggleMessageComposer",
 		"submit .message-form": "createMessage",
-		"click .close": "toggleMessageComposer"
+		"click .close": "toggleMessageComposer",
+		"click #made-request-messages": "markMessagesAsRead"
+	},
+
+	markMessagesAsRead: function(event){
+		event.preventDefault();
+		var that = this;
+		this.model.messages().forEach(function(message){
+			if(!message.get("read") && message.get("sender_id") != currentUserId){
+				message.save({read: true},{
+					success: function(response){
+						$('.modal-backdrop').remove();
+						that.openModal = true;
+					}
+				})
+			}
+		})
 	},
 
 	toggleMessageComposer: function(event){
+		$("#errors-" + this.model.id).empty()
 		$("#open-compose-message-" + this.model.id).toggle();
 		$("#request-message-form" + this.model.id).toggle("slow")
 	},
@@ -37,7 +54,7 @@ window.Sharebnb.Views.MadeRequest = Backbone.View.extend({
 		this.model.messages().create(messageData,{
 			success: function(response){
 				$('.modal-backdrop').remove();
-				this.openModal = true;
+				that.openModal = true;
 			},
 			error: function(model, response){
 				response.responseJSON.forEach(function(response){

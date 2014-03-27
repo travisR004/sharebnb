@@ -33,6 +33,10 @@ a:hover, a:focus {
     text-decoration: underline;
 }
 
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+background-color: $light-blue;
+}
+
 h5{
 	color: black;
 	font-size: 30px;
