@@ -37,10 +37,11 @@
       <div class="modal-body">
 				<% messages.forEach(function(message){ %>
 					<div class="message-holder">
-		        <p><%= message.escape("content") %><p>
+						<% var style = currentUserId === message.get("sender_id") ? "normal" : "bold" %>
+		        <p><%= email %>: <%= message.escape("content") %><p>
 					</div>
 				<% }) %>
-				<button class="btn btn-primary" id="open-compose-message">
+				<button class="btn btn-primary open-compose-message" id="open-compose-message-<%= request.escape("id") %>">
 					<span class="glyphicon glyphicon-pencil" style="top: 0px">Compose</span>
 				</button>
 				<form class="message-form" id="request-message-form<%= request.escape("id") %>">

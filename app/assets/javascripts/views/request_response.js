@@ -26,13 +26,13 @@ window.Sharebnb.Views.RequestResponse = Backbone.View.extend({
 	events: {
 		"click #request-accept": "approveRequest",
 		"click #request-deny": "denyRequest",
-		"click #open-response-message": "toggleMessageComposer",
-		"submit .message-form": "createMessage"
+		"click .open-response-message": "toggleMessageComposer",
+		"submit .message-form": "createMessage",
+		"click .close": "toggleMessageComposer"
 	},
 
 	toggleMessageComposer: function(event){
-		event.preventDefault();
-		$("#open-response-message").toggle();
+		$("#open-response-message-" + this.model.id).toggle();
 		$("#message-form" + this.model.id).toggle("slow")
 	},
 
