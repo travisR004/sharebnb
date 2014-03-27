@@ -1,22 +1,32 @@
 <div class="row manage-rental-item">
 	<div class="col-md-6 slideshow-holder" id="slideshow-holder-<%= rental.escape("id") %>">
-	 	<div id="rental-carousel<%= rental.escape("id") %>" class="carousel slide" data-ride="carousel">
-			  <div class="carousel-inner" id="show-rental-carousel-inner">
-					<% var i = 0; %>
-					<% images.forEach(function(image) { %>
-						<div class="item <%= i === 0 ? "active" : "" %>">
-							<img src="<%= image.escape("photo_url") %>">
-						</div>
-						<% i++ %>
-					<% }) %>
-			  </div>
-			  <a class="left carousel-control" href="#rental-carousel<%= rental.escape("id") %>" data-slide="prev">
-			    <span class="glyphicon glyphicon-chevron-left"></span>
-			  </a>
-			  <a class="right carousel-control" href="#rental-carousel<%= rental.escape("id") %>" data-slide="next">
-			    <span class="glyphicon glyphicon-chevron-right"></span>
-			  </a>
+
+		<% var noImages = images.length === 0 ? true : false %>
+
+		<div class="thumbnails <%= noImages ? "" : "hidden" %>">
+			<%= JST["rental/new_images"]({images: images, rental: rental}) %>
+			<button id="close-image-loader-<%= rental.escape("id") %>" class="btn btn-primary"> Close Thumbnails </button>
 		</div>
+
+		<% if(!noImages){ %>
+		 	<div id="rental-carousel<%= rental.escape("id") %>" class="carousel slide" data-ride="carousel">
+				  <div class="carousel-inner" id="show-rental-carousel-inner">
+						<% var i = 0; %>
+						<% images.forEach(function(image) { %>
+							<div class="item <%= i === 0 ? "active" : "" %>">
+								<img src="<%= image.escape("photo_url") %>">
+							</div>
+							<% i++ %>
+						<% }) %>
+				  </div>
+				  <a class="left carousel-control" href="#rental-carousel<%= rental.escape("id") %>" data-slide="prev">
+				    <span class="glyphicon glyphicon-chevron-left"></span>
+				  </a>
+				  <a class="right carousel-control" href="#rental-carousel<%= rental.escape("id") %>" data-slide="next">
+				    <span class="glyphicon glyphicon-chevron-right"></span>
+				  </a>
+			</div>
+		<% } %>
 	</div>
 
 	<div class="col-md-6 rental-details" data-rental-id="<%= rental.escape("id") %>" id="rental<%= rental.get("id") %>">
@@ -46,8 +56,7 @@
 			<p>Price: <%= rental.escape("price") %></p>
 		</div>
 
-		<div class="photo-image">
-			<a href="#rentals/<%= rental.escape("id") %>/images/new">
+		<div class="photo-image" id="photo-image-<%= rental.escape("id") %>">
 			<img
 				class="lazy"
 				data-original="https://a0.muscache.com/airbnb/static/page3/v3/room_default_no_photos-d0cb6d0b139f74166b1c6ea8b4225ef8.png"
@@ -56,7 +65,6 @@
 				src="https://a0.muscache.com/airbnb/static/page3/v3/room_default_no_photos-d0cb6d0b139f74166b1c6ea8b4225ef8.png"
 				style="display: inline;"
 			>
-			</a>
 		</div>
 
 		<div class="edit-detail" data-attr="<%= rental.escape("description") %>" data-type="description">

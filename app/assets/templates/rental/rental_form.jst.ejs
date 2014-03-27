@@ -58,7 +58,7 @@
 				<label class="control-label">Apt or Unit
 					<div class="input-group">
 						<span class="input-group-addon glyphicon glyphicon-home" style="top: 0px"></span>
-						<input type="text" class="form-control rental-form" value="<%= rental.escape("unit")  %>" name="rental[unit]">
+						<input type="text" placeholder="#" class="form-control rental-form" value="<%= rental.escape("unit")  %>" name="rental[unit]">
 					</div>
 				</label>
 			</div>
@@ -76,7 +76,7 @@
 				<label class="control-label">Allowed Guests
 					<div class="input-group">
 						<span class="input-group-addon glyphicon glyphicon-user" style="top: 0px"></span>
-						<input type="text" class="form-control rental-form" value="<%= rental.escape("allowed_guests")  %>" name="rental[allowed_guests]">
+						<input type="text" placeholder="Maximum number of guests who can stay" class="form-control rental-form" value="<%= rental.escape("allowed_guests")  %>" name="rental[allowed_guests]">
 					</div>
 				</label>
 			</div>
@@ -85,7 +85,7 @@
 				<label class="control-label">Tag Line
 					<div class="input-group">
 						<span class="input-group-addon glyphicon glyphicon-tag" style="top: 0px"></span>
-						<input type="text" class="form-control rental-form" value="<%= rental.escape("tagline")  %>" name="rental[tagline]">
+						<input type="text" placeholder="Describe your place in 120 characters or less!" class="form-control rental-form" value="<%= rental.escape("tagline")  %>" name="rental[tagline]">
 					</div>
 				</label>
 			</div>
@@ -94,14 +94,14 @@
 				<label class="control-label">Price
 					<div class="input-group">
 						<span class="input-group-addon glyphicon glyphicon-usd" style="top: 0px"></span>
-						<input type="text" class="form-control rental-form" value="<%= rental.escape("price")  %>" name="rental[price]">
+						<input type="text" placeholder="Cost per night" class="form-control rental-form" value="<%= rental.escape("price")  %>" name="rental[price]">
 					</div>
 				</label>
 			</div>
 
 			<div class="form-group">
 				<label id="description" class="control-label">Description
-					<textarea class="form-control rental-form" name=rental[description]><%= rental.escape("description") %></textarea>
+					<textarea placeholder="Give us more details about your place!" class="form-control rental-form" name=rental[description]><%= rental.escape("description") %></textarea>
 				</label>
 			</div>
 

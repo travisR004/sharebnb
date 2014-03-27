@@ -19,7 +19,70 @@ window.Sharebnb.Views.RentalDashboard = Backbone.View.extend({
 		"click #show-rental": "showRental",
 		"click #submit-update": "updateRental",
 		"click .show-description": "showDescription",
-		"click .close-description": "showDescription"
+		"click .close-description": "showDescription",
+		"submit form": "addImage",
+		"click .submit-images": "addImage",
+		"click .upload-image": "openImager",
+		"change .image-upload": "handleFiles"
+	},
+
+	openImager: function(event){
+		event.preventDefault();
+		$("#image-upload-" + this.model.id).click();
+	},
+
+	handleFiles: function(event){
+		event.preventDefault();
+		debugger
+		var that = this;
+		var files = event.target.files;
+		for(var i = 0; i < files.length; i++){
+			var reader = new FileReader();
+			reader.onload = function(ev){
+				var $input = $('<input type="hidden" name="image[photo][]">')
+				$input.val(ev.target.result);
+				$("#new-image-" + that.model.id).append($input)
+			}
+			reader.readAsDataURL(files[i]);
+		}
+		$("#image-titles-" + this.model.id).append(files[files.length - 1].name + " / ")
+	},
+
+	makeSortable: function(){
+		var rentalView = this;
+		$(".image-sorter").sortable({
+			update: function(event, ui, list){
+				var prevRank = ui.item.prev().data("rank");
+				var nextRank = ui.item.next().data("rank");
+
+				if( prevRank && nextRank){
+					var avgRank = (prevRank + nextRank) / 2
+				} else if( prevRank ){
+					var avgRank = prevRank + 1
+				} else {
+					var avgRank = nextRank / 2
+				}
+
+				var image = rentalView.model.images().getOrFetch(ui.item.data("id"));
+				image.save({rank: avgRank})
+			}
+		});
+	},
+
+	addImage: function(event){
+		event.preventDefault();
+		var that = this;
+		var reader = new FileReader();
+		debugger
+		var imageData = $(event.target).parent().serializeJSON()
+		imageData.image.rental_id = this.model.id;
+		imageData.image.rank = this.model.images().length + 1
+		this.model.images().create(imageData, {
+			wait: true,
+			success: function(response){
+				that.model.fetch()
+			}
+		})
 	},
 
 	startCarousel: function(){

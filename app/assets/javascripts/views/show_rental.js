@@ -37,6 +37,7 @@ window.Sharebnb.Views.ShowRental = Backbone.View.extend({
 					that.submitMessage(rentalRequestData, request)
 				},
 				error: function(model, response){
+					debugger
 					response.responseJSON.forEach(function(response){
 						$(".errors").append(response)
 					})

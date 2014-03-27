@@ -41,7 +41,7 @@ class Api::RentalsController < ApplicationController
       @rental.destroy
       render json: @rental
     else
-      render json: {responseJSON: "You have no power here"}
+      render json: ["You have no power here"]
     end
   end
 

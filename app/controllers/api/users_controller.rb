@@ -19,9 +19,7 @@ class Api::UsersController < ApplicationController
     @user = User.find(params[:id])
     render json: @user.to_json(include: [:made_rental_requests,
                                          :received_rental_requests,
-                                         :rentals,
-                                         :favorites,
-                                         :favorite_rentals
+                                         :rentals
                                         ])
   end
 

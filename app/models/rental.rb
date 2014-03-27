@@ -23,6 +23,7 @@ class Rental < ActiveRecord::Base
             :rental_type, :room_type, :allowed_guests, :owner, presence: true
   validates :rental_type, inclusion: { in: ["Apartment", "Home", "Bed and Breakfast"]}
   validates :room_type, inclusion: {in: ["Whole Home/Apt", "Private Room", "Shared Room"]}
+  validates :tagline, length: {maximum: 120}
 
   belongs_to :owner, class_name: "User"
   has_many :rental_requests

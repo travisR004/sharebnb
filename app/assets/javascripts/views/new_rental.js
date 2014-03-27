@@ -5,7 +5,8 @@ window.Sharebnb.Views.NewRental = Backbone.View.extend({
 	events: {
 		"submit #rental-form": "createRental",
 		"click .rental": "changeRentalActive",
-		"click .room": "changeRoomActive"
+		"click .room": "changeRoomActive",
+		"keypress #address": "stopSubmit"
 	},
 
 	render: function(){
@@ -59,6 +60,12 @@ window.Sharebnb.Views.NewRental = Backbone.View.extend({
 					})
 				}
 			})
+		}
+	},
+	stopSubmit: function(event){
+		if(event.which === 13){
+			event.preventDefault();
+			event.stopPropagation();
 		}
 	}
 
