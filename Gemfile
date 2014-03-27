@@ -13,6 +13,7 @@ gem 'jquery-ui-rails'
 gem 'figaro'
 gem 'paperclip'
 gem 'thin'
+gem 'aws-sdk'
 gem 'bcrypt-ruby', require: 'bcrypt'
 
 # Use SCSS for stylesheets

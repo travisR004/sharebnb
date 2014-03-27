@@ -32,6 +32,16 @@ Sharebnb::Application.configure do
   # Generate digests for assets URLs.
   config.assets.digest = true
 
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => ENV['AWS_BUCKET_PROD'],
+      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY'],
+      :s3_host_name => "s3-us-west-1.amazonaws.com"
+    }
+  }
+
   # Version of your assets, change this if you want to expire all your assets.
   config.assets.version = '1.0'
 
