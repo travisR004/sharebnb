@@ -2,7 +2,7 @@ window.Sharebnb.Views.RentalDashboard = Backbone.View.extend({
 
 	initialize: function(){
 		this.listenTo(this.model, "all", this.render)
-		this.listenTo(this.model.images(), "add sync change", this.render)
+		// this.listenTo(this.model.images(), "add sync change", this.render)
 		this.model.fetch();
 	},
 
