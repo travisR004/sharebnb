@@ -10,7 +10,7 @@ class Api::RentalRequestsController < ApplicationController
     elsif @rental_request.save
       render json: @rental_request
     else
-      render json: @rental_request.errors, status: :unprocessable_entity
+      render json: @rental_request.errors.full_messages, status: :unprocessable_entity
     end
   end
 

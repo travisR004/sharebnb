@@ -87,9 +87,6 @@
     </p>
   </div>
 </div>
-<div col-md-6>
-	<h6> Add a listing to your shopping cart to easily compare before booking, or click book now if you've found your dream vacation spot!</h6>
-</div>
 
 	<div class="row rentals">
 		<% if(rentals){ %>
@@ -123,7 +120,6 @@
 						<div class="row">
 							<div class="col-md-12 search-item-footer">
 								<h6 class="align-left"><%= rental.rental_type + " / " + rental.room_type %></h6>
-								<button id="add-to-cart" class="btn btn-primary" data-rental-id="<%= rental.id %>"><i class="fa fa-shopping-cart"></i></button>
 								<button id="book-now" class="btn btn-primary book-now" data-id="<%= rental.id %>">Book Now </button>
 								<h6 class="align-left"><% if(checkOut && checkIn){ %>
 									Total:  $<%= Math.round(((new Date(checkOut)) - (new Date(checkIn))) * 1.1574 * Math.pow(10, -8)) * rental.price %>

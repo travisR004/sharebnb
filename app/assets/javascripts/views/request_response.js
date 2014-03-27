@@ -65,6 +65,8 @@ window.Sharebnb.Views.RequestResponse = Backbone.View.extend({
 			type: "POST",
 			success: function(resp){
 				that.model.set("status", "APPROVED")
+				debugger
+				message = new Sharebnb.Models.Message()
 			}
 		})
 	},

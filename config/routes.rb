@@ -11,7 +11,6 @@ Sharebnb::Application.routes.draw do
       post "approve", on: :member
       post "deny", on: :member
     end
-    resources :favorite_rentals, only: [:create, :destroy, :show]
     resources :images, only: [:create, :show, :update, :destroy]
   end
 

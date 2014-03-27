@@ -35,6 +35,11 @@ window.Sharebnb.Views.ShowRental = Backbone.View.extend({
 					that.render();
 					$("#booking-form").append($("<p style='color: green;'> Your booking request has been sent!</p>"))
 					that.submitMessage(rentalRequestData, request)
+				},
+				error: function(model, response){
+					response.responseJSON.forEach(function(response){
+						$(".errors").append(response)
+					})
 				}
 			});
 		}

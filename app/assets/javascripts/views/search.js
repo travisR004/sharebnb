@@ -32,23 +32,6 @@ window.Sharebnb.Views.SearchResult = Backbone.View.extend({
 		});
 	},
 
-	addToCart: function(event){
-		event.preventDefault();
-		var favoriteRental = {}
-		favoriteRental.rental_id = $(event.target).data("rental-id")
-		if(currentUserId){
-			var users = new Sharebnb.Collections.Users();
-			var user = users.getOrFetch(currentUserId);
-			user.fetch({
-				success: function(){
-					debugger
-					favoriteRental.rank = user.favoriteRentals().length + 1
-					user.favoriteRentals().create(favoriteRental)
-				}
-			})
-		}
-	},
-
 	changeRoomActive: function(event) {
 		event.preventDefault();
 		$(event.currentTarget).toggleClass("selected");
@@ -84,8 +67,7 @@ window.Sharebnb.Views.SearchResult = Backbone.View.extend({
 		"click .room-type": "changeRoomActive",
 		"change #checkin": "updateCheckin",
 		"change #checkout": "updateCheckout",
-		"change .guest-select": "updateGuests",
-		"click #add-to-cart": "addToCart"
+		"change .guest-select": "updateGuests"
 	},
 
 	fetchRentals: function(){
