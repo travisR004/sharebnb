@@ -145,7 +145,7 @@ color: black;
 	margin-right: 5px;
 }
 
-.errors{
+.errors, #signup-errors, #login-errors{
 	color: red;
 	font-weight: bold;
 	text-transform: uppercase;

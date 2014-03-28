@@ -62,7 +62,7 @@ window.Sharebnb.Views.RequestResponse = Backbone.View.extend({
 			},
 			error: function(model, response){
 				response.responseJSON.forEach(function(response){
-					$("#errors-" + that.model.id).append(response)
+					$("#errors-" + that.model.id).append("<p>- " + response + "</p>")
 				});
 			}
 		});

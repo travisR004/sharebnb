@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       login!
       render json: @user
     else
-      flash.now[:errors] = ["Invalid Credentials"]
+      render json: ["Invalid Credentials"], status: 402
     end
   end
 

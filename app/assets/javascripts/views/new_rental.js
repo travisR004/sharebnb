@@ -49,7 +49,7 @@ window.Sharebnb.Views.NewRental = Backbone.View.extend({
 		} else {
 			Sharebnb.Data.rentals.create(rentalData, {
 				success: function(response){
-					Backbone.history.navigate("rentals/" + response.id + "/images/new", {trigger: true})
+					Backbone.history.navigate("account", {trigger: true})
 				},
 				error: function(model, response){
 					response.responseJSON.forEach(function(response){
