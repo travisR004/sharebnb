@@ -59,7 +59,7 @@ window.Sharebnb.Views.ShowRental = Backbone.View.extend({
 				}
 			})
 		} else {
-			$(".errors").append("Log in or Sign Up To Make A Request")
+			$(".errors").append("<p>- Log in or Sign Up To Make A Request</p> <p>- You can also sign in using a guest account</p>")
 		}
 	},
 

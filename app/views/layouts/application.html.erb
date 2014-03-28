@@ -73,7 +73,6 @@
 		          </div>
 		          <div class="modal-body">
 		            <%= render 'users/form' %>
-								<button id="guest-user" class="btn btn-primary">SIGN IN AS GUEST</button>
 		          </div>
 		        </div>
 		      </div>
@@ -102,6 +101,30 @@
 			})
 		})
 	</script>
+
+	<script>
+		$("#guest-user-login").click(function(event){
+			event.preventDefault();
+			data = {user: {email: "guest", password: "guest_user"}}
+			$.ajax({
+				url: 'sessions',
+				type: 'POST',
+				data: data,
+				success: function(resp){
+					currentUserId = resp.id
+					$("#sign-out").toggleClass("hidden")
+					$("#sign-in-modal-link").toggleClass("hidden")
+					$("#sign-up-modal-link").toggleClass("hidden")
+					$("#login-modal").modal("hide")
+				},
+				error: function(response){
+					console.log(response)
+				}
+			})
+		})
+	</script>
+
+
 	<script>
 		var currentUserId = <%= logged_in? ? current_user.id : 0 %>;
 		$("#sign-in").click( function(event){
