@@ -11,7 +11,8 @@ class Api::ImagesController < ApplicationController
 
   def update
     @image = Image.find(params[:id])
-    if @image.update_attributes(image_params)
+    owner_id = Rental.find(@image.rental_id).owner_id
+    if currentUserId == owner_id && @image.update_attributes(image_params)
       render json: @image
     else
       render json: @image.errors.full_messages

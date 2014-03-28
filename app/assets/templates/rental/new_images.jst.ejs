@@ -1,15 +1,15 @@
 <div class="col-md-12">
-	<h6> Drag and drop to sort your images </h6>
+	<h6> Drag your images to upload them! And then drag and drop the thumbnails to order your slideshow! </h6>
 	<form id="new-image-<%= rental.escape("id") %>" name="image" data-remote="true" enctype="multipart/form-data">
-	  <div class="field">
-	    <div class="btn btn-primary image-buttons upload-image" id="upload-image-<%= rental.escape("id") %>">
-				Add Another Image
-			</div>
-			<input type="file" name="image[photo]" class="image-upload" id="image-upload-<%= rental.escape("id") %>">
-	  </div>
+		<div class="file-input-wrapper">
+		  <button class="btn-file-input" id="file-drag"><i class="fa fa-plus fa-3x"></i></button>
+			<input type="file" name="image[photo]" class="image-upload file" id="image-upload-<%= rental.escape("id") %>">
+		</div>
+
 	  <div class="btn btn-primary image-buttons submit-images" id="submit-images-<%= rental.escape("id") %>">
 			Upload Images
 		</div>
+
 	</form>
 	<h6>
 		<div id="image-titles-<%= rental.escape("id") %>">

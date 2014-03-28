@@ -194,6 +194,7 @@ color: black;
 	border: 1px solid $magenta;
 	-webkit-box-shadow: 0 0 5px $magenta;
 	box-shadow: 0 0 5px $magenta;
+	background-color: #285e8e;
 }
 
 #show-rental-carousel {
@@ -297,7 +298,6 @@ text-align: center;
 }
 
 .manage-rental-item{
-	text-align: center;
 	border-bottom: 2px solid;
 	margin: 0px;
 }
@@ -584,6 +584,11 @@ cursor: pointer;
 	margin-right: 5px;
 }
 
+.file{
+	border: dashed 2px;
+	border-radius: 5px;
+}
+
 #show-rental-carousel {
 	max-width: 800px;
 }
@@ -603,17 +608,9 @@ cursor: pointer;
 	border: solid 1px;
 }
 
-.image-upload{
-	opacity: 0;
-	position: absolute;
-	bottom: 0;
-	right: 0;
-}
-
 .image-buttons{
 	float:left;
 	margin-right: 5px;
-	width: 200px;
 }
 
 .ui-sortable-placeholder {
@@ -626,9 +623,39 @@ cursor: pointer;
 	margin: 0 auto;
 }
 
+.file-input-wrapper {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+.file-input-wrapper > input[type="file"] {
+    font-size: 200px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0;
+}
 
+#file-drag
+{
+	font-weight: bold;
+	text-align: center;
+	padding: 1em 0;
+	margin: 1em 0;
+	color: #555;
+	border: 2px dashed #555;
+	border-radius: 7px;
+	cursor: default;
+	width:350px;
+	background-color: $light-blue;
+	opacity: 0.3;
+}
 
-
-
-
+#file-drag.hover
+{
+	color: #f00;
+	border-color: #f00;
+	border-style: solid;
+	box-shadow: inset 0 3px 4px #888;
+}
 
