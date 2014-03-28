@@ -49,11 +49,7 @@
 			<p>Allowed Guests: <%= rental.escape("allowed_guests") %></p>
 		</div>
 
-		<div class="edit-detail" data-attr="<%= rental.escape("price") %>" data-type="price">
-			<p>Price: <%= rental.escape("price") %></p>
-		</div>
-
-		<div class="photo-image" id="photo-image-<%= rental.escape("id") %>" data-rental-id="<%= rental.escape("id") %>">
+		<div class="photo-image btn btn-primary rentail-detail-button" id="photo-image-<%= rental.escape("id") %>" data-rental-id="<%= rental.escape("id") %>">
 			<img
 				class="lazy"
 				data-original="https://a0.muscache.com/airbnb/static/page3/v3/room_default_no_photos-d0cb6d0b139f74166b1c6ea8b4225ef8.png"
@@ -65,8 +61,12 @@
 			<p>Edit Photos</p>
 		</div>
 
-		<div class="edit-detail rental-detail-button" data-attr="<%= rental.escape("description") %>" data-type="description">
-			<button id="show-description<%= rental.escape("id") %>" class="btn btn-primary show-description">Show Description</button>
+		<div class="edit-detail" data-attr="<%= rental.escape("price") %>" data-type="price">
+			<p>Price: <%= rental.escape("price") %></p>
+		</div>
+
+		<div class="edit-detail" data-attr="<%= rental.escape("description") %>" data-type="description">
+			<button id="show-description<%= rental.escape("id") %>" class="btn btn-primary rental-detail-button show-description">Description</button>
 			<div id="description<%= rental.escape("id") %>" class="hidden">
 				<p><%= rental.escape("description") %></p>
 				<button id="close-description<%= rental.escape("id") %>" class="btn btn-primary close-description">Close</button>

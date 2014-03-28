@@ -20,7 +20,7 @@ h2 {
 
 h3 {
   color: $light-gray;
-	font-size: 36px;
+	font-size: 32px;
 	text-align: left;
 }
 
@@ -424,6 +424,7 @@ text-align: center;
 .photo-image{
 	float:right;
 	cursor: pointer;
+	padding: 3px;
 }
 
 .form-control:focus {
@@ -660,5 +661,14 @@ cursor: pointer;
 }
 
 .rental-detail-button{
-	width: 150px;
+	width: 125px;
+	margin-bottom: 5px;
+}
+
+.dashboard-header-font-align-center{
+	text-align: center;
+}
+
+#why-is-this-fucked-up{
+	text-align: center;
 }
