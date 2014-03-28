@@ -109,11 +109,21 @@ window.Sharebnb.Views.SearchResult = Backbone.View.extend({
 		this.mapCanvas = this.$el.find("#map-canvas")
 		if(this.mapCanvas){
 		  this.map = new google.maps.Map(this.mapCanvas[0], mapOptions);
-			google.maps.event.bind(this.map, "idle", this, function(){
+			google.maps.event.bind(this.map, "zoom_changed", this, function(){
 				this.lat = this.map.center.k;
 				this.long = this.map.center.A;
 				this.fetchRentals();
 			})
+			google.maps.event.bind(this.map, "dragend", this, function(){
+				this.lat = this.map.center.k;
+				this.long = this.map.center.A;
+				this.fetchRentals();
+			})
+			google.maps.event.addListenerOnce(this.map, 'idle', function(){
+				that.lat = that.map.center.k;
+				that.long = that.map.center.A;
+				that.fetchRentals();
+			});
 		}
 	},
 
@@ -157,11 +167,18 @@ window.Sharebnb.Views.SearchResult = Backbone.View.extend({
 		that.rentals.forEach(function(rental){
 			var image = "assets/bighouse.png";
 			var latLong = new google.maps.LatLng(rental.lat, rental.long);
+			var infoWindow = new google.maps.InfoWindow({
+				content: $(".rental-search-item[data-id=" + rental.id + "]").html(),
+				maxWidth: 250
+			});
 			var marker = new google.maps.Marker({
 				position: latLong,
 				map: that.map,
 				icon: image
 			})
+			google.maps.event.addListener(marker, 'click', function () {
+				infoWindow.open(that.map, this);
+			});
 			that.markers.push(marker)
 		})
 	},
