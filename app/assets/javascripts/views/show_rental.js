@@ -46,13 +46,25 @@ window.Sharebnb.Views.ShowRental = Backbone.View.extend({
 	},
 
 	submitMessage: function(params, request){
+		var that = this
 		params["message"].receiver_id = this.model.get("owner_id");
 		params["message"].rental_request_id = request.id
-		var message = new Sharebnb.Models.Message(params);
-		message.save()
+		if(currenUserId){
+			var message = new Sharebnb.Models.Message(params);
+			message.save({
+				errors: function(model, response){
+					response.responseJSON.forEach(function(response){
+						$(".errors").append("<p>- " + response + "</p>")
+					})
+				}
+			})
+		} else {
+			$(".errors").append("Log in or Sign Up To Make A Request")
+		}
 	},
 
 	render: function(){
+		// this.model.blackedOutDates();
 		var renderedContent = this.template({rental: this.model, images: this.model.images()});
 		this.$el.html(renderedContent);
 		this.$el.find(".date").datepicker({

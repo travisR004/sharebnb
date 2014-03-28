@@ -46,6 +46,7 @@ window.Sharebnb.Views.RequestResponse = Backbone.View.extend({
 		$("#errors-" + this.model.id).empty()
 		$("#open-response-message-" + this.model.id).toggle();
 		$("#message-form" + this.model.id).toggle("slow")
+		this.openModal = false;
 	},
 
 	createMessage: function(){
@@ -76,7 +77,6 @@ window.Sharebnb.Views.RequestResponse = Backbone.View.extend({
 			type: "POST",
 			success: function(resp){
 				that.model.set("status", "APPROVED")
-				message = new Sharebnb.Models.Message()
 			}
 		})
 	},

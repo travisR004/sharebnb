@@ -95,7 +95,6 @@ class RentalRequest < ActiveRecord::Base
       errors[:base] << "Request conflicts with existing approved request"
     end
   end
-
 end
 
 

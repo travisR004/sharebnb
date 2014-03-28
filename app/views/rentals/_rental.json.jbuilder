@@ -5,4 +5,7 @@ json.images rental.images.sort{|x ,y| x.rank <=> y.rank } do |image|
 	json.photo_url_small((image.photo.url(:medium)))
 end
 
+json.requests rental.rental_requests do |request|
+	json.(request, :id, :start_date, :end_date, :status)
+end
 
