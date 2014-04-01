@@ -55,7 +55,7 @@ window.Sharebnb.Views.NewRental = Backbone.View.extend({
 					response.responseJSON.forEach(function(response){
 						var check = response.split(" ")
 						if (check[check.length - 1] != "list"){
-							$(".errors").append("<p>- " + response + "</p>")
+							$(".errors").html("<p>- " + response + "</p>")
 						}
 					})
 				}
