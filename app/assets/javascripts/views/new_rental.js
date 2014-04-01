@@ -41,6 +41,7 @@ window.Sharebnb.Views.NewRental = Backbone.View.extend({
 
 	createRental: function(event){
 		event.preventDefault();
+		$(".errors").empty();
 		var rentalData = $(event.target).serializeJSON();
 		rentalData["rental"].lat = "" + this.lat;
 		rentalData["rental"].long = "" + this.long;
@@ -55,7 +56,7 @@ window.Sharebnb.Views.NewRental = Backbone.View.extend({
 					response.responseJSON.forEach(function(response){
 						var check = response.split(" ")
 						if (check[check.length - 1] != "list"){
-							$(".errors").html("<p>- " + response + "</p>")
+							$(".errors").append("<p>- " + response + "</p>")
 						}
 					})
 				}
