@@ -29,6 +29,11 @@ window.Sharebnb.Views.MadeRequest = Backbone.View.extend({
 			}
 		})
 	},
+	
+	cancelRequest: function(event){
+		event.preventDefault();
+		this.model.destroy();
+	}
 
 	toggleMessageComposer: function(event){
 		$("#errors-" + this.model.id).empty()
