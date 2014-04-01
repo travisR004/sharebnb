@@ -147,7 +147,7 @@ window.Sharebnb.Views.SearchResult = Backbone.View.extend({
 	renderRentals: function(response){
 		this.rentals = response.rentals;
 		if(response.rentals.length < 1){
-			$(".errors").html("Sorry, but Sharebnb has no listings in this area");
+			$(".errors").html("Sorry, but Sharebnb has no listings in this area.  Try searching in San Francisco instead!");
 		}
 		var rentalContent = this.rentalsTemplate({
 			rentals: this.rentals,
