@@ -23,6 +23,7 @@ window.Sharebnb.Views.ShowRental = Backbone.View.extend({
 
 	submitRentalRequest: function(event){
 		event.preventDefault();
+		$(".errors").empty();
 		var that = this;
 		var rentalRequestData = $(event.target).serializeJSON();
 		rentalRequestData.rental_request.rental_id = this.model.id;
