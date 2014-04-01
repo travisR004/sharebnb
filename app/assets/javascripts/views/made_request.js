@@ -12,7 +12,8 @@ window.Sharebnb.Views.MadeRequest = Backbone.View.extend({
 		"click .open-compose-message": "toggleMessageComposer",
 		"submit .message-form": "createMessage",
 		"click .close": "toggleMessageComposer",
-		"click #made-request-messages": "markMessagesAsRead"
+		"click #made-request-messages": "markMessagesAsRead",
+		"click .cancel-request": "cancelRequest"
 	},
 
 	markMessagesAsRead: function(event){
