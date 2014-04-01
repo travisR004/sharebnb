@@ -29,7 +29,7 @@ window.Sharebnb.Views.ShowRental = Backbone.View.extend({
 		rentalRequestData.rental_request.rental_id = this.model.id;
 		var request = new Sharebnb.Models.RentalRequest(rentalRequestData);
 		if(this.datesIncorrect(request)){
-			$("#booking-form").append($("<p style='color: red;'> Your dates seem to be backwards!</p>"))
+			$(".errors").append($("<p style='color: red;'> Your dates seem to be backwards!</p>"))
 		} else {
 			request.save({}, {
 				success: function(resp){
