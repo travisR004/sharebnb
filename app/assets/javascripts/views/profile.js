@@ -54,8 +54,7 @@ window.Sharebnb.Views.Profile = Backbone.CompositeView.extend({
 		this.model.madeRequests().each(this.addMadeRequest.bind(this))
 	},
 
-	removeMadeRequest: function(
-	){
+	removeMadeRequest: function(madeRequest){
 		var profileView = this;
 		var madeRequestView = _(this.subviews()['.manage-trips']).find(function(subview){
 			return subview.model == madeRequest

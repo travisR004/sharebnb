@@ -50,7 +50,7 @@ window.Sharebnb.Views.ShowRental = Backbone.View.extend({
 		var that = this
 		params["message"].receiver_id = this.model.get("owner_id");
 		params["message"].rental_request_id = request.id
-		if(currenUserId){
+		if(currentUserId){
 			var message = new Sharebnb.Models.Message(params);
 			message.save({
 				errors: function(model, response){
