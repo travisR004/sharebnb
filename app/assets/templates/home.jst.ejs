@@ -1,43 +1,43 @@
 <div class="home-page-container">
-	<div class="errors"></div>
-	<h6> Welcome to Sharebnb.  Currently, we only have listings in the San Francisco Area! So try searching there! </h6>
-	<div id="carousel-example-generic" class="carousel slide home-page-slider" data-ride="carousel">
-	  <div class="carousel-inner">
-	    <div class="item active">
-	      <img src="https://a0.muscache.com/airbnb/static/landing_pages/home_v2/hero/488485-cb8055504a43a9fd3687392c58abe04b.jpg">
-	    </div>
+  <div class="errors"></div>
+  <h6> Welcome to Sharebnb.  Currently, we only have listings in the San Francisco Area! So try searching there! </h6>
+  <div id="carousel-example-generic" class="carousel slide home-page-slider" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="item active">
+        <img src="https://a0.muscache.com/airbnb/static/landing_pages/home_v2/hero/488485-cb8055504a43a9fd3687392c58abe04b.jpg">
+      </div>
 
-			<div class="item">
-				<img src="https://a0.muscache.com/airbnb/static/landing_pages/home_v2/hero/264248-25b69a424e9d6033cd7b417cf8ad4deb.jpg">
-			</div>
-	  </div>
+      <div class="item">
+        <img src="https://a0.muscache.com/airbnb/static/landing_pages/home_v2/hero/264248-25b69a424e9d6033cd7b417cf8ad4deb.jpg">
+      </div>
+    </div>
 
-		<div class="intro">
+    <div class="intro">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
             <h2>Plan Your Next Trip!</h2>
             <h2>Live away like you live at home </h2>
 
-						<div class="form-group">
-							<form id="travel-search" class="form-inline">
-								<input type="text" id="city" class="form-control" name="location[city]" placeholder="Choose your destination...">
-								<div class="form-group">
-									<input type="text" id="start-date"class="form-control date" name="location[checkin]" placeholder="Check In">
-									<input type="text" id="end-date" class="form-control date" name="location[checkout]" placeholder="Check Out">
-								</div>
-								<select class="form-control" name="location[guests]">
-									<% for(var i = 1; i < 6; i ++){ %>
-										<option value="<%= i %>"><%= i %> Guests</option>
-									<% } %>
-									<option value="6">6+ Guests</option>
-								</select>
-								<button class="btn btn-primary">Find Your Room!</button>
-							</form>
-						</div>
+            <div class="form-group">
+              <form id="travel-search" class="form-inline">
+                <input type="text" id="city" class="form-control" name="location[city]" placeholder="Choose your destination...">
+                <div class="form-group">
+                  <input type="text" id="start-date"class="form-control date" name="location[checkin]" placeholder="Check In">
+                  <input type="text" id="end-date" class="form-control date" name="location[checkout]" placeholder="Check Out">
+                </div>
+                <select class="form-control" name="location[guests]">
+                  <% for(var i = 1; i < 6; i ++){ %>
+                    <option value="<%= i %>"><%= i %> Guests</option>
+                  <% } %>
+                  <option value="6">6+ Guests</option>
+                </select>
+                <button class="btn btn-primary">Find Your Room!</button>
+              </form>
+            </div>
           </div>
         </div>
       </div>
-		</div>
-	</div>
+    </div>
+  </div>
 </div>

@@ -4,28 +4,28 @@ $magenta: rgb(255,10,92);
 $light-blue: #2badf3;
 $light-gray: #959595;
 h1 {
-	text-align: center;
-//	color: #fff;
+  text-align: center;
+//  color: #fff;
 color: $light-gray;
-//	text-shadow: 0 -1px 1px rgba(0,0,0,0.6);
-	font-size: 44px;
-	font-weight: bold;
+//  text-shadow: 0 -1px 1px rgba(0,0,0,0.6);
+  font-size: 44px;
+  font-weight: bold;
 }
 
 h2 {
-	color: #fff;
-	text-shadow: 0 -1px 1px rgba(0,0,0,0.6);
-	font-size: 36px;
+  color: #fff;
+  text-shadow: 0 -1px 1px rgba(0,0,0,0.6);
+  font-size: 36px;
 }
 
 h3 {
   color: $light-gray;
-	font-size: 32px;
-	text-align: left;
+  font-size: 32px;
+  text-align: left;
 }
 
 h3 > a {
-	color: $light-blue;
+  color: $light-blue;
 }
 
 a:hover, a:focus {
@@ -38,8 +38,8 @@ background-color: $light-blue;
 }
 
 h5{
-	color: black;
-	font-size: 30px;
+  color: black;
+  font-size: 30px;
 }
 
 h6, h8 .h6 {
@@ -48,45 +48,45 @@ text-transform: uppercase;
 color: $light-gray;
 }
 .align-left{
-	text-align: left;
-	margin-bottom: 0px;
+  text-align: left;
+  margin-bottom: 0px;
 }
 
 h7 {
-	font-size: 18px;
-	text-transform: uppercase;
-	color: white;
-	text-align: left;
+  font-size: 18px;
+  text-transform: uppercase;
+  color: white;
+  text-align: left;
 }
 
 .bigger-font {
-	font-size: 18px;
+  font-size: 18px;
 }
 .medium-font{
-	font-size: 16px;
+  font-size: 16px;
 }
 
 li {
-	list-style-type: none;
+  list-style-type: none;
 }
 
 #list-place{
-	height: 50%;
+  height: 50%;
 }
 
 .holder {
-	padding-top: 10px;
+  padding-top: 10px;
 }
 
 #btn-list {
-	background-color: #fde44c;
-	color: black;
+  background-color: #fde44c;
+  color: black;
 }
 .btn-list{
-	color: black !important;
-	background-color: #fde44c;
-	height: 50%;
-	font-weight: bold;
+  color: black !important;
+  background-color: #fde44c;
+  height: 50%;
+  font-weight: bold;
 }
 
 .navbar-default .navbar-nav > li > a, .navbar-default .navbar-brand {
@@ -98,177 +98,177 @@ background-color: white;
 }
 
 .navbar-default{
-	background-color: $light-blue;
-//	background-image: radial-gradient(farthest-side circle at center center, rgba(48, 218, 241, 0.8) 20%, rgba(15, 139, 205, 1) 100%);
-	border-radius: 0px;
-	color: white;
+  background-color: $light-blue;
+//  background-image: radial-gradient(farthest-side circle at center center, rgba(48, 218, 241, 0.8) 20%, rgba(15, 139, 205, 1) 100%);
+  border-radius: 0px;
+  color: white;
 }
 
 body {
-	height: 100%;
-//	color: white;
-//	background-image: radial-gradient(farthest-side circle at center center, rgba(48, 218, 241, 0.8) 20%, rgba(15, 139, 205, 1) 100%);
+  height: 100%;
+//  color: white;
+//  background-image: radial-gradient(farthest-side circle at center center, rgba(48, 218, 241, 0.8) 20%, rgba(15, 139, 205, 1) 100%);
 background-color: #f8f8f8;
 color: black;
 }
 
 .intro {
-	position: absolute;
-	top: 150px;
-	width: 100%;
+  position: absolute;
+  top: 150px;
+  width: 100%;
 }
 
 #travel-search {
-	display: inline;
+  display: inline;
 }
 
 .ui-datepicker {
-	background-color: white;
-	padding: 10px;
-	width: 250px;
-	text-align: center;
+  background-color: white;
+  padding: 10px;
+  width: 250px;
+  text-align: center;
 }
 
 .ui-datepicker-calendar {
-	margin: 0 auto;
-	width: 100%;
-	color: black;
+  margin: 0 auto;
+  width: 100%;
+  color: black;
 }
 
 .ui-datepicker-title {
-	color: black;
+  color: black;
 }
 
 #start-date, #end-date {
-	width: 100px;
-	float: left;
-	margin-right: 5px;
+  width: 100px;
+  float: left;
+  margin-right: 5px;
 }
 
 .errors, #signup-errors, #login-errors{
-	color: red;
-	font-weight: bold;
-	text-transform: uppercase;
+  color: red;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 #city {
-	width: 250px;
+  width: 250px;
 }
 #rental-form {
-	margin: 0 auto;
-	padding-top: 10px;
-	.fa-2x {
-	font-size: 1.5em;
-	}
+  margin: 0 auto;
+  padding-top: 10px;
+  .fa-2x {
+  font-size: 1.5em;
+  }
 }
 
 #description {
-	width: 100%;
+  width: 100%;
 }
 
 .rental-radio{
-	-webkit-appearance: none;
+  -webkit-appearance: none;
 }
 
 .btn-primary {
-	background: $light-blue;
+  background: $light-blue;
 }
 
 .btn-group {
-	display: block;
+  display: block;
 }
 
 .r-selector {
-	width: 31%;
-	white-space: normal;
-	min-width: 75px;
-	min-height: 50px;
-	padding: 15px;
+  width: 31%;
+  white-space: normal;
+  min-width: 75px;
+  min-height: 50px;
+  padding: 15px;
 }
 
 .rental-type{
-	width: 107%;
+  width: 107%;
 }
 
 .selected {
-	border: 1px solid $magenta;
-	-webkit-box-shadow: 0 0 5px $magenta;
-	box-shadow: 0 0 5px $magenta;
-	background-color: #285e8e;
+  border: 1px solid $magenta;
+  -webkit-box-shadow: 0 0 5px $magenta;
+  box-shadow: 0 0 5px $magenta;
+  background-color: #285e8e;
 }
 
 #show-rental-carousel {
-	margin: 0 auto;
+  margin: 0 auto;
 }
 
 #rental-details {
-	margin: 0 auto;
-	margin-top: 25px;
-	padding: 10px;
-	max-width: 800px;
-	border: solid 2px;
-	color: $light-gray;
-	border-radius: 5px;
+  margin: 0 auto;
+  margin-top: 25px;
+  padding: 10px;
+  max-width: 800px;
+  border: solid 2px;
+  color: $light-gray;
+  border-radius: 5px;
 }
 
 #thumbnail-slideshow {
-	background-color: white;
-	margin: 0 auto;
-	height: 50px;
-	font-size: 32px;
-	padding: 5px;
+  background-color: white;
+  margin: 0 auto;
+  height: 50px;
+  font-size: 32px;
+  padding: 5px;
 }
 
 .form-group {
-	margin-bottom: 5px;
+  margin-bottom: 5px;
 }
 
 #next-slide{
-	float: right;
+  float: right;
 }
 
 #show-rental-start-date, #show-rental-end-date {
-	width: 100%;
+  width: 100%;
 }
 
 #book-rental {
-	width: 100%;
-	margin-top: 15px;
+  width: 100%;
+  margin-top: 15px;
 }
 
 .ui-widget {
-	display: none;
+  display: none;
 }
 
 #booking-form {
-	border: solid 1px $light-gray;
-	border-radius: 5px;
-	margin-top: 15px;
+  border: solid 1px $light-gray;
+  border-radius: 5px;
+  margin-top: 15px;
 }
 
 .sign-in-form {
-	color: black;
+  color: black;
 }
 
 h4 {
-	color: black;
+  color: black;
 }
 
 #rental-message{
-	margin: 10px;
-	width: 100%;
+  margin: 10px;
+  width: 100%;
 }
 
 #message-label{
-	margin-top: 10px;
+  margin-top: 10px;
 }
 
 .ui-state-default, .ui-widget-content .ui-state-default {
-	border: 1px solid #c5dbec;
-	background: #dfeffc;
-	font-weight: bold;
-	color: #2e6e9e;
-	outline: none;
+  border: 1px solid #c5dbec;
+  background: #dfeffc;
+  font-weight: bold;
+  color: #2e6e9e;
+  outline: none;
 }
 
 .ui-datepicker td {
@@ -287,35 +287,35 @@ text-align: center;
 }
 
 #map-canvas {
-	height: 600px;
-	width: 100%;
-	border: solid 2px;
-	border-radius: 5px;
+  height: 600px;
+  width: 100%;
+  border: solid 2px;
+  border-radius: 5px;
 }
 
 .first-button{
-	border-radius: 5px 0 0 5px !important;
+  border-radius: 5px 0 0 5px !important;
 }
 
 .manage-rental-item{
-	border-bottom: 2px solid;
-	margin: 0px;
+  border-bottom: 2px solid;
+  margin: 0px;
 }
 
 .rental-search-item {
-	background: rgba(255, 255, 255, 0.9);
-	color: #6f6f6f;
-	border: solid 1px $light-gray;
-	border-radius: 5px;
-	float: left;
-	margin: 10px;
-	text-align: center;
+  background: rgba(255, 255, 255, 0.9);
+  color: #6f6f6f;
+  border: solid 1px $light-gray;
+  border-radius: 5px;
+  float: left;
+  margin: 10px;
+  text-align: center;
 }
 
 .search-item-footer, .search-item-header, .search-item-price {
-	margin-left: 10px;
-	margin-right: 10px;
-	text-align: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  text-align: left;
 }
 
 .navbar {
@@ -323,112 +323,112 @@ text-align: center;
 }
 
 .search-item-price {
-	float: right;
+  float: right;
 }
 
 #book-now{
-	float: right;
-	margin-right: 11px;
+  float: right;
+  margin-right: 11px;
 }
 
 .rentals{
-	margin-top: 25px;
+  margin-top: 25px;
 }
 
 .dashboard {
-	font-size: 24px;
-	border-top-left-radius: 7px;
-	border-top-right-radius: 7px;
+  font-size: 24px;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
 }
 
 .dashboard-container {
-	min-height: 250px;
-	border: solid 2px;
-	border-top: 0px;
-	padding: 25px;
-	background: #f0f0f0;
+  min-height: 250px;
+  border: solid 2px;
+  border-top: 0px;
+  padding: 25px;
+  background: #f0f0f0;
 }
 
 .slideshow-holder {
-	margin: 10px auto;
-	float: left;
+  margin: 10px auto;
+  float: left;
 }
 
 .rental-details {
-	text-align: left;
-	padding: 15px;
+  text-align: left;
+  padding: 15px;
 }
 
 #edit-rental{
-	color: black;
+  color: black;
 }
 
 #street-address {
-	color: black;
-	width: 350px;
+  color: black;
+  width: 350px;
 }
 
 #request-details{
-	margin: 0px;
-	border-bottom: solid 2px;
-	font-weight: bold;
-	position: relative;
+  margin: 0px;
+  border-bottom: solid 2px;
+  font-weight: bold;
+  position: relative;
 }
 
 #request-buttons{
-	float: right;
-	position: absolute;
-	bottom: 5px;
-	right: 0;
+  float: right;
+  position: absolute;
+  bottom: 5px;
+  right: 0;
 }
 
 .open-tab {
-	border-bottom: 0px;
+  border-bottom: 0px;
 }
 
 .dashboard-header {
-	padding: 5px;
-	border-left: solid 2px;
-	border-right: solid 2px;
-	border-top: solid 2px;
-	border-top-left-radius: 15px;
-	border-top-right-radius: 15px;
-	background-color: #f0f0f0;
+  padding: 5px;
+  border-left: solid 2px;
+  border-right: solid 2px;
+  border-top: solid 2px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  background-color: #f0f0f0;
 }
 
 .header-container {
-	padding: 5px;
-	border-top-left-radius: 15px;
-	border-top-right-radius: 15px;
-	background-color: #f8f8f8;
-	margin: 10px;
-	cursor: pointer;
+  padding: 5px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  background-color: #f8f8f8;
+  margin: 10px;
+  cursor: pointer;
 }
 
 .input-group-addon{
-	color: white;
-	background-color: $light-blue;
+  color: white;
+  background-color: $light-blue;
 }
 .home-page-container > .carousel >.carousel-inner > .item {
-	opacity: 0.9;
+  opacity: 0.9;
 }
 
 .message-form {
-	display: none;
+  display: none;
 }
 
 .show-description, .close-description{
-	margin-bottom: 5px;
+  margin-bottom: 5px;
 }
 
 .photo-image{
-	float:right;
-	cursor: pointer;
-	padding: 3px;
+  float:right;
+  cursor: pointer;
+  padding: 3px;
 }
 
 .form-control:focus {
-	border-color: $magenta;
+  border-color: $magenta;
 }
 
 .filters-section {
@@ -472,7 +472,7 @@ border: none;
 }
 
 .ui-widget-header {
-	background: #dfeffc;
+  background: #dfeffc;
 }
 
 .ui-slider-range.ui-widget-header {
@@ -513,14 +513,14 @@ cursor: pointer;
 }
 
 .ui-state-hover, .ui-widget-content .ui-state-hover, {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 .min-price {
 float: left;
 }
 .max-price{
-	float:right;
+  float:right;
 }
 .min-price, .max-price {
 position: relative;
@@ -567,51 +567,51 @@ cursor: pointer;
 }
 
 #cart {
-	margin-right: 15px;
-	cursor: pointer;
-	color: white;
+  margin-right: 15px;
+  cursor: pointer;
+  color: white;
 }
 
 #ui-datepicker-div {
-	display: none;
+  display: none;
 }
 
 #compose-message {
-	width: 100%;
+  width: 100%;
 }
 
 #made-request-messages, #cancel-request {
-	float: right;
-	margin-right: 5px;
+  float: right;
+  margin-right: 5px;
 }
 
 .file{
-	border: dashed 2px;
-	border-radius: 5px;
+  border: dashed 2px;
+  border-radius: 5px;
 }
 
 #show-rental-carousel {
-	max-width: 800px;
+  max-width: 800px;
 }
 
 #rental-show-row{
-	padding: 25px;
+  padding: 25px;
 }
 
 #show-rental-carousel-inner{
-	border: solid 1px;
-	color: $light-gray;
+  border: solid 1px;
+  color: $light-gray;
 }
 
 .sort-image-holder {
-	float: left;
-	margin: 10px;
-	border: solid 1px;
+  float: left;
+  margin: 10px;
+  border: solid 1px;
 }
 
 .image-buttons{
-	float:left;
-	margin-right: 5px;
+  float:left;
+  margin-right: 5px;
 }
 
 .ui-sortable-placeholder {
@@ -620,8 +620,8 @@ cursor: pointer;
 }
 
 .gm-style-iw{
-	overflow: hidden !important;
-	margin: 0 auto;
+  overflow: hidden !important;
+  margin: 0 auto;
 }
 
 .file-input-wrapper {
@@ -639,36 +639,36 @@ cursor: pointer;
 
 #file-drag
 {
-	font-weight: bold;
-	text-align: center;
-	padding: 1em 0;
-	margin: 1em 0;
-	color: #555;
-	border: 2px dashed #555;
-	border-radius: 7px;
-	cursor: default;
-	width:350px;
-	background-color: $light-blue;
-	opacity: 0.3;
+  font-weight: bold;
+  text-align: center;
+  padding: 1em 0;
+  margin: 1em 0;
+  color: #555;
+  border: 2px dashed #555;
+  border-radius: 7px;
+  cursor: default;
+  width:350px;
+  background-color: $light-blue;
+  opacity: 0.3;
 }
 
 #file-drag.hover
 {
-	color: #f00;
-	border-color: #f00;
-	border-style: solid;
-	box-shadow: inset 0 3px 4px #888;
+  color: #f00;
+  border-color: #f00;
+  border-style: solid;
+  box-shadow: inset 0 3px 4px #888;
 }
 
 .rental-detail-button{
-	width: 125px;
-	margin-bottom: 5px;
+  width: 125px;
+  margin-bottom: 5px;
 }
 
 .dashboard-header-font-align-center{
-	text-align: center;
+  text-align: center;
 }
 
 #why-is-this-fucked-up{
-	text-align: center;
+  text-align: center;
 }

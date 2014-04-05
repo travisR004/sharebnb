@@ -3,11 +3,11 @@ window.Sharebnb = {
   Collections: {},
   Views: {},
   Routers: {},
-	Data: {},
+  Data: {},
   initialize: function() {
-		window.Sharebnb.Data.rentals = new Sharebnb.Collections.Rentals();
-		new Sharebnb.Routers.AppRouter();
-		Backbone.history.start();
+    window.Sharebnb.Data.rentals = new Sharebnb.Collections.Rentals();
+    new Sharebnb.Routers.AppRouter();
+    Backbone.history.start();
   }
 };
 

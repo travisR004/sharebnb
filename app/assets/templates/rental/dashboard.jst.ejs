@@ -1,88 +1,88 @@
 <div class="row manage-rental-item">
-	<div class="col-md-6 slideshow-holder" id="slideshow-holder-<%= rental.escape("id") %>">
+  <div class="col-md-6 slideshow-holder" id="slideshow-holder-<%= rental.escape("id") %>">
 
-		<% var noImages = images.length === 0 ? true : false %>
+    <% var noImages = images.length === 0 ? true : false %>
 
-		<div class="thumbnails <%= noImages ? "" : "hidden" %>" id="thumbnails-<%= rental.escape("id") %>">
-			<%= JST["rental/new_images"]({images: images, rental: rental}) %>
-		</div>
+    <div class="thumbnails <%= noImages ? "" : "hidden" %>" id="thumbnails-<%= rental.escape("id") %>">
+      <%= JST["rental/new_images"]({images: images, rental: rental}) %>
+    </div>
 
-		 	<div id="rental-carousel<%= rental.escape("id") %>" class="carousel slide <%= noImages ? "hidden" : "" %>" data-ride="carousel">
-				  <div class="carousel-inner" id="show-rental-carousel-inner">
-						<% var i = 0; %>
-						<% images.forEach(function(image) { %>
-							<div class="item <%= i === 0 ? "active" : "" %>">
-								<img src="<%= image.escape("photo_url") %>">
-							</div>
-							<% i++ %>
-						<% }) %>
-				  </div>
-				  <a class="left carousel-control" href="#rental-carousel<%= rental.escape("id") %>" data-slide="prev">
-				    <span class="glyphicon glyphicon-chevron-left"></span>
-				  </a>
-				  <a class="right carousel-control" href="#rental-carousel<%= rental.escape("id") %>" data-slide="next">
-				    <span class="glyphicon glyphicon-chevron-right"></span>
-				  </a>
-			</div>
-	</div>
+       <div id="rental-carousel<%= rental.escape("id") %>" class="carousel slide <%= noImages ? "hidden" : "" %>" data-ride="carousel">
+          <div class="carousel-inner" id="show-rental-carousel-inner">
+            <% var i = 0; %>
+            <% images.forEach(function(image) { %>
+              <div class="item <%= i === 0 ? "active" : "" %>">
+                <img src="<%= image.escape("photo_url") %>">
+              </div>
+              <% i++ %>
+            <% }) %>
+          </div>
+          <a class="left carousel-control" href="#rental-carousel<%= rental.escape("id") %>" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+          </a>
+          <a class="right carousel-control" href="#rental-carousel<%= rental.escape("id") %>" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+          </a>
+      </div>
+  </div>
 
-	<div class="col-md-6 rental-details" data-rental-id="<%= rental.escape("id") %>" id="rental<%= rental.get("id") %>">
-		<div class="edit-detail" data-attr="<%= rental.escape("tagline") %>" data-type="tagline">
-			<p>Tag Line: <%= rental.escape("tagline") %></p>
-		</div>
-		<div class="edit-detail" data-attr="<%= rental.escape("address") %>" data-type="address">
-			<p>Address: <%= rental.escape("address") %></p>
-		</div>
-		<div class="edit-detail" data-attr="<%= rental.escape("rental_type") %>" data-type="rental_type">
-			<p>Rental Type: <%= rental.escape("rental_type") %></p>
-		</div>
+  <div class="col-md-6 rental-details" data-rental-id="<%= rental.escape("id") %>" id="rental<%= rental.get("id") %>">
+    <div class="edit-detail" data-attr="<%= rental.escape("tagline") %>" data-type="tagline">
+      <p>Tag Line: <%= rental.escape("tagline") %></p>
+    </div>
+    <div class="edit-detail" data-attr="<%= rental.escape("address") %>" data-type="address">
+      <p>Address: <%= rental.escape("address") %></p>
+    </div>
+    <div class="edit-detail" data-attr="<%= rental.escape("rental_type") %>" data-type="rental_type">
+      <p>Rental Type: <%= rental.escape("rental_type") %></p>
+    </div>
 
-		<div class="edit-detail" data-attr="<%= rental.escape("room_type") %>" data-type="room_type">
-			<p>Room Type: <%= rental.escape("room_type") %></p>
-		</div>
+    <div class="edit-detail" data-attr="<%= rental.escape("room_type") %>" data-type="room_type">
+      <p>Room Type: <%= rental.escape("room_type") %></p>
+    </div>
 
-		<div class="edit-detail" data-attr="<%= rental.escape("unit") %>" data-type="unit">
-			<p>Unit: <%= rental.escape("unit") %></p>
-		</div>
+    <div class="edit-detail" data-attr="<%= rental.escape("unit") %>" data-type="unit">
+      <p>Unit: <%= rental.escape("unit") %></p>
+    </div>
 
-		<div class="edit-detail" data-attr="<%= rental.escape("allowed_guests") %>" data-type="allowed_guests">
-			<p>Allowed Guests: <%= rental.escape("allowed_guests") %></p>
-		</div>
+    <div class="edit-detail" data-attr="<%= rental.escape("allowed_guests") %>" data-type="allowed_guests">
+      <p>Allowed Guests: <%= rental.escape("allowed_guests") %></p>
+    </div>
 
-		<div class="photo-image btn btn-primary rentail-detail-button" id="photo-image-<%= rental.escape("id") %>" data-rental-id="<%= rental.escape("id") %>">
-			<img
-				class="lazy"
-				data-original="https://a0.muscache.com/airbnb/static/page3/v3/room_default_no_photos-d0cb6d0b139f74166b1c6ea8b4225ef8.png"
-				width="100"
-				height="65"
-				src="https://a0.muscache.com/airbnb/static/page3/v3/room_default_no_photos-d0cb6d0b139f74166b1c6ea8b4225ef8.png"
-				style="display: inline;"
-			>
-			<p>Edit Photos</p>
-		</div>
+    <div class="photo-image btn btn-primary rentail-detail-button" id="photo-image-<%= rental.escape("id") %>" data-rental-id="<%= rental.escape("id") %>">
+      <img
+        class="lazy"
+        data-original="https://a0.muscache.com/airbnb/static/page3/v3/room_default_no_photos-d0cb6d0b139f74166b1c6ea8b4225ef8.png"
+        width="100"
+        height="65"
+        src="https://a0.muscache.com/airbnb/static/page3/v3/room_default_no_photos-d0cb6d0b139f74166b1c6ea8b4225ef8.png"
+        style="display: inline;"
+      >
+      <p>Edit Photos</p>
+    </div>
 
-		<div class="edit-detail" data-attr="<%= rental.escape("price") %>" data-type="price">
-			<p>Price: <%= rental.escape("price") %></p>
-		</div>
+    <div class="edit-detail" data-attr="<%= rental.escape("price") %>" data-type="price">
+      <p>Price: <%= rental.escape("price") %></p>
+    </div>
 
-		<div class="edit-detail" data-attr="<%= rental.escape("description") %>" data-type="description">
-			<button id="show-description<%= rental.escape("id") %>" class="btn btn-primary rental-detail-button show-description">Description</button>
-			<div id="description<%= rental.escape("id") %>" class="hidden">
-				<p><%= rental.escape("description") %></p>
-				<button id="close-description<%= rental.escape("id") %>" class="btn btn-primary close-description">Close</button>
-			</div>
-		</div>
-
-
-
-		<button id="update-rental" class="btn btn-primary rental-detail-button">Edit Listing </button>
-		<button id="show-rental" class="btn btn-primary rental-detail-button">Show Listing </button>
-		<button id="remove-rental" class="btn btn-primary rental-detail-button">Remove Listing</button>
+    <div class="edit-detail" data-attr="<%= rental.escape("description") %>" data-type="description">
+      <button id="show-description<%= rental.escape("id") %>" class="btn btn-primary rental-detail-button show-description">Description</button>
+      <div id="description<%= rental.escape("id") %>" class="hidden">
+        <p><%= rental.escape("description") %></p>
+        <button id="close-description<%= rental.escape("id") %>" class="btn btn-primary close-description">Close</button>
+      </div>
+    </div>
 
 
-	</div>
 
-	<div class="col-md-6 edit-rental hidden" id="edit-rental<%= rental.get("id") %>">
-		<%= JST["rental/rental_form"]({rental: rental, new_rental: false}) %>
-	</div>
+    <button id="update-rental" class="btn btn-primary rental-detail-button">Edit Listing </button>
+    <button id="show-rental" class="btn btn-primary rental-detail-button">Show Listing </button>
+    <button id="remove-rental" class="btn btn-primary rental-detail-button">Remove Listing</button>
+
+
+  </div>
+
+  <div class="col-md-6 edit-rental hidden" id="edit-rental<%= rental.get("id") %>">
+    <%= JST["rental/rental_form"]({rental: rental, new_rental: false}) %>
+  </div>
 </div>

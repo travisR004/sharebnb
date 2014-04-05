@@ -2,47 +2,47 @@
   <h6 class="filter-label col-md-3">Trip</h6>
   <form class="form-horizontal trip-form">
     <i class="icon icon-arrow-right icon-gray"></i>
-	  <input
-			name="checkin"
-			id="checkin"
-			type="text"
-			class="date input-medium"
-			placeholder="<%= checkIn ? "" : "Check in"%>"
-			value="<%= checkIn ? checkIn : ""  %>"
-		>
     <input
-			name="checkout"
-			id="checkout"
-			type="text"
-			class="date input-medium"
-			placeholder="<%= checkOut ? "" : "Check Out"%>"
-			value="<%= checkOut ? checkOut : ""  %>"
-		>
+      name="checkin"
+      id="checkin"
+      type="text"
+      class="date input-medium"
+      placeholder="<%= checkIn ? "" : "Check in"%>"
+      value="<%= checkIn ? checkIn : ""  %>"
+    >
+    <input
+      name="checkout"
+      id="checkout"
+      type="text"
+      class="date input-medium"
+      placeholder="<%= checkOut ? "" : "Check Out"%>"
+      value="<%= checkOut ? checkOut : ""  %>"
+    >
     <div class="select input-medium">
-			<select class="guest-select" >
-				<% for(var i = 1; i < 6; i ++){ %>
-					<option value="<%= i %>" <%= guests === i ? "selected" : "" %>><%= i %> Guests</option>
-				<% } %>
-				<option value="6">6+ Guests</option>
-			</select>
+      <select class="guest-select" >
+        <% for(var i = 1; i < 6; i ++){ %>
+          <option value="<%= i %>" <%= guests === i ? "selected" : "" %>><%= i %> Guests</option>
+        <% } %>
+        <option value="6">6+ Guests</option>
+      </select>
     </div>
   </form>
 </div>
 
 <div class="clearfix room-type-group intro-filter filters-section" data-behavior="tooltip" data-position="left" aria-label="Room Type">
     <h6 class="filter-label col-md-4">Room Type</h6>
-		<% var entireHome = false; %>
-		<% var privateRoom = false;  %>
-		<% var sharedRoom = false; %>
-		<% roomParams.forEach(function(room) { %>
-			<% if(room === "Whole Home/Apt") { %>
-				<% entireHome = true; %>
-			<% } else if (room === "Private Room") { %>
-				<% privateRoom = true; %>
-			<% } else if (room === "Shared Room") { %>
-				<% sharedRoom = true; %>
-			<% } %>
-		<% }) %>
+    <% var entireHome = false; %>
+    <% var privateRoom = false;  %>
+    <% var sharedRoom = false; %>
+    <% roomParams.forEach(function(room) { %>
+      <% if(room === "Whole Home/Apt") { %>
+        <% entireHome = true; %>
+      <% } else if (room === "Private Room") { %>
+        <% privateRoom = true; %>
+      <% } else if (room === "Shared Room") { %>
+        <% sharedRoom = true; %>
+      <% } %>
+    <% }) %>
 
     <div class="btn btn-large btn-flat icon-toggle <%= entireHome ? "selected" : "" %> room-type" data-name="Whole Home/Apt">
       <i class="fa fa-home fa-2x"></i>
@@ -61,78 +61,78 @@
 <div class="clearfix intro-filter filters-section" data-behavior="tooltip" data-position="left" aria-label="Price">
   <h6 class="filter-label col-md-3">Price</h6>
   <div class="price-range-slider">
-		<p class="min-price">
+    <p class="min-price">
       Min Price:
       <strong>
         $<span class="price" id="min-price">
-					<% if(minSliderPos){ %>
-						<%= minSliderPos * 10 %>
-					<% } else { %>
-						10
-					<% } %>
-				</span>
+          <% if(minSliderPos){ %>
+            <%= minSliderPos * 10 %>
+          <% } else { %>
+            10
+          <% } %>
+        </span>
       </strong>
     </p>
-		<p class="max-price">
+    <p class="max-price">
       Max Price:
       <strong>
         $<span class="price" id="max-price">
-					<% if(maxSliderPos){ %>
-						<%= maxSliderPos * 10 %>
-					<% } else { %>
-						10
-					<% } %>
+          <% if(maxSliderPos){ %>
+            <%= maxSliderPos * 10 %>
+          <% } else { %>
+            10
+          <% } %>
         </span>
       </strong>
     </p>
   </div>
 </div>
 
-	<div class="row rentals">
-		<% if(rentals){ %>
-			<% rentals.forEach(function(rental){ %>
-				<div class="col-md-6 search-container">
-					<div class="rental-search-item" data-id="<%= rental.id %>">
-				 		<div class="carousel slide search-result-carousel" id="search-carousel-<%= rental.id %>" data-ride="carousel">
-				 	 		<div class="carousel-inner">
-								<% var i = 0; %>
-								<% rental.images.forEach(function(image) { %>
-									<div class="item <%= i === 0 ? "active" : "" %>">
-										<img src="<%= image.photo_url %>">
-									</div>
-									<% i++ %>
-								<% }) %>
-				 			</div>
-							  <a class="left carousel-control" href="#search-carousel-<%= rental.id %>" data-slide="prev">
-							    <span class="glyphicon glyphicon-chevron-left"></span>
-							  </a>
-							  <a class="right carousel-control" href="#search-carousel-<%= rental.id %>" data-slide="next">
-							    <span class="glyphicon glyphicon-chevron-right"></span>
-							  </a>
-							<div class="search-result">
-								<div class="search-item-header">
-									<h6>
-										<%= rental.tagline %>
-									</h6>
-								</div>
-							<div>
-						</div>
-						<div class="row">
-							<div class="col-md-12 search-item-footer">
-								<h6 class="align-left"><%= rental.rental_type + " / " + rental.room_type %></h6>
-								<button id="book-now" class="btn btn-primary book-now" data-id="<%= rental.id %>">Book Now </button>
-								<h6 class="align-left"><% if(checkOut && checkIn){ %>
-									Total:  $<%= Math.round(((new Date(checkOut)) - (new Date(checkIn))) * 1.1574 * Math.pow(10, -8)) * rental.price %>
-								<% } else {%>
-									$<%= rental.price %> / night
-									<% } %>
-								</h6>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<% }) %>
-	<% } %>
+  <div class="row rentals">
+    <% if(rentals){ %>
+      <% rentals.forEach(function(rental){ %>
+        <div class="col-md-6 search-container">
+          <div class="rental-search-item" data-id="<%= rental.id %>">
+             <div class="carousel slide search-result-carousel" id="search-carousel-<%= rental.id %>" data-ride="carousel">
+                <div class="carousel-inner">
+                <% var i = 0; %>
+                <% rental.images.forEach(function(image) { %>
+                  <div class="item <%= i === 0 ? "active" : "" %>">
+                    <img src="<%= image.photo_url %>">
+                  </div>
+                  <% i++ %>
+                <% }) %>
+               </div>
+                <a class="left carousel-control" href="#search-carousel-<%= rental.id %>" data-slide="prev">
+                  <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a class="right carousel-control" href="#search-carousel-<%= rental.id %>" data-slide="next">
+                  <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+              <div class="search-result">
+                <div class="search-item-header">
+                  <h6>
+                    <%= rental.tagline %>
+                  </h6>
+                </div>
+              <div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 search-item-footer">
+                <h6 class="align-left"><%= rental.rental_type + " / " + rental.room_type %></h6>
+                <button id="book-now" class="btn btn-primary book-now" data-id="<%= rental.id %>">Book Now </button>
+                <h6 class="align-left"><% if(checkOut && checkIn){ %>
+                  Total:  $<%= Math.round(((new Date(checkOut)) - (new Date(checkIn))) * 1.1574 * Math.pow(10, -8)) * rental.price %>
+                <% } else {%>
+                  $<%= rental.price %> / night
+                  <% } %>
+                </h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% }) %>
+  <% } %>
 </div>

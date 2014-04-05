@@ -1,209 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-	  <title>Sharebnb</title>
-	     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-			 <link href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css' rel='stylesheet' type='text/css'>
-	     <%= javascript_include_tag "application" %>
-			 <%= stylesheet_link_tag    "application", media: "all" %>
-			 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
-			 <script type="text/javascript"
-			   src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAPS_KEY"] %>&sensor=false&libraries=places">
-			 </script>
-	     <%= csrf_meta_tags %>
+    <title>Sharebnb</title>
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <link href='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css' rel='stylesheet' type='text/css'>
+       <%= javascript_include_tag "application" %>
+       <%= stylesheet_link_tag    "application", media: "all" %>
+       <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+       <script type="text/javascript"
+         src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAPS_KEY"] %>&sensor=false&libraries=places">
+       </script>
+       <%= csrf_meta_tags %>
   </head>
   <body data-spy="scroll" data-target=".navbar-example">
-	  <div class="navbar navbar-default" role="navigation">
-	    <div class="navbar-inner">
-	      <div class="navbar-header">
-	        <button type="button" class="navbar-toggle" data-target="#sharebnb-collapse" data-toggle="collapse">
-						<span class="sr-only"> Toggle Navigation</span>
-	          <span class="icon-bar"></span>
-	          <span class="icon-bar"></span>
-	          <span class="icon-bar"></span>
-	        </button>
-	        <a class="navbar-brand" href="#">Sharebnb</a>
-				</div>
+    <div class="navbar navbar-default" role="navigation">
+      <div class="navbar-inner">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-target="#sharebnb-collapse" data-toggle="collapse">
+            <span class="sr-only"> Toggle Navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Sharebnb</a>
+        </div>
 
         <div class="collapse navbar-collapse" id="sharebnb-collapse">
           <ul class="nav navbar-nav">
-         	<li><a href="#" id="account" class="account" >Account</a></li>
-         	<li><a href="#" id="sign-out" class="<%= logged_in? ? "" : "hidden" %> sign-out" >Sign Out</a></li>
- 					<li data-toggle="modal" data-target="#login-modal"><a id="sign-in-modal-link" class="<%= logged_in? ? "hidden" : "" %> sign-in">Sign In</a></li>
- 					<li data-toggle="modal" data-target="#signup-modal"><a id="sign-up-modal-link" class="<%= logged_in? ? "hidden" : "" %> sign-up">Sign Up</a></li>
+           <li><a href="#" id="account" class="account" >Account</a></li>
+           <li><a href="#" id="sign-out" class="<%= logged_in? ? "" : "hidden" %> sign-out" >Sign Out</a></li>
+           <li data-toggle="modal" data-target="#login-modal"><a id="sign-in-modal-link" class="<%= logged_in? ? "hidden" : "" %> sign-in">Sign In</a></li>
+           <li data-toggle="modal" data-target="#signup-modal"><a id="sign-up-modal-link" class="<%= logged_in? ? "hidden" : "" %> sign-up">Sign Up</a></li>
           </ul>
-					<ul class="nav navbar-nav pull-right">
-	 					<div class="holder">
-	 						<li id="navbar-list-button"><a id="list-place" class="list-place btn btn-list" id="btn-list">LIST YOUR PLACE</a></li>
-	 					</div>
-	 				</ul>
+          <ul class="nav navbar-nav pull-right">
+             <div class="holder">
+               <li id="navbar-list-button"><a id="list-place" class="list-place btn btn-list" id="btn-list">LIST YOUR PLACE</a></li>
+             </div>
+           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </div>
 
-	    <div class="container-fluid">
-	      <div class="row-fluid">
-	        <div class="span12">
-	          <%= yield %>
-	        </div>
-	      </div>
+      <div class="container-fluid">
+        <div class="row-fluid">
+          <div class="span12">
+            <%= yield %>
+          </div>
+        </div>
 
-				<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		      <div class="modal-dialog">
-		        <div class="modal-content">
-		          <div class="modal-header">
-								<div id="login-errors"></div>
-		            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		            <h4 class="modal-title" id="myModalLabel">Log In</h4>
-		          </div>
-		          <div class="modal-body">
-		            <%= render 'sessions/login_form' %>
-		          </div>
-		        </div>
-		      </div>
-		    </div>
+        <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <div id="login-errors"></div>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Log In</h4>
+              </div>
+              <div class="modal-body">
+                <%= render 'sessions/login_form' %>
+              </div>
+            </div>
+          </div>
+        </div>
 
-				<div class="modal fade" id="signup-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		      <div class="modal-dialog">
-		        <div class="modal-content">
-		          <div class="modal-header">
-								<div id="signup-errors"></div>
-		            <button id="close-modal" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		            <h4 class="modal-title" id="myModalLabel">Sign Up</h4>
-		          </div>
-		          <div class="modal-body">
-		            <%= render 'users/form' %>
-		          </div>
-		        </div>
-		      </div>
-		    </div>
-			</div>
-		</div>
+        <div class="modal fade" id="signup-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <div id="signup-errors"></div>
+                <button id="close-modal" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Sign Up</h4>
+              </div>
+              <div class="modal-body">
+                <%= render 'users/form' %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-	<script>
-		$("#guest-user").click(function(event){
-			event.preventDefault();
-			data = {user: {email: "guest", password: "guest_user"}}
-			$.ajax({
-				url: 'sessions',
-				type: 'POST',
-				data: data,
-				success: function(resp){
-					currentUserId = resp.id
-					$("#sign-out").toggleClass("hidden")
-					$("#sign-in-modal-link").toggleClass("hidden")
-					$("#sign-up-modal-link").toggleClass("hidden")
-					$("#signup-modal").modal("hide")
-				},
-				error: function(response){
-					console.log(response)
-				}
-			})
-		})
-	</script>
+  <script>
+    $("#guest-user").click(function(event){
+      event.preventDefault();
+      data = {user: {email: "guest", password: "guest_user"}}
+      $.ajax({
+        url: 'sessions',
+        type: 'POST',
+        data: data,
+        success: function(resp){
+          currentUserId = resp.id
+          $("#sign-out").toggleClass("hidden")
+          $("#sign-in-modal-link").toggleClass("hidden")
+          $("#sign-up-modal-link").toggleClass("hidden")
+          $("#signup-modal").modal("hide")
+        },
+        error: function(response){
+          console.log(response)
+        }
+      })
+    })
+  </script>
 
-	<script>
-		$("#guest-user-login").click(function(event){
-			event.preventDefault();
-			data = {user: {email: "guest", password: "guest_user"}}
-			$.ajax({
-				url: 'sessions',
-				type: 'POST',
-				data: data,
-				success: function(resp){
-					currentUserId = resp.id
-					$("#sign-out").toggleClass("hidden")
-					$("#sign-in-modal-link").toggleClass("hidden")
-					$("#sign-up-modal-link").toggleClass("hidden")
-					$("#login-modal").modal("hide")
-				},
-				error: function(response){
-					console.log(response)
-				}
-			})
-		})
-	</script>
+  <script>
+    $("#guest-user-login").click(function(event){
+      event.preventDefault();
+      data = {user: {email: "guest", password: "guest_user"}}
+      $.ajax({
+        url: 'sessions',
+        type: 'POST',
+        data: data,
+        success: function(resp){
+          currentUserId = resp.id
+          $("#sign-out").toggleClass("hidden")
+          $("#sign-in-modal-link").toggleClass("hidden")
+          $("#sign-up-modal-link").toggleClass("hidden")
+          $("#login-modal").modal("hide")
+        },
+        error: function(response){
+          console.log(response)
+        }
+      })
+    })
+  </script>
 
 
-	<script>
-		var currentUserId = <%= logged_in? ? current_user.id : 0 %>;
-		$("#sign-in").click( function(event){
-			event.preventDefault();
-			var data = $(event.currentTarget).parent().parent().serializeJSON()
-			$.ajax({
-				url: 'sessions',
-				type: "POST",
-				data: data,
-				success:function(resp){
-					currentUserId = resp.id
-					$("#sign-out").toggleClass("hidden")
-					$("#sign-in-modal-link").toggleClass("hidden")
-					$("#sign-up-modal-link").toggleClass("hidden")
-					$("#login-modal").modal("hide")
-				},
-				error: function(response){
-					response.responseJSON.forEach(function(response){
-						$("#login-errors").append("<p>- " + response + "</p>")
-					})
-				}
-			})
-		})
-	</script>
+  <script>
+    var currentUserId = <%= logged_in? ? current_user.id : 0 %>;
+    $("#sign-in").click( function(event){
+      event.preventDefault();
+      var data = $(event.currentTarget).parent().parent().serializeJSON()
+      $.ajax({
+        url: 'sessions',
+        type: "POST",
+        data: data,
+        success:function(resp){
+          currentUserId = resp.id
+          $("#sign-out").toggleClass("hidden")
+          $("#sign-in-modal-link").toggleClass("hidden")
+          $("#sign-up-modal-link").toggleClass("hidden")
+          $("#login-modal").modal("hide")
+        },
+        error: function(response){
+          response.responseJSON.forEach(function(response){
+            $("#login-errors").append("<p>- " + response + "</p>")
+          })
+        }
+      })
+    })
+  </script>
 
-	<script>
-		$("#sign-out").click( function(event){
-			event.preventDefault();
-			$.ajax({
-				url: 'sessions',
-				type: "DELETE",
-				success: function(resp){
-					currentUserId = undefined
-					$("#sign-out").toggleClass("hidden")
-					$("#sign-in-modal-link").toggleClass("hidden")
-					$("#sign-up-modal-link").toggleClass("hidden")
-					Backbone.history.navigate("", {trigger: true})
-				}
-			})
-		})
-	</script>
+  <script>
+    $("#sign-out").click( function(event){
+      event.preventDefault();
+      $.ajax({
+        url: 'sessions',
+        type: "DELETE",
+        success: function(resp){
+          currentUserId = undefined
+          $("#sign-out").toggleClass("hidden")
+          $("#sign-in-modal-link").toggleClass("hidden")
+          $("#sign-up-modal-link").toggleClass("hidden")
+          Backbone.history.navigate("", {trigger: true})
+        }
+      })
+    })
+  </script>
 
-	<script>
-		$("#account").click( function(event){
-			event.preventDefault();
-			Backbone.history.navigate("account", {trigger: true})
-		})
-	</script>
+  <script>
+    $("#account").click( function(event){
+      event.preventDefault();
+      Backbone.history.navigate("account", {trigger: true})
+    })
+  </script>
 
-	<script>
-		$("#list-place").click( function(event){
-			event.preventDefault();
-			Backbone.history.navigate("rentals/new", {trigger: true})
-		})
-	</script>
+  <script>
+    $("#list-place").click( function(event){
+      event.preventDefault();
+      Backbone.history.navigate("rentals/new", {trigger: true})
+    })
+  </script>
 
-	<script>
-		$("#sign-up").click( function(event){
-			event.preventDefault();
-			var data = $(event.currentTarget).parent().parent().serializeJSON()
-			$.ajax({
-				url: 'api/users',
-				type: "POST",
-				data: data,
-				success: function(resp){
-					currentUserId = resp.id
-					$("#sign-out").toggleClass("hidden")
-					$("#sign-in-modal-link").toggleClass("hidden")
-					$("#sign-up-modal-link").toggleClass("hidden")
-					$("#signup-modal").modal("hide")
-				},
-				error: function(response){
-					response.responseJSON.forEach(function(response){
-						$("#signup-errors").append("<p>- " + response + "</p>")
-					})
-				}
-			})
-		})
-	</script>
+  <script>
+    $("#sign-up").click( function(event){
+      event.preventDefault();
+      var data = $(event.currentTarget).parent().parent().serializeJSON()
+      $.ajax({
+        url: 'api/users',
+        type: "POST",
+        data: data,
+        success: function(resp){
+          currentUserId = resp.id
+          $("#sign-out").toggleClass("hidden")
+          $("#sign-in-modal-link").toggleClass("hidden")
+          $("#sign-up-modal-link").toggleClass("hidden")
+          $("#signup-modal").modal("hide")
+        },
+        error: function(response){
+          response.responseJSON.forEach(function(response){
+            $("#signup-errors").append("<p>- " + response + "</p>")
+          })
+        }
+      })
+    })
+  </script>
 
   </body>
 </html>

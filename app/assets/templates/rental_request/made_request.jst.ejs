@@ -1,41 +1,41 @@
 <div class="row" id="request-details">
-	<div class="col-md-6">
-		<% var address = rental.escape("address").split(",") %>
-		<% address.splice(address.length - 1) %>
-		<h6 class="bigger-font"> Property: <%= address %></h6>
-		<h6 class="bigger-font"> Start Date: <%= request.escape("start_date") %> </h6>
-		<h6 class="bigger-font"> End Date: <%= request.escape("end_date") %></h6>
-		<h6 class="bigger-font"> Guests: <%= request.escape("guests") %></h6>
-		<h6 class="bigger-font"> Status: <%= request.escape("status") %></h6>
-	</div>
-	<div class="col-md-6" id="request-buttons">
-		<% var unreadMessages = false %>
-		<% var numUnreadMessages = 0 %>
-		<% messages.forEach(function(message){ %>
-			<% if(!message.get("read") && message.get("sender_id") != currentUserId){%>
-				<% unreadMessages = true %>
-				<% numUnreadMessages ++ %>
-			<% } %>
-		<% }) %>
+  <div class="col-md-6">
+    <% var address = rental.escape("address").split(",") %>
+    <% address.splice(address.length - 1) %>
+    <h6 class="bigger-font"> Property: <%= address %></h6>
+    <h6 class="bigger-font"> Start Date: <%= request.escape("start_date") %> </h6>
+    <h6 class="bigger-font"> End Date: <%= request.escape("end_date") %></h6>
+    <h6 class="bigger-font"> Guests: <%= request.escape("guests") %></h6>
+    <h6 class="bigger-font"> Status: <%= request.escape("status") %></h6>
+  </div>
+  <div class="col-md-6" id="request-buttons">
+    <% var unreadMessages = false %>
+    <% var numUnreadMessages = 0 %>
+    <% messages.forEach(function(message){ %>
+      <% if(!message.get("read") && message.get("sender_id") != currentUserId){%>
+        <% unreadMessages = true %>
+        <% numUnreadMessages ++ %>
+      <% } %>
+    <% }) %>
 
-		<button class="btn btn-primary cancel-request" id="cancel-request-<%= request.escape("id") %>">Cancel Request</button>
-		<button class="btn btn-primary <%= unreadMessages ? "selected" : "" %>"
-			id="made-request-messages"
-			data-toggle="modal"
-			data-target="#made-request-message-modal<%= request.escape("id") %>"
-		>
-			<%= unreadMessages ? "New Messages! (" + numUnreadMessages + ")" : "View Messages" %>
-		</button>
-	</div>
+    <button class="btn btn-primary cancel-request" id="cancel-request-<%= request.escape("id") %>">Cancel Request</button>
+    <button class="btn btn-primary <%= unreadMessages ? "selected" : "" %>"
+      id="made-request-messages"
+      data-toggle="modal"
+      data-target="#made-request-message-modal<%= request.escape("id") %>"
+    >
+      <%= unreadMessages ? "New Messages! (" + numUnreadMessages + ")" : "View Messages" %>
+    </button>
+  </div>
 </div>
 
 
 <div class="modal fade"
-	id="made-request-message-modal<%= request.escape("id") %>"
-	tabindex="-1"
-	role="dialog"
-	aria-labelledby="myModalLabel"
-	aria-hidden="true"
+  id="made-request-message-modal<%= request.escape("id") %>"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="myModalLabel"
+  aria-hidden="true"
 >
   <div class="modal-dialog">
     <div class="modal-content">
@@ -44,20 +44,20 @@
         <h4 class="modal-title" id="myModalLabel"> Messages </h4>
       </div>
       <div class="modal-body">
-				<div class="errors" id="errors-<%= request.escape("id") %>"></div>
-				<% messages.forEach(function(message){ %>
-					<div class="message-holder">
-						<% var style = currentUserId === message.get("sender_id") ? "normal" : "bold" %>
-		        <p style="font-weight: <%= style %>"><%= (currentUserId === message.get("sender_id")) ? "Me" : email %>: <%= message.escape("content") %><p>
-					</div>
-				<% }) %>
-				<button class="btn btn-primary open-compose-message" id="open-compose-message-<%= request.escape("id") %>">
-					<span class="glyphicon glyphicon-pencil" style="top: 0px">Compose</span>
-				</button>
-				<form class="message-form" id="request-message-form<%= request.escape("id") %>">
-					<textarea id="compose-message" placeholder="..." name="message[content]"></textarea>
-					<button id="submit-message" class="btn btn-primary">Send</button>
-				</form>
+        <div class="errors" id="errors-<%= request.escape("id") %>"></div>
+        <% messages.forEach(function(message){ %>
+          <div class="message-holder">
+            <% var style = currentUserId === message.get("sender_id") ? "normal" : "bold" %>
+            <p style="font-weight: <%= style %>"><%= (currentUserId === message.get("sender_id")) ? "Me" : email %>: <%= message.escape("content") %><p>
+          </div>
+        <% }) %>
+        <button class="btn btn-primary open-compose-message" id="open-compose-message-<%= request.escape("id") %>">
+          <span class="glyphicon glyphicon-pencil" style="top: 0px">Compose</span>
+        </button>
+        <form class="message-form" id="request-message-form<%= request.escape("id") %>">
+          <textarea id="compose-message" placeholder="..." name="message[content]"></textarea>
+          <button id="submit-message" class="btn btn-primary">Send</button>
+        </form>
       </div>
     </div>
   </div>
