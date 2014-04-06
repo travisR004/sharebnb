@@ -102,9 +102,59 @@ window.Sharebnb.Views.SearchResult = Backbone.View.extend({
 
   makeMap: function(){
     var that = this;
+		style = [{
+        "featureType": "water",
+        "elementType": "all",
+        "stylers": [
+            { "hue": "#1CB2BD" },
+            { "saturation": 53 },
+            { "lightness": -44 },
+            { "visibility": "on" }
+        ]},
+    		{
+        "featureType": "road",
+        "elementType": "all",
+        "stylers": [
+            {
+                "hue": "#1CB2BD"
+            },
+            {
+                "saturation": 40
+            }
+        ]
+    },
+    {
+        "featureType": "landscape",
+        "elementType": "all",
+        "stylers": [
+            {
+                "hue": "#BBDC00"
+            },
+            {
+                "saturation": 80
+            },
+            {
+                "lightness": -20
+            },
+            {
+                "visibility": "on"
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "on"
+            }
+        ]
+    }
+]
     var mapOptions = {
       center: new google.maps.LatLng(this.lat, this.long),
-      zoom: 12
+      zoom: 12,
+			styles: style
     };
     this.mapCanvas = this.$el.find("#map-canvas")
     if(this.mapCanvas){
