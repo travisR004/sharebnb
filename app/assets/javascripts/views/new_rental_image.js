@@ -27,6 +27,7 @@ window.Sharebnb.Views.NewRentalImage = Backbone.View.extend({
 
   handleFiles: function(event){
     event.preventDefault();
+		debugger
     var that = this;
     var files = event.target.files;
     for(var i = 0; i < files.length; i++){
@@ -38,7 +39,7 @@ window.Sharebnb.Views.NewRentalImage = Backbone.View.extend({
       }
       reader.readAsDataURL(files[i]);
     }
-    $("#image-titles").append(files[files.length - 1].name + " / ")
+    // $("#image-titles").append(files[files.length - 1].name + " / ")
   },
 
   makeSortable: function(){

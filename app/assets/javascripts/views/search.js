@@ -166,17 +166,17 @@ window.Sharebnb.Views.SearchResult = Backbone.View.extend({
       this.map = new google.maps.Map(this.mapCanvas[0], mapOptions);
       google.maps.event.bind(this.map, "zoom_changed", this, function(){
         this.lat = this.map.center.k;
-        this.long = this.map.center.A;
+        this.long = this.map.center.D;
         this.fetchRentals();
-      })
+      });
       google.maps.event.bind(this.map, "dragend", this, function(){
         this.lat = this.map.center.k;
-        this.long = this.map.center.A;
+        this.long = this.map.center.D;
         this.fetchRentals();
-      })
+      });
       google.maps.event.addListenerOnce(this.map, 'idle', function(){
         that.lat = that.map.center.k;
-        that.long = that.map.center.A;
+        that.long = that.map.center.D;
         that.fetchRentals();
       });
     }
